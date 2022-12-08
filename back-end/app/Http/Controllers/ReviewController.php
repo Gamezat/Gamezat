@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
 {
@@ -35,7 +36,29 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'user_id' => 'required',
+            'game_id' => 'required',
+            'stars' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'errors' => $validator->messages(),
+            ]);
+        }
+
+        $review =  Review::create([
+            'user_id' => $request->user_id,
+            'game_id' => $request->game_id,
+            'stars' => $request->stars,
+            'review' => $request->review
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'review' => $review
+        ]);
     }
 
     /**
