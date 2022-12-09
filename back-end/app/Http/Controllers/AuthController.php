@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class AuthController extends Controller
 {
@@ -69,9 +70,11 @@ class AuthController extends Controller
     }
     public function user()
     {
+        $user = Auth::user();
+        $user->favorites;
         return response()->json([
             'status' => 200,
-            'user' => Auth::user(),
+            'user' => $user,
 
         ]);
     }

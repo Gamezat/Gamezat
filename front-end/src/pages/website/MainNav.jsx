@@ -55,15 +55,26 @@ export default function MainNav() {
                     Market Place
                 </Link>
             </Typography>
+
             <Typography
                 as="li"
                 variant="small"
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
-                    Docs
-                </a>
+                <Link to={'/affiliate'} className="flex items-center">
+                    Affiliate
+                </Link>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+                <Link to={'/xo'} className="flex items-center">
+                    TiTacToe
+                </Link>
             </Typography>
         </ul>
     );
