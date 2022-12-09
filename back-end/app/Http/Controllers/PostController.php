@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -15,12 +16,13 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::with(['like','comments'])->get();
+        $posts = Post::with(['like', 'comments.user', 'user'])->get();
 
         return response()->json([
             'status' => 200,
             'data' => $posts,
         ]);
+
 
     }
 
@@ -42,7 +44,19 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addPost = Post::create([
+            'user_id' => Auth::user()->id,
+            'content' => $request->content,
+            'image' => $request->image,
+        ]);
+
+        $posts = Post::with(['like', 'comments.user', 'user'])->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $posts,
+        ]);
+
     }
 
     /**

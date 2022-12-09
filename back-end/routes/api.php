@@ -3,13 +3,14 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CommentController;
+
 
 
 
@@ -44,6 +45,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     // Endpoint for getting user
     Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/posts', [PostController::class, 'store']);
+    Route::post('/comments', [CommentController::class, 'store']);
+
     // Endpoint for editing the user info
     Route::put('/user/update', [AuthController::class, 'updateData']);
     // Endpoints for reviews
