@@ -11,7 +11,7 @@ class Review extends Model
     use HasFactory, SoftDeletes;
 
     protected $fillable = [
-        'starts',
+        'stars',
         'user_id',
         'game_id',
         'review'
