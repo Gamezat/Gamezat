@@ -44,11 +44,11 @@ export function AuthProvider({ children }) {
 
 	// signUp stuff---------------------
 
-	const { nameInputR, emailInputR, passwordInputR, rPasswordInputR } = useRef();
-	// const NameInputR = useRef()
-	// const emailInputR = useRef()
-	// const passwordInputR = useRef()
-	// const rPasswordInputR = useRef()
+	// const { nameInputR, emailInputR, passwordInputR, rPasswordInputR } = useRef();
+	const nameInputR = useRef()
+	const emailInputR = useRef()
+	const passwordInputR = useRef()
+	const rPasswordInputR = useRef()
 	// signUp stuff-------------------
 
 	// social media login functions-------------------
@@ -109,8 +109,8 @@ export function AuthProvider({ children }) {
 
 	// login fun to the database
 	const loginFun = () => {
-		const email = emailInput.current.value;
-		const password = passwordInput.current.value;
+		const email = emailInput.current.firstChild.value;
+		const password = passwordInput.current.firstChild.value;
 		const data = {
 			email: email,
 			password: password,
@@ -137,16 +137,18 @@ export function AuthProvider({ children }) {
 	};
 	// register fun to the database
 	const registerFun = () => {
-		const name = nameInputR.current.value;
-		const email = emailInputR.current.value;
-		const Password = passwordInputR.current.value;
-		const rPassword = rPasswordInputR.current.value;
+		const name = nameInputR.current.firstChild.value;
+		const email = emailInputR.current.firstChild.value;
+		const Password = passwordInputR.current.firstChild.value;
+		const rPassword = rPasswordInputR.current.firstChild.value;
 		const data = {
 			name: name,
 			email: email,
 			password: Password,
 			password_confirmation: rPassword,
 		};
+
+
 		if (
 			name &&
 			email &&
