@@ -14,6 +14,7 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
+import ProfileComments from '../../components/website/profile/ProfileComments';
 export default function Profile() {
 
     const navigate = useNavigate()
@@ -194,7 +195,15 @@ export default function Profile() {
 
                                                 </TabPanel>
                                                 <TabPanel value={"Activity"}>
-                                                    Activity
+                                                    <div className='m-9 p-10 flex flex-col gap-3  h-80 rounded-3xl border-t-4 shadow-lg border-amber  dark:bg-slate-800   overflow-y-scroll  scrollbar-hide'>
+                                                        <ProfileComments />
+                                                        <ProfileComments />
+                                                        <ProfileComments />
+                                                        <ProfileComments />
+                                                        <ProfileComments />
+                                                        <ProfileComments />
+
+                                                    </div>
                                                 </TabPanel>
                                                 <TabPanel value={"Favariot"}>
                                                     Favariot

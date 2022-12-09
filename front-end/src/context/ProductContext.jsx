@@ -6,19 +6,19 @@ export const ProductContext = createContext();
 export function ProductProvider({ children }) {
 
 
-    const [products, setProducts] = useState();
-    useEffect(() => {
-      axios.get("/api/products").then((response) => {
-        setProducts(response.data.data);
-      });
-    }, []);
-    
+	const [products, setProducts] = useState();
+	useEffect(() => {
+		axios.get("/api/products").then((response) => {
+			setProducts(response.data.data);
+		});
+	}, []);
+
 	return (
 		<>
 			<ProductContext.Provider
 				value={{
-                    products
-				
+					products
+
 				}}
 			>
 				{children}

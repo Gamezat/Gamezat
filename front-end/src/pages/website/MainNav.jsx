@@ -62,8 +62,8 @@ export default function MainNav() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <Link to={'/Affiliate'} className="flex items-center">
-                Affiliate
+                <Link to={'/affiliate'} className="flex items-center">
+                    Affiliate
                 </Link>
             </Typography>
             <Typography
@@ -72,9 +72,9 @@ export default function MainNav() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <a href="#" className="flex items-center">
-                    Docs
-                </a>
+                <Link to={'/xo'} className="flex items-center">
+                    TiTacToe
+                </Link>
             </Typography>
         </ul>
     );
