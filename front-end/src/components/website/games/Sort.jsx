@@ -21,7 +21,7 @@ export default function Sort({ games, setSearchInput, filter, setFilter, setSear
 	];
 	// console.log(categories);
 	return (
-		<div className="bg-cream w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2">
+		<div className="bg-white  w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2 mt-24  rounded-3xl rounded-tl-none border-t-4 shadow-lg border-amber dark:bg-slate-800">
 
 
 			<div class="relative">
