@@ -12,6 +12,15 @@ export function AuthProvider({ children }) {
 	const [showPortal, setShowPortal] = useState(false);
 
 	useEffect(() => {
+		if (showPortal) {
+			document.getElementById("portal").className =
+				"fixed top-0 right-0 left-0 bottom-0";
+		} else {
+			document.getElementById("portal").className = " hidden";
+		}
+
+	}, [showPortal]);
+	useEffect(() => {
 		console.log(showPortal);
 	}, [showPortal]);
 
