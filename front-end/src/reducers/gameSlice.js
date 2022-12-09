@@ -2,25 +2,27 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = {
+
 	games: [],
 	reviews: [],
 	loading: true,
+
 };
 
 const APIURL = "/games.json";
 
 export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
-	try {
-		const res = await axios({
-			method: "get",
-			url: APIURL,
-			baseURL: "/",
-		});
-		console.log(res);
-		return res.data;
-	} catch (err) {
-		return err.message;
-	}
+  try {
+    const res = await axios({
+      method: "get",
+      url: APIURL,
+      baseURL: "/",
+    });
+    console.log(res);
+    return res.data;
+  } catch (err) {
+    return err.message;
+  }
 });
 
 export const fetchReviews = createAsyncThunk(
@@ -37,6 +39,7 @@ export const fetchReviews = createAsyncThunk(
 );
 
 export const gameSlice = createSlice({
+
 	name: "games",
 	initialState,
 	reducers: {
@@ -59,6 +62,7 @@ export const gameSlice = createSlice({
 			return { ...state, reviews: action.payload };
 		});
 	},
+
 });
 export const { addReview, updateReviews } = gameSlice.actions;
 

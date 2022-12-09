@@ -5,10 +5,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 
-use App\Http\Controllers\PostController;
+
+
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+
+
+
 
 
 /*
@@ -26,7 +33,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
+Route::resource('/products', ProductController::class);
 Route::resource('/posts', PostController::class);
 Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
