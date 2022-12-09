@@ -1,10 +1,10 @@
-import React from 'react'
-import FreeGames from '../../components/Affiliate/FreeGames'
+import SwiperGiftGame from "../../components/GiftsSwiper/SwiperGiftGame";
 
 export default function Home() {
+
     return (
-        <div className='text-3xl'>
-            {/* <FreeGames/> */}
-        </div>
-    )
+<div className="mt-10">
+    <SwiperGiftGame/>
+    </div>
+    );
 }
