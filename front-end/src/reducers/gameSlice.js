@@ -1,17 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import games from "../games.json";
+
 const initialState = {
 	games: [],
-	currentGame: {
-		name: "",
-		url: "",
-		id: "",
-	},
 	loading: true,
 };
 
-const APIURL = "../games.json";
+const APIURL = "/games.json";
 
 export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
 	try {
