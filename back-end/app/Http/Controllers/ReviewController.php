@@ -18,6 +18,22 @@ class ReviewController extends Controller
         //
     }
 
+    // Get reviews for a specific game
+    public function getReviews($guid)
+    {
+        $allReviews = Review::where('game_id', $guid)->get();
+        $reviewCount = $allReviews->count();
+        $averageRating = $allReviews->avg('stars');
+        $reviews = Review::where('game_id', $guid)->with('user')->get();
+
+        return response()->json([
+            'status' => 200,
+            'reviews' => $reviews,
+            'count' =>  $reviewCount,
+            'averageRating' => $averageRating
+        ]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,6 +56,7 @@ class ReviewController extends Controller
             'user_id' => 'required',
             'game_id' => 'required',
             'stars' => 'required',
+            'review' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -54,10 +71,16 @@ class ReviewController extends Controller
             'stars' => $request->stars,
             'review' => $request->review
         ]);
+        $allReviews = Review::where('game_id', $request->game_id)->get();
+        $reviewCount = $allReviews->count();
+        $averageRating = $allReviews->avg('stars');
+        $reviews = Review::where('game_id', $request->game_id)->with('user')->get();
 
         return response()->json([
             'status' => 200,
-            'review' => $review
+            'reviews' => $reviews,
+            'count' =>  $reviewCount,
+            'averageRating' => $averageRating
         ]);
     }
 
@@ -92,7 +115,21 @@ class ReviewController extends Controller
      */
     public function update(Request $request, Review $review)
     {
-        //
+        $review->stars = $request->stars;
+        $review->review = $request->review;
+        $review->save();
+
+        $allReviews = Review::where('game_id', $request->game_id)->get();
+        $reviewCount = $allReviews->count();
+        $averageRating = $allReviews->avg('stars');
+        $reviews = Review::where('game_id', $request->game_id)->with('user')->get();
+
+        return response()->json([
+            'status' => 200,
+            'reviews' => $reviews,
+            'count' =>  $reviewCount,
+            'averageRating' => $averageRating
+        ]);
     }
 
     /**

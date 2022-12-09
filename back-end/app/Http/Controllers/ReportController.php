@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Report;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReportController extends Controller
 {
@@ -35,7 +36,19 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $report = Report::create([
+            'user_id' => Auth::user()->id,
+            'review_id' => $request->review_id,
+            'post_id' => $request->post_id,
+            'comment_id' => $request->comment_id,
+            'game_id' => $request->game_id,
+            'feedback' => $request->feedback
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'report' => $report
+        ]);
     }
 
     /**
