@@ -1,16 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
+import games from "../games.json";
 const initialState = {
 	games: [],
+	currentGame: {
+		name: "",
+		url: "",
+		id: "",
+	},
 	loading: true,
 };
 
-const APIURL = "https://h5games.online/freegames.json";
+const APIURL = "../games.json";
 
 export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
 	try {
-		const res = await axios.get(APIURL);
+		const res = await axios({
+			method: "get",
+			url: APIURL,
+			baseURL: "/",
+		});
 		console.log(res);
 		return res.data;
 	} catch (err) {
@@ -21,7 +30,11 @@ export const fetchGames = createAsyncThunk("games/fetchGames", async () => {
 export const gameSlice = createSlice({
 	name: "games",
 	initialState,
-	reducers: {},
+	reducers: {
+		addCurrentGame: (state, action) => {
+			return { ...state, currentGame: action.payload };
+		},
+	},
 	extraReducers(builder) {
 		builder.addCase(fetchGames.pending, (state, action) => {
 			return { ...state, loading: false };
@@ -31,5 +44,6 @@ export const gameSlice = createSlice({
 		});
 	},
 });
+export const { addCurrentGame } = gameSlice.actions;
 
 export default gameSlice.reducer;
