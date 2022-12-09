@@ -3,8 +3,12 @@
 use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PostController;
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('/posts', PostController::class);
 Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 // Protected routes---------------------------------------
-Route::resource('/posts', PostController::class);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // Endpoint for logout api
     Route::get('/logout', [AuthController::class, 'logout']);

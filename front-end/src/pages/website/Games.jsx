@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentGame, fetchGames } from "../../reducers/gameSlice";
-import { BsFillPhoneFill } from "react-icons/bs";
-import { FcIphone } from "react-icons/fc";
-import { BiDesktop, BiMobile, BiPhone } from "react-icons/bi";
+import { BiDesktop, BiMobile, BiPhone, BiTab } from "react-icons/bi";
 import Sort from "../../components/website/games/Sort";
 import { Link } from "react-router-dom";
-import games from "../../games.json";
+// import games from "../../games.json";
 
 export default function Games() {
 	const dispatch = useDispatch();
 	// console.log(games);
-	// const games = useSelector((state) => state.games.games);
+	const games = useSelector((state) => state.games.games);
 	const loading = useSelector((state) => state.games.loading);
 
 	useEffect(() => {
@@ -86,8 +84,10 @@ export default function Games() {
 									/>
 									<div className="absolute top-2 right-2 shadow-md bg-indigo rounded-lg p-1">
 										{/* <BsFillPhoneFill size={25} className={"text-lemon"} /> */}
-										{game.width <= 400 ? (
+										{game.width <= 480 ? (
 											<BiMobile size={25} className={"text-lemon"} />
+										) : game.width <= 768 ? (
+											<BiTab size={25} className={"text-lemon"} />
 										) : (
 											<BiDesktop size={25} className={"text-lemon"} />
 										)}
