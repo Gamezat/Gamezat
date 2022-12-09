@@ -9,7 +9,7 @@ export default function NavUserDropIcon() {
         <>
             <Dropdown
                 className=''
-                label={<Avatar img={`${user?.image ? user?.image : 'https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png'}`} rounded={true} />}
+                label={<Avatar img={`${user?.image ? user?.image : 'https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png'}`} rounded={true} alt />}
                 arrowIcon={false}
                 inline={true}
 

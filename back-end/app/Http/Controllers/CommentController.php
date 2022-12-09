@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -24,7 +26,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -35,7 +37,19 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $addComment = Comment::create([
+            'post_id' => $request->post_id,
+            'user_id' => Auth::user()->id,
+            'comment' => $request->comment,
+        ]);
+
+        $post = Post::with(['like', 'comments.user', 'user'])->get();
+
+        return response()->json([
+            'status' => 200,
+            'data' => $post,  
+        ]);
+
     }
 
     /**
