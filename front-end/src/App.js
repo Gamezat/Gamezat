@@ -10,11 +10,13 @@ import axios from "axios";
 import Profile from "./pages/website/Profile";
 import Games from "./pages/website/Games";
 import SingleGame from "./pages/website/SingleGame";
+import { useEffect } from "react";
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axios.defaults.headers.post["Accept"] = "application/vnd.api+json";
 axios.defaults.withCredentials = true;
 function App() {
+
 	return (
 		<>
 			<GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">

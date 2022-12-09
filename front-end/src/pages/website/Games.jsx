@@ -20,6 +20,7 @@ export default function Games() {
 	const [items, setItems] = useState([]);
 	const [hasMore, setHasMore] = useState(true);
 	const [page, setPage] = useState(1);
+	const [filter, setFilter] = useState(2);
 	const [recordsPerPage] = useState(20);
 
 	const onScroll = () => {

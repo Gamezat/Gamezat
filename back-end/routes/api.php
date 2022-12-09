@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -40,5 +41,3 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Endpoints for reviews
     Route::resource('/reviews', ReviewController::class);
 });
-
-

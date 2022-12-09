@@ -14,20 +14,14 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $posts = Post::with(['like','comments'])->get();
-
-
-
-
-        // dd($donationsView);
 
         return response()->json([
             'status' => 200,
             'data' => $posts,
         ]);
 
-
-        //
     }
 
     /**
