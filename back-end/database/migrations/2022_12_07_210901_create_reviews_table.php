@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('game_id');
             $table->string('review');
-            $table->integer('starts');
+            $table->integer('stars');
             $table->softDeletes();
             $table->timestamps();
         });
