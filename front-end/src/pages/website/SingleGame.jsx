@@ -3,27 +3,31 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import axios from "axios";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import games from "../../games.json";
 export default function SingleGame() {
 	const { id } = useParams();
-	const games = useSelector((state) => state.games.games);
-	const game = games?.find((game) => game.guid === id);
+	const { user, cookies } = useContext(AuthContext);
+	const currentGame = useSelector((state) => state.games.currentGame);
+	// const game = games?.find((game) => game.guid === id);
 	const [ratingValue, setRatingValue] = useState(0);
 	const [review, setReview] = useState("");
 	const ratingChanged = (newRating) => {
 		setRatingValue(newRating);
 	};
-
+	console.log(ratingValue);
 	const handleReview = () => {
 		const data = {
-			rate: ratingValue,
+			stars: ratingValue,
 			user_id: user.id,
-			game_id: game.guid,
+			game_id: id,
 			review: review,
 		};
 		axios
-			.get("/api/reviews", data, {
+			.post("/api/reviews", data, {
 				headers: {
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${cookies.Token}`,
 				},
 			})
 			.then((res) => console.log(res));
@@ -31,7 +35,7 @@ export default function SingleGame() {
 
 	return (
 		<div className="flex p-5">
-			<iframe src={game.link} className={" w-1/2 h-screen"}></iframe>
+			<iframe src={currentGame?.url} className={" w-1/2 h-screen"}></iframe>
 			<div className="w-1/2 m-9 p-10 rounded-3xl border-t-4 shadow-lg border-amber  dark:bg-slate-800">
 				<label
 					for="message"
@@ -55,9 +59,9 @@ export default function SingleGame() {
 					placeholder="Leave a review..."
 				></textarea>
 				<button
-					onClick={handleReview}
 					type="button"
 					class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+					onClick={handleReview}
 				>
 					Submit
 				</button>

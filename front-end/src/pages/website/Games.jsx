@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGames } from "../../reducers/gameSlice";
+import { addCurrentGame, fetchGames } from "../../reducers/gameSlice";
 import { BsFillPhoneFill } from "react-icons/bs";
 import { FcIphone } from "react-icons/fc";
 import { BiDesktop, BiMobile, BiPhone } from "react-icons/bi";
 import Sort from "../../components/website/games/Sort";
 import { Link } from "react-router-dom";
+import games from "../../games.json";
 
 export default function Games() {
 	const dispatch = useDispatch();
-	const games = useSelector((state) => state.games.games);
+	// console.log(games);
+	// const games = useSelector((state) => state.games.games);
 	const loading = useSelector((state) => state.games.loading);
 
 	useEffect(() => {
@@ -61,7 +63,20 @@ export default function Games() {
 				<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 					{items?.map((game, i) => {
 						return (
-							<Link to={`/games/${game.guid}`} key={i} className="group">
+							<Link
+								to={`/games/${game.guid}`}
+								key={i}
+								className="group"
+								onClick={() =>
+									dispatch(
+										addCurrentGame({
+											name: game.title,
+											url: game.link,
+											id: game.guid,
+										})
+									)
+								}
+							>
 								<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 									<img
 										src={game.thumb}
