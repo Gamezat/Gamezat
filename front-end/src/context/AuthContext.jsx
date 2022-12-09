@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRef } from "react";
 export const AuthContext = createContext();
+
 export function AuthProvider({ children }) {
 	const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
 	const navigate = useNavigate();
