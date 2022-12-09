@@ -1,13 +1,15 @@
 <?php
 
-use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PostController;
-
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ProductController;
+
+
 
 
 /*
