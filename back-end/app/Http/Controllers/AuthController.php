@@ -69,9 +69,11 @@ class AuthController extends Controller
     }
     public function user()
     {
+        $user = Auth::user();
+        $user->favorites;
         return response()->json([
             'status' => 200,
-            'user' => Auth::user(),
+            'user' => $user,
 
         ]);
     }

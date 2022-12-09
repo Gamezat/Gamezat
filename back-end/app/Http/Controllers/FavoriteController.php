@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Favorite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FavoriteController extends Controller
 {
@@ -35,7 +36,15 @@ class FavoriteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $favorite = Favorite::create([
+            "user_id" => Auth::user()->id,
+            'game_id' => $request->game_id
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'favorite' => $favorite
+        ]);
     }
 
     /**
@@ -80,6 +89,6 @@ class FavoriteController extends Controller
      */
     public function destroy(Favorite $favorite)
     {
-        //
+        $favorite->delete();
     }
 }

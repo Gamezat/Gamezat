@@ -18,7 +18,6 @@ export function AuthProvider({ children }) {
 		} else {
 			document.getElementById("portal").className = " hidden";
 		}
-
 	}, [showPortal]);
 	useEffect(() => {
 		console.log(showPortal);
@@ -198,6 +197,11 @@ export function AuthProvider({ children }) {
 
 	// Get logged in user data
 	useEffect(() => {
+		getUserInfo();
+	}, []);
+
+	// Get logged in user data function
+	const getUserInfo = () => {
 		if (cookies.Token) {
 			setToken(cookies.Token);
 			axios
@@ -217,7 +221,8 @@ export function AuthProvider({ children }) {
 		} else {
 			return;
 		}
-	}, []);
+	};
+
 	useEffect(() => {
 		console.log(token);
 	}, [token]);
@@ -243,6 +248,7 @@ export function AuthProvider({ children }) {
 					registerFun,
 					logout,
 					cookies,
+					getUserInfo,
 				}}
 			>
 				{children}

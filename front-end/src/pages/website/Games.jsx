@@ -62,20 +62,7 @@ export default function Games() {
 				<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
 					{items?.map((game, i) => {
 						return (
-							<Link
-								to={`/games/${game.guid}`}
-								key={i}
-								className="group"
-								onClick={() =>
-									dispatch(
-										addCurrentGame({
-											name: game.title,
-											url: game.link,
-											id: game.guid,
-										})
-									)
-								}
-							>
+							<Link to={`/games/${game.guid}`} key={i} className="group">
 								<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 									<img
 										src={game.thumb}
