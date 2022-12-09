@@ -1,0 +1,19 @@
+.imf{
+   
+    border-radius: 15px;
+}
+.team4{
+    margin-top: 150px;
+}
+
+@media (max-width: 750px) {
+    .team4{
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 450px) {
+    .team4{
+        margin-top: 50px;
+    }
+}
