@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Posts from "./pages/website/Posts";
 import { AuthProvider } from "./context/AuthContext";
 import MainNav from "./pages/website/MainNav";
 import { ThemeProvider } from "@material-tailwind/react";
@@ -25,6 +26,7 @@ function App() {
 								<Route path="/profile" element={<Profile />} />
 								<Route path="/games" element={<Games />} />
 								<Route path="/games/:id" element={<SingleGame />} />
+                <Route path="/community" element={<Posts/>} />
 							</Route>
 						</Routes>
 					</ThemeProvider>
@@ -32,6 +34,7 @@ function App() {
 			</GoogleOAuthProvider>
 		</>
 	);
+
 }
 
 export default App;

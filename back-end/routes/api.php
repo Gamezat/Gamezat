@@ -3,7 +3,11 @@
 use App\Http\Controllers\ReviewController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PostController;
+
 use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::resource('/posts', PostController::class);
 Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -35,4 +40,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Endpoints for reviews
     Route::resource('/reviews', ReviewController::class);
 });
+
 
