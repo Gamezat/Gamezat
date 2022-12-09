@@ -105,6 +105,7 @@ export default function Games() {
 			<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
 			<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
 				<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
 					{
 						items.length === 0 ? <p className="text-3xl text-center">No Games</p>
 							: items?.map((game, i) => {
@@ -113,15 +114,6 @@ export default function Games() {
 										to={`/games/${game.guid}`}
 										key={i}
 										className="group"
-										onClick={() =>
-											dispatch(
-												addCurrentGame({
-													name: game.title,
-													url: game.link,
-													id: game.guid,
-												})
-											)
-										}
 									>
 										<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 											<img
@@ -148,16 +140,12 @@ export default function Games() {
 					{
 						checkForFilters() || search !== "" ? null :
 							<>
-
-
-
 								<Pagination
 									className=""
 									currentPage={currentPage}
 									totalPages={nPages}
 									onPageChange={(e) => setCurrentPage(e)}
 								/>
-
 							</>
 					}
 				</div>
