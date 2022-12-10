@@ -17,21 +17,13 @@ import PostComp from './PostComp';
 
 
 
-export default function Post() {
+export default function Post({ posts }) {
   const [likes, setLikes] = useState([]);
   const { user, token } = useContext(AuthContext)
   const [open, setOpen] = useState(0);
 
 
-  const [posts, setPosts] = useState([]);
-  const APIURL =
-    "/api/posts";
-  useEffect(() => {
-    axios.get(APIURL).then((response) => {
-      setPosts(response.data.data);
-      console.log(response.data.data);
-    });
-  }, []);
+
 
   // console.log(posts.comment);
 
@@ -39,7 +31,7 @@ export default function Post() {
     <>
       {posts?.map((post) => {
         return (
-         <PostComp setPosts={setPosts} post={post}/>
+          <PostComp post={post} />
 
         )
       })}
