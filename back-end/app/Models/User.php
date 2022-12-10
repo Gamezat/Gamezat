@@ -11,6 +11,7 @@ use App\Models\Favorite;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -39,6 +40,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    // protected function image(): Attribute
+    // {
+    //     return Attribute::make(
+    //         get: fn ($value) => url('uploads/' . $value),
+    //     );
+    // }
 
     /**
      * The attributes that are mass assignable.

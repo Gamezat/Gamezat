@@ -21,15 +21,20 @@ import OfflineXo from "./components/website/tictactoe/OfflineXo";
 import AiXo from "./components/website/tictactoe/AiXo";
 
 import { FreeGamesProvider } from "./context/FreeGamesContext";
+
 import Dashboard from "./pages/dashboard/Dashboard";
 import { AdminProvider } from "./context/AdminContext";
 import About from "./pages/website/About";
+
+import SingleProfile from "./pages/website/SingleProfile";
+
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axios.defaults.headers.post["Accept"] = "application/vnd.api+json";
 axios.defaults.withCredentials = true;
 function App() {
+
   return (
     <>
       <GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">
@@ -66,6 +71,7 @@ function App() {
       </GoogleOAuthProvider>
     </>
   );
+
 }
 
 export default App;

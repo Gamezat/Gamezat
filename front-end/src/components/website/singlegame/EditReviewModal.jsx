@@ -10,11 +10,12 @@ export default function EditReviewModal({ show, reviewItem, closeModal }) {
 	const dispatch = useDispatch();
 	const { token } = useContext(AuthContext);
 	const [ratingValue, setRatingValue] = useState(reviewItem?.stars);
-	const [review, setReview] = useState("");
+	const [review, setReview] = useState(reviewItem?.review);
 	const [enableButton, setEnableButton] = useState(false);
 
 	const ratingChanged = (newRating) => {
 		setRatingValue(newRating);
+		setEnableButton(true);
 	};
 
 	const handleInput = (e) => {
