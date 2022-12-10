@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,12 +34,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+
+Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts
 Route::get('/userposts/{id}', [SingleProfileController::class, 'getUserPosts']);
 // Endpoint to get user comments
 Route::get('/usercomments/{id}', [SingleProfileController::class, 'getUserComments']);
 // Endpoint to get user data
 Route::get('/user/{id}', [SingleProfileController::class, 'user']);
+
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
 Route::resource('/products', ProductController::class);
 Route::resource('/posts', PostController::class);
