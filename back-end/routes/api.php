@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/admin/info', [AdminController::class, 'mainData']);
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
 Route::resource('/products', ProductController::class);
 Route::resource('/posts', PostController::class);

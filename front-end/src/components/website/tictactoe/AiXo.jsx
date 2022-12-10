@@ -32,7 +32,6 @@ export default function AiXo() {
         wins: 0,
         lose: 0,
     })
-
     // function to check if there's a winner
     const checkWinner = () => {
         // all the win patterns
@@ -85,98 +84,79 @@ export default function AiXo() {
             });
         }
     }
-
-
-    // api replacement
-    // // check if X has any winning moves
-    // if (cells[0] === "X" && cells[1] === "X" && cells[2] === "-") return 2;
-    // if (cells[0] === "X" && cells[1] === "-" && cells[2] === "X") return 1;
-    // if (cells[0] === "-" && cells[1] === "X" && cells[2] === "X") return 0;
-
-    // if (cells[3] === "X" && cells[4] === "X" && cells[5] === "-") return 5;
-    // if (cells[3] === "X" && cells[4] === "-" && cells[5] === "X") return 4;
-    // if (cells[3] === "-" && cells[4] === "X" && cells[5] === "X") return 3;
-
-    // if (cells[6] === "X" && cells[7] === "X" && cells[8] === "-") return 8;
-    // if (cells[6] === "X" && cells[7] === "-" && cells[8] === "X") return 7;
-    // if (cells[6] === "-" && cells[7] === "X" && cells[8] === "X") return 6;
-
-    // if (cells[0] === "X" && cells[3] === "X" && cells[6] === "-") return 6;
-    // if (cells[0] === "X" && cells[3] === "-" && cells[6] === "X") return 3;
-    // if (cells[0] === "-" && cells[3] === "X" && cells[6] === "X") return 0;
-
-    // if (cells[1] === "X" && cells[4] === "X" && cells[7] === "-") return 7;
-    // if (cells[1] === "X" && cells[4] === "-" && cells[7] === "X") return 4;
-    // if (cells[1] === "-" && cells[4] === "X" && cells[7] === "X") return 1;
-
-    // if (cells[2] === "X" && cells[5] === "X" && cells[8] === "-") return 8;
-    // if (cells[2] === "X" && cells[5] === "-" && cells[8] === "X") return 5;
-    // if (cells[2] === "-" && cells[5] === "X" && cells[8] === "X") return 2;
-
-    // if (cells[0] === "X" && cells[4] === "X" && cells[8] === "-") return 8;
-    // if (cells[0] === "X" && cells[4] === "-" && cells[8] === "X") return 4;
-    // if (cells[0] === "-" && cells[4] === "X" && cells[8] === "X") return 0;
-
-    // if (cells[2] === "X" && cells[4] === "X" && cells[6] === "-") return 6;
-    // if (cells[2] === "X" && cells[4] === "-" && cells[6] === "X") return 4;
-    // if (cells[2] === "-" && cells[4] === "X" && cells[6] === "X") return 2;
-
-    // if (cells[0] === "O" && cells[1] === "O" && cells[2] === "-") return 2;
-    // if (cells[0] === "O" && cells[1] === "-" && cells[2] === "O") return 1;
-    // if (cells[0] === "-" && cells[1] === "O" && cells[2] === "O") return 0;
-
-    // if (cells[3] === "O" && cells[4] === "O" && cells[5] === "-") return 5;
-    // if (cells[3] === "O" && cells[4] === "-" && cells[5] === "O") return 4;
-    // if (cells[3] === "-" && cells[4] === "O" && cells[5] === "O") return 3;
-
-    // if (cells[6] === "O" && cells[7] === "O" && cells[8] === "-") return 8;
-    // if (cells[6] === "O" && cells[7] === "-" && cells[8] === "O") return 7;
-    // if (cells[6] === "-" && cells[7] === "O" && cells[8] === "O") return 6;
-
-    // if (cells[0] === "O" && cells[3] === "O" && cells[6] === "-") return 6;
-    // if (cells[0] === "O" && cells[3] === "-" && cells[6] === "O") return 3;
-    // if (cells[0] === "-" && cells[3] === "O" && cells[6] === "O") return 0;
-
-    // if (cells[1] === "O" && cells[4] === "O" && cells[7] === "-") return 7;
-    // if (cells[1] === "O" && cells[4] === "-" && cells[7] === "O") return 4;
-    // if (cells[1] === "-" && cells[4] === "O" && cells[7] === "O") return 1;
-
-    // if (cells[2] === "O" && cells[5] === "O" && cells[8] === "-") return 8;
-    // if (cells[2] === "O" && cells[5] === "-" && cells[8] === "O") return 5;
-    // if (cells[2] === "-" && cells[5] === "O" && cells[8] === "O") return 2;
-
-    // if (cells[0] === "O" && cells[4] === "O" && cells[8] === "-") return 8;
-    // if (cells[0] === "O" && cells[4] === "-" && cells[8] === "O") return 4;
-    // if (cells[0] === "-" && cells[4] === "O" && cells[8] === "O") return 0;
-
-    // if (cells[2] === "O" && cells[4] === "O" && cells[6] === "-") return 6;
-    // if (cells[2] === "O" && cells[4] === "-" && cells[6] === "O") return 4;
-    // if (cells[2] === "-" && cells[4] === "O" && cells[6] === "O") return 2;
     function getRecommendation(cells) {
         // Check if O has any winning moves
-        for (let i = 0; i < 9; i += 3) {
-            // Check rows
-            if (cells[i] === "O" && cells[i + 1] === "O" && cells[i + 2] === "-") if (cells[i + 2] === "-") return i + 2;
-            if (cells[i] === "O" && cells[i + 1] === "-" && cells[i + 2] === "O") if (cells[i + 1] === "-") return i + 1;
-            if (cells[i] === "-" && cells[i + 1] === "O" && cells[i + 2] === "O") if (cells[i] === "-") return i;
-            // Check columns if()
-            if (cells[i] === "O" && cells[i + 3] === "O" && cells[i + 6] === "-") if (cells[i + 6] === "-") return i + 6;
-            if (cells[i] === "O" && cells[i + 3] === "-" && cells[i + 6] === "O") if (cells[i + 3] === "-") return i + 3;
-            if (cells[i] === "-" && cells[i + 3] === "O" && cells[i + 6] === "O") if (cells[i] === "-") return i;
+        if (cells[0] === "O" && cells[1] === "O" && cells[2] === "-") return 2;
+        if (cells[0] === "O" && cells[1] === "-" && cells[2] === "O") return 1;
+        if (cells[0] === "-" && cells[1] === "O" && cells[2] === "O") return 0;
+
+        if (cells[3] === "O" && cells[4] === "O" && cells[5] === "-") return 5;
+        if (cells[3] === "O" && cells[4] === "-" && cells[5] === "O") return 4;
+        if (cells[3] === "-" && cells[4] === "O" && cells[5] === "O") return 3;
+
+        if (cells[6] === "O" && cells[7] === "O" && cells[8] === "-") return 8;
+        if (cells[6] === "O" && cells[7] === "-" && cells[8] === "O") return 7;
+        if (cells[6] === "-" && cells[7] === "O" && cells[8] === "O") return 6;
+
+        if (cells[0] === "O" && cells[3] === "O" && cells[6] === "-") return 6;
+        if (cells[0] === "O" && cells[3] === "-" && cells[6] === "O") return 3;
+        if (cells[0] === "-" && cells[3] === "O" && cells[6] === "O") return 0;
+
+        if (cells[1] === "O" && cells[4] === "O" && cells[7] === "-") return 7;
+        if (cells[1] === "O" && cells[4] === "-" && cells[7] === "O") return 4;
+        if (cells[1] === "-" && cells[4] === "O" && cells[7] === "O") return 1;
+
+        if (cells[2] === "O" && cells[5] === "O" && cells[8] === "-") return 8;
+        if (cells[2] === "O" && cells[5] === "-" && cells[8] === "O") return 5;
+        if (cells[2] === "-" && cells[5] === "O" && cells[8] === "O") return 2;
+
+        if (cells[0] === "O" && cells[4] === "O" && cells[8] === "-") return 8;
+        if (cells[0] === "O" && cells[4] === "-" && cells[8] === "O") return 4;
+        if (cells[0] === "-" && cells[4] === "O" && cells[8] === "O") return 0;
+
+        if (cells[2] === "O" && cells[4] === "O" && cells[6] === "-") return 6;
+        if (cells[2] === "O" && cells[4] === "-" && cells[6] === "O") return 4;
+        if (cells[2] === "-" && cells[4] === "O" && cells[6] === "O") return 2;
+        // // check if X has any winning moves
+        if (cells[0] === "X" && cells[1] === "X" && cells[2] === "-") return 2;
+        if (cells[0] === "X" && cells[1] === "-" && cells[2] === "X") return 1;
+        if (cells[0] === "-" && cells[1] === "X" && cells[2] === "X") return 0;
+
+        if (cells[3] === "X" && cells[4] === "X" && cells[5] === "-") return 5;
+        if (cells[3] === "X" && cells[4] === "-" && cells[5] === "X") return 4;
+        if (cells[3] === "-" && cells[4] === "X" && cells[5] === "X") return 3;
+
+        if (cells[6] === "X" && cells[7] === "X" && cells[8] === "-") return 8;
+        if (cells[6] === "X" && cells[7] === "-" && cells[8] === "X") return 7;
+        if (cells[6] === "-" && cells[7] === "X" && cells[8] === "X") return 6;
+
+        if (cells[0] === "X" && cells[3] === "X" && cells[6] === "-") return 6;
+        if (cells[0] === "X" && cells[3] === "-" && cells[6] === "X") return 3;
+        if (cells[0] === "-" && cells[3] === "X" && cells[6] === "X") return 0;
+
+        if (cells[1] === "X" && cells[4] === "X" && cells[7] === "-") return 7;
+        if (cells[1] === "X" && cells[4] === "-" && cells[7] === "X") return 4;
+        if (cells[1] === "-" && cells[4] === "X" && cells[7] === "X") return 1;
+
+        if (cells[2] === "X" && cells[5] === "X" && cells[8] === "-") return 8;
+        if (cells[2] === "X" && cells[5] === "-" && cells[8] === "X") return 5;
+        if (cells[2] === "-" && cells[5] === "X" && cells[8] === "X") return 2;
+
+        if (cells[0] === "X" && cells[4] === "X" && cells[8] === "-") return 8;
+        if (cells[0] === "X" && cells[4] === "-" && cells[8] === "X") return 4;
+        if (cells[0] === "-" && cells[4] === "X" && cells[8] === "X") return 0;
+
+        if (cells[2] === "X" && cells[4] === "X" && cells[6] === "-") return 6;
+        if (cells[2] === "X" && cells[4] === "-" && cells[6] === "X") return 4;
+        if (cells[2] === "-" && cells[4] === "X" && cells[6] === "X") return 2;
+
+        let randomNumber = Math.floor(Math.random() * 9);
+        while (cells[randomNumber] !== "-") {
+            randomNumber = Math.floor(Math.random() * 9);
         }
-
-        // Check diagonals
-        if (cells[0] === "O" && cells[4] === "O" && cells[8] === "-") if (cells[8] === "-") return 8;
-        if (cells[0] === "O" && cells[4] === "-" && cells[8] === "O") if (cells[4] === "-") return 4;
-        if (cells[0] === "-" && cells[4] === "O" && cells[8] === "O") if (cells[0] === "-") return 0;
-        if (cells[2] === "O" && cells[4] === "O" && cells[6] === "-") if (cells[6] === "-") return 6;
-        if (cells[2] === "O" && cells[4] === "-" && cells[6] === "O") if (cells[4] === "-") return 4;
-        if (cells[2] === "-" && cells[4] === "O" && cells[6] === "O") if (cells[2] === "-") return 2;
-
-
-        const randomNumber = Math.floor(Math.random() * 9);
         return randomNumber;
-
+        // if (cells[randomNumber] === "-") {
+        // }
     }
     // a function to set the score after the match ends
     const showScore = () => {
@@ -186,7 +166,6 @@ export default function AiXo() {
             setScore({ ...score, lose: score.lose + 1, games: score.games + 1 })
         }
     }
-
     // handling the Clicks to add moves
     const handleClick = (num) => {
         // if we have a winner do nothing
@@ -213,6 +192,23 @@ export default function AiXo() {
             checkWinner()
         }
     }
+    const canPlay = (cellArray) => {
+        if (
+            cellArray[0] === "-" ||
+            cellArray[1] === "-" ||
+            cellArray[2] === "-" ||
+            cellArray[3] === "-" ||
+            cellArray[4] === "-" ||
+            cellArray[5] === "-" ||
+            cellArray[6] === "-" ||
+            cellArray[7] === "-" ||
+            cellArray[8] === "-"
+        ) {
+            return true
+        } else {
+            return false
+        }
+    }
     // listening if the player made a move so the API can make its move
     useEffect(() => {
         // if we have a winner do nothing
@@ -222,35 +218,15 @@ export default function AiXo() {
         else {
             // checking if its the API turn
             if (turn === "O") {
-                const cellArray = Object.values(cells);
-                const recommendation = getRecommendation(cellArray)
-                // console.log(recommendation);
-                setCell({ ...cell, [recommendation]: turn })
-                setTurn("X")
-                // a request to the server with the moves
-                // axios.get(`https://tttapi.herokuapp.com/api/v1/${cell[0]}${cell[1]}${cell[2]}${cell[3]}${cell[4]}${cell[5]}${cell[6]}${cell[7]}${cell[8]}/${turn}`,
-                //     { withCredentials: false }
-                // )
-                //     .then(res => {
-                //         console.log(res);
-                //         // set the cell
-                //         setCell({ ...cell, [res.data.recommendation]: turn })
-                //         // switch turns
-                //     })
-                // ---------------------
-                // const options = {
-                //     method: 'GET',
-                //     url: `https://stujo-tic-tac-toe-stujo-v1.p.rapidapi.com/${cell[0]}${cell[1]}${cell[2]}${cell[3]}${cell[4]}${cell[5]}${cell[6]}${cell[7]}${cell[8]}/${turn}`,
-                //     headers: {
-                //         'X-RapidAPI-Key': 'ccb59b6600msh48f48edd5904e9ap1a446fjsn053cc7497999',
-                //         'X-RapidAPI-Host': 'stujo-tic-tac-toe-stujo-v1.p.rapidapi.com'
-                //     }
-                // };
-                // axios.request(options).then(function (response) {
-                //     console.log(response.data);
-                // }).catch(function (error) {
-                //     console.error(error);
-                // });
+                const cellArray = Object.values(cell);
+                if (canPlay(cellArray)) {
+                    const recommendation = getRecommendation(cellArray)
+                    setCell({ ...cell, [recommendation]: turn })
+                    // console.log(getRecommendation(cellArray));
+                    setTurn("X")
+                }
+
+
             }
         }
         // check for winners
