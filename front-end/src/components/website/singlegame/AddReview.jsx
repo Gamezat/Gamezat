@@ -12,14 +12,14 @@ export default function AddReview({ id }) {
 	const [ratingValue, setRatingValue] = useState(5);
 	const [review, setReview] = useState("");
 	const [enableButton, setEnableButton] = useState(false);
-
+	const [errors, setErrors] = useState();
 	const ratingChanged = (newRating) => {
 		setRatingValue(newRating);
 	};
 
 	const handleInput = (e) => {
 		setReview(e.target.value);
-		if (e.target.value != "") {
+		if (e.target.value.replace(/ /g, "") != "") {
 			setEnableButton(true);
 		} else {
 			setEnableButton(false);
@@ -41,10 +41,14 @@ export default function AddReview({ id }) {
 					},
 				})
 				.then((res) => {
-					console.log(res);
-					dispatch(updateReviews(res.data));
-					setReview("");
-					setRatingValue(0);
+					if (res.data.status === 200) {
+						console.log(res);
+						dispatch(updateReviews(res.data));
+						setReview("");
+					} else {
+						console.log(res);
+						setErrors(res.data.errors);
+					}
 				});
 		} else {
 			setShowPortal(true);
@@ -76,6 +80,7 @@ export default function AddReview({ id }) {
 				className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-lemon focus:border-lemon dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lemon dark:focus:border-lemon"
 				placeholder="Leave a review..."
 			></textarea>
+			<small className="text-amber"> {errors?.review}</small>
 			<button
 				type="button"
 				className="mt-5 text-white bg-grass hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 disabled:bg-lightGray/40"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class ReviewController extends Controller
@@ -24,13 +25,27 @@ class ReviewController extends Controller
         $allReviews = Review::where('game_id', $guid)->get();
         $reviewCount = $allReviews->count();
         $averageRating = $allReviews->avg('stars');
-        $reviews = Review::where('game_id', $guid)->with('user')->get();
+        $reviews = Review::where('game_id', $guid)->latest()->with('user')->get();
 
         return response()->json([
             'status' => 200,
             'reviews' => $reviews,
             'count' =>  $reviewCount,
             'averageRating' => $averageRating
+        ]);
+    }
+    // Get reviews for a specific user
+    public function getReviewsUser()
+    {
+        $allReviews = Review::where('user_id', Auth::user()->id)->get();
+        $reviewCount = $allReviews->count();
+
+
+        return response()->json([
+            'status' => 200,
+            'reviews' => $allReviews,
+            'count' =>  $reviewCount,
+
         ]);
     }
 
@@ -61,6 +76,7 @@ class ReviewController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
+                'status' => 500,
                 'errors' => $validator->messages(),
             ]);
         }
@@ -74,7 +90,7 @@ class ReviewController extends Controller
         $allReviews = Review::where('game_id', $request->game_id)->get();
         $reviewCount = $allReviews->count();
         $averageRating = $allReviews->avg('stars');
-        $reviews = Review::where('game_id', $request->game_id)->with('user')->get();
+        $reviews = Review::where('game_id', $request->game_id)->latest()->with('user')->get();
 
         return response()->json([
             'status' => 200,
@@ -122,7 +138,7 @@ class ReviewController extends Controller
         $allReviews = Review::where('game_id', $request->game_id)->get();
         $reviewCount = $allReviews->count();
         $averageRating = $allReviews->avg('stars');
-        $reviews = Review::where('game_id', $request->game_id)->with('user')->get();
+        $reviews = Review::where('game_id', $request->game_id)->with('user')->latest()->get();
 
         return response()->json([
             'status' => 200,

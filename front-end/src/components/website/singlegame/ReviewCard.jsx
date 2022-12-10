@@ -3,6 +3,7 @@ import React from "react";
 import { useContext } from "react";
 
 import { useState } from "react";
+import { AiTwotoneStar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { TbEditCircle, TbMessageReport } from "react-icons/tb";
 import ReactStars from "react-rating-stars-component";
@@ -23,6 +24,17 @@ export default function ReviewCard({ review }) {
 		setShowEdit(false);
 	};
 
+	const starFunction = (stars) => {
+		let starsArr = [];
+		for (let i = 0; i < stars; i++) {
+			starsArr.push(<AiTwotoneStar className="text-lemon" />);
+		}
+		for (let index = 0; index < 5 - stars; index++) {
+			starsArr.push(<AiTwotoneStar className="text-lightGray" />);
+		}
+		return starsArr;
+	};
+
 	return (
 		<>
 			<EditReviewModal
@@ -32,7 +44,7 @@ export default function ReviewCard({ review }) {
 			/>
 
 			<ReportModal review={review} show={show} closeModal={closeModal} />
-			<article className="rounded-xl border-2 border-gray-100 bg-white relative">
+			<article className="rounded-xl border-2 border-gray-100 bg-white shadow-md max-h-40 relative">
 				<div className="flex items-start p-6">
 					<div className="flex flex-col gap-2 shrink-0 items-center">
 						<img
@@ -45,15 +57,18 @@ export default function ReviewCard({ review }) {
 
 					<div className="ml-4 space-y-2">
 						<h3 className="font-medium sm:text-lg">
-							<div>
-								<ReactStars
+							<div className="flex">
+								{/* <ReactStars
 									count={5}
 									value={review?.stars}
 									size={24}
 									emptyIcon={<i className="far fa-star"></i>}
 									fullIcon={<i className="fa fa-star"></i>}
 									edit={false}
-								/>
+								/> */}
+								{starFunction(review?.stars).map((i) => {
+									return i;
+								})}
 							</div>
 						</h3>
 
