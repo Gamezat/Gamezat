@@ -33,6 +33,7 @@ function App() {
       <GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">
         <AuthProvider>
           <ProductProvider>
+          <FreeGamesProvider>
             <ThemeProvider>
               <Routes>
                 <Route path="/" element={<MainOutlet />}>
@@ -50,7 +51,9 @@ function App() {
                   <Route path={"/vs-ai"} element={<AiXo />} />
                 </Route>
               </Routes>
+			 
             </ThemeProvider>
+			 </FreeGamesProvider>
           </ProductProvider>
         </AuthProvider>
       </GoogleOAuthProvider>
