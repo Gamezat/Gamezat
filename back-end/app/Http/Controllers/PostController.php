@@ -22,8 +22,6 @@ class PostController extends Controller
             'status' => 200,
             'data' => $posts,
         ]);
-
-
     }
 
     /**
@@ -56,7 +54,6 @@ class PostController extends Controller
             'status' => 200,
             'data' => $posts,
         ]);
-
     }
 
     /**

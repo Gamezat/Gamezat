@@ -51,8 +51,8 @@ export default function MainNav() {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <Link to={'market'} className="flex items-center">
-                    Market Place
+                <Link to={'/community'} className="flex items-center">
+                    Gamers Hub
                 </Link>
             </Typography>
 
