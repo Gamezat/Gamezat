@@ -3,13 +3,15 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\ReportController;
-use App\Http\Controllers\FavoriteController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\SingleProfileController;
 
 
 
@@ -31,7 +33,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
+// Endpoint to get user posts
+Route::get('/userposts/{id}', [SingleProfileController::class, 'getUserPosts']);
+// Endpoint to get user comments
+Route::get('/usercomments/{id}', [SingleProfileController::class, 'getUserComments']);
+// Endpoint to get user data
+Route::get('/user/{id}', [SingleProfileController::class, 'user']);
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
 Route::resource('/products', ProductController::class);
 Route::resource('/posts', PostController::class);
@@ -56,4 +63,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('/reports', ReportController::class);
     // Endpoints for favorites
     Route::resource('/favorites', FavoriteController::class);
+    // Endpoint to upload image for user
+    Route::post('/profileimage', [ProfileController::class, 'uploadImage']);
+    Route::post('/profilebanner', [ProfileController::class, 'uploadBanner']);
+    // Endpoint to get user reviews
+    Route::get('/userreviews', [ReviewController::class, 'getReviewsUser']);
+    // Endpoint to get user posts
+    Route::get('/userposts', [ProfileController::class, 'getUserPosts']);
+    // Endpoint to get user comments
+    Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
 });
