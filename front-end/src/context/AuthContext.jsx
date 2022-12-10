@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
 	useEffect(() => {
 		if (showPortal) {
 			document.getElementById("portal").className =
-				"fixed top-0 right-0 left-0 bottom-0";
+				"relative z-50";
 		} else {
 			document.getElementById("portal").className = " hidden";
 		}

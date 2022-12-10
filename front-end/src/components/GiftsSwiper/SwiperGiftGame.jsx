@@ -15,7 +15,7 @@ export default function SwiperGiftGame() {
   const { freeGames } = useContext(FreeGamesContext)
 
   return (
-    <div className="mx-5">
+    <div className="mx-5 ">
       <>
         <Swiper
 
@@ -53,7 +53,7 @@ export default function SwiperGiftGame() {
           keyboard={{
             enabled: true,
           }}
-          className="mySwiper flex justify-center"
+          className="mySwiper flex justify-center "
         >
           {
 
@@ -67,8 +67,7 @@ export default function SwiperGiftGame() {
 
                 <div class="relative p-4">
                   <p class="text-xl font-bold text-white">{freeGame.title}</p>
-                  <p class="text-md text-lemon font-bold uppercase tracking-widest text-black">
-                  </p>
+
 
 
                   <div class="mt-32">

@@ -9,7 +9,7 @@ export default function NavUserDropIcon() {
 	return (
 		<>
 			<Dropdown
-				className="z-50"
+				className=""
 				label={
 					<Avatar
 						img={`${user?.image
