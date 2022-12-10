@@ -32,9 +32,9 @@ export default function RegistrationPortal() {
             {
                 showPortal ?
 
-                    <div className='w-full h-full flex justify-center items-center backdrop-blur-sm   '>
+                    <div className='w-full h-full  fixed inset-0 flex justify-center items-center backdrop-blur-sm   '>
                         <Card data-aos="fade-up  "
-                            data-aos-anchor-placement="bottom-bottom" className="w-96 z-50 mt-10 ">
+                            data-aos-anchor-placement="bottom-bottom" className="w-96  mt-10 ">
                             <CardHeader
                                 variant="gradient"
                                 color='blue'

@@ -11,7 +11,7 @@ import { Pagination, Navigation, Keyboard, Autoplay } from "swiper";
 import { FreeGamesContext } from '../../context/FreeGamesContext'
 // import required modules
 
-export default function SwiperGiftGame() {
+export default function TopRatingGames() {
   const { freeGames } = useContext(FreeGamesContext)
 
   return (

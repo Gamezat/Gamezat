@@ -92,7 +92,7 @@ export default function MainNav() {
                     >
                         <Link to={'/'} >Gamezat</Link>
                     </Typography>
-                    <div className="hidden lg:block">{navList}</div>
+                    <div className="hidden  lg:block ">{navList}</div>
                     {
 
                         token && user ?
