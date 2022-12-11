@@ -51,6 +51,7 @@ Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
 // Protected routes---------------------------------------
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // Endpoint for logout api
@@ -77,4 +78,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/userposts', [ProfileController::class, 'getUserPosts']);
     // Endpoint to get user comments
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
+    //Endpoint to delete user post
+    Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+
 });

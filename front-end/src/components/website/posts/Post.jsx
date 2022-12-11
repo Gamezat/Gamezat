@@ -8,7 +8,7 @@ export default function Post({ posts, setPosts }) {
     <>
       {posts?.map((post) => {
         return (
-          <PostComp post={post} setPosts={setPosts} />
+          <PostComp post={post} posts={posts} setPosts={setPosts} />
 
         )
       })}

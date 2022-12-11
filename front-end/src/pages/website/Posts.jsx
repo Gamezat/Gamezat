@@ -4,6 +4,12 @@ import Chat from '../../components/website/posts/Chat'
 import CreatePost from '../../components/website/posts/CreatePost'
 import Post from '../../components/website/posts/Post'
 
+function AdUnit({ adCode }) {
+  return (
+    <div dangerouslySetInnerHTML={{ __html: adCode }} />
+  );
+}
+
 export default function Posts() {
   const [posts, setPosts] = useState([]);
 
@@ -26,6 +32,7 @@ export default function Posts() {
         <div className='lg:fixed lg:col-start-2 lg:col-span-2 '>
 
           <Chat />
+          {/* <AdUnit adCode={adsenseCode} /> */}
         </div>
       </div>
     </>
