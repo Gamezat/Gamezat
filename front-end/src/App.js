@@ -28,6 +28,7 @@ import About from "./pages/website/About";
 
 import SingleProfile from "./pages/website/SingleProfile";
 import DPosts from "./pages/dashboard/DPosts";
+import DReports from "./pages/dashboard/DReports";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
@@ -63,6 +64,10 @@ function App() {
                     <Route path="/dashboard" element={<DashLayout />}>
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/dashboard/posts" element={<DPosts />} />
+                      <Route path="/dashboard/reports" element={<DReports />} />
+
+
+                      
                     </Route>
                   </Routes>
                 </ThemeProvider>
