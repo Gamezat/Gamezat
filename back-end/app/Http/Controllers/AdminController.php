@@ -36,4 +36,14 @@ class AdminController extends Controller
             'allComments' => $allComments,
         ]);
     }
+    public function delPost(Request $request)
+    {
+        $post = Post::find($request->id);
+        $post->delete();
+        $allPosts = Post::with(['comments.user', 'user'])->get();
+        return response()->json([
+            'status' => 200,
+            'posts' => $allPosts,
+        ]);
+    }
 }
