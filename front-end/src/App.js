@@ -27,6 +27,7 @@ import { AdminProvider } from "./context/AdminContext";
 import About from "./pages/website/About";
 
 import SingleProfile from "./pages/website/SingleProfile";
+import DPosts from "./pages/dashboard/DPosts";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
@@ -60,6 +61,7 @@ function App() {
                     </Route>
                     <Route path="/dashboard" element={<DashLayout />}>
                       <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/dashboard/posts" element={<DPosts />} />
                     </Route>
                   </Routes>
                 </ThemeProvider>
