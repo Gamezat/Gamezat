@@ -80,5 +80,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
     //Endpoint to delete user post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-
+    Route::post('/delete/post', [AdminController::class, 'delPost']);
 });
