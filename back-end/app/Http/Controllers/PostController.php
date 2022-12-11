@@ -24,15 +24,24 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $file = $request->file('image');
-        $filename = uniqid() . "_" . $file->getClientOriginalName();
-        $file->move(public_path('public/images'), $filename);
-        $url = URL::to('/') . '/public/images/' . $filename;
-        $addPost = Post::create([
-            'user_id' => Auth::user()->id,
-            'content' => $request->content,
-            'image' => $url,
-
-        ]);
+        if ($file) {
+            $filename = uniqid() . "_" . $file->getClientOriginalName();
+            $file->move(public_path('public/images'), $filename);
+            $url = URL::to('/') . '/public/images/' . $filename;
+            
+            $addPost = Post::create([
+                'user_id' => Auth::user()->id,
+                'content' => $request->content,
+                'image' => $url,
+    
+            ]);
+        }else{
+            $addPost = Post::create([
+                'user_id' => Auth::user()->id,
+                'content' => $request->content,
+            ]);
+            
+        }
 
         $posts = Post::with(['like', 'comments.user', 'user'])->get();
 
@@ -42,11 +51,11 @@ class PostController extends Controller
         ]);
     }
 
-    public function delete(Request $request, $id)
+    public function destroy(Post $post)
     {
         // Check if the authenticated user's ID matches the ID of the user who posted the post
-        $post = Post::findOrFail($id);
-        if ($request->user()->id === $post->user_id) {
+        // $post = Post::findOrFail($id);
+        if (Auth::user()->id === $post->user_id) {
             $post->delete();
             return response()->json([
                 'status' => 200,
@@ -61,42 +70,4 @@ class PostController extends Controller
         }
     }
 
-    public function show(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Post $post)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        //
-    }
 }
