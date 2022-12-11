@@ -27,7 +27,7 @@ export default function UserPosts({ setPostCount }) {
 					setPostCount(0);
 				}
 			});
-	}, []);
+	}, [token]);
 	return (
 		<>
 			{posts?.length > 0 ? (

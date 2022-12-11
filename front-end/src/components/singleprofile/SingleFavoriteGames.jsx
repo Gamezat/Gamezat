@@ -3,25 +3,31 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { BiDesktop, BiMobile, BiTab } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { fetchGames } from "../../reducers/gameSlice";
 
 export default function SingleFavoriteGames({ setFavCount, user }) {
+	const dispatch = useDispatch();
 	const games = useSelector((state) => state.games.games);
 	const [favorites, setFavorites] = useState([]);
+	useEffect(() => {
+		dispatch(fetchGames());
+	}, [dispatch]);
 	useEffect(() => {
 		const favGames = user?.favorites?.map((fav) => {
 			return games?.find((game) => game.guid === fav.game_id);
 		});
+		console.log("kmsvdngkdn");
 		console.log(user?.favorites);
 		setFavorites(favGames);
-		if (favGames) {
-			setFavCount(favGames.length);
+		if (user?.favorites) {
+			setFavCount(user?.favorites.length);
 		} else {
 			setFavCount(0);
 		}
 		console.log(favorites);
-	}, []);
+	}, [user]);
 	return (
 		<>
 			{favorites?.length > 0 ? (

@@ -17,7 +17,7 @@ class ProfileController extends Controller
     // Upload user image
     public function uploadImage(Request $request)
     {
-        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(2 * 1024)]]);
+        $validator = Validator::make($request->all(), ['image' => ['required', File::image()->max(20 * 1024)]]);
         if ($validator->fails()) return response()->json($validator->messages());
 
         $user = Auth::user();
@@ -40,7 +40,7 @@ class ProfileController extends Controller
     // Upload user banner
     public function uploadBanner(Request $request)
     {
-        $validator = Validator::make($request->all(), ['banner' => ['required', File::image()->max(2 * 1024)]]);
+        $validator = Validator::make($request->all(), ['banner' => ['required', File::image()->max(20 * 1024)]]);
         if ($validator->fails()) return response()->json($validator->messages());
 
         $user = Auth::user();
