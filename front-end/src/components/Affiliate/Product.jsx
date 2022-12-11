@@ -8,7 +8,7 @@ export const Product = ({product}) => {
     <>
    
   
-          <a key={product.id} href={product.link} target='_blank' class="group relative block bg-black w-72 h-72 mb-10">
+          <a key={product.id} href={product.link} target='_blank' class="group relative block bg-black w-72 h-72 mb-10 shadow-xl">
           <img
             alt="Developer"
             src={product.image}

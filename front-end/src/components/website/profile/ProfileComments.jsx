@@ -21,7 +21,7 @@ export default function ProfileComments({ setCommentCount }) {
 					setCommentCount(res.data.comments.length);
 				}
 			});
-	}, []);
+	}, [token]);
 	return (
 		<>
 			{comments?.length > 0 ? (

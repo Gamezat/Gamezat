@@ -79,8 +79,11 @@ export default function RandomGame() {
 
 
   return (
-    <div className="mx-5 ">
+
+      
       <>
+    <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800'>
+
         <Swiper
 
           breakpoints={{
@@ -124,7 +127,7 @@ export default function RandomGame() {
 items.length === 0 ? <p className="text-3xl text-center">No Games</p>
 
 : items?.map((game, i) =>{
-              return (<SwiperSlide  > <Link key={game.id} to={`/games/${game.guid}`} class="group relative block bg-black w-72 h-72 mb-10">
+              return (<SwiperSlide  > <Link key={game.id} to={`/games/${game.guid}`} class="group relative block bg-black w-72 h-72 mb-10 shadow-xl">
                 <img
                   alt="Developer"
                   src={game.thumb}
@@ -152,9 +155,10 @@ items.length === 0 ? <p className="text-3xl text-center">No Games</p>
 
 
         </Swiper>
+        </div>
       </>
 
-    </div>
+    
   );
 }
 
