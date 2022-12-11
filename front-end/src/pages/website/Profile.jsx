@@ -91,9 +91,16 @@ export default function Profile() {
 				if (res.data.status === 200) {
 					setUser(res.data.user);
 					console.log(res);
+				} else if (res.data.status === 413) {
+					swal("Oops!", res.data.statusText, "error");
 				} else {
 					swal("Oops!", res.data.image[0], "error");
 					console.log(res);
+				}
+			})
+			.catch((res) => {
+				if (res.response.status === 413) {
+					swal("Oops!", res.response.statusText, "error");
 				}
 			});
 	};
@@ -118,6 +125,11 @@ export default function Profile() {
 				} else {
 					swal("Oops!", res.data.banner[0], "error");
 					console.log(res);
+				}
+			})
+			.catch((res) => {
+				if (res.response.status === 413) {
+					swal("Oops!", res.response.statusText, "error");
 				}
 			});
 	};
