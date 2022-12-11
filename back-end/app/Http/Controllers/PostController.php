@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::with(['like', 'comments.user', 'user'])->get();
+        $posts = Post::with(['comments.user', 'user'])->get();
 
         return response()->json([
             'status' => 200,

@@ -124,6 +124,7 @@ export default function Profile() {
 					console.log(res);
 				} else {
 					swal("Oops!", res.data.banner[0], "error");
+					e.target.files = null
 					console.log(res);
 				}
 			})
@@ -142,11 +143,10 @@ export default function Profile() {
 						<div
 							className=" top-0 w-full h-full bg-center bg-cover group relative"
 							style={{
-								backgroundImage: `url("${
-									user?.banner
-										? user?.banner
-										: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-								}")`,
+								backgroundImage: `url("${user?.banner
+									? user?.banner
+									: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+									}")`,
 							}}
 						>
 							<label

@@ -27,49 +27,53 @@ import { AdminProvider } from "./context/AdminContext";
 import About from "./pages/website/About";
 
 import SingleProfile from "./pages/website/SingleProfile";
+import DPosts from "./pages/dashboard/DPosts";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axios.defaults.headers.post["Accept"] = "application/vnd.api+json";
 axios.defaults.withCredentials = true;
 function App() {
-	return (
-		<>
-			<GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">
-				<AuthProvider>
-					<AdminProvider>
-						<ProductProvider>
-							<FreeGamesProvider>
-								<ThemeProvider>
-									<Routes>
-										<Route path="/" element={<MainOutlet />}>
-											<Route path="/" element={<Home />} />
-											<Route path="/profile" element={<Profile />} />
-											<Route path="/profile/:id" element={<SingleProfile />} />
-											<Route path="/games" element={<Games />} />
-											<Route path="/games/:id" element={<SingleGame />} />
-											<Route path="/affiliate" element={<Affiliate />} />
-											<Route path="/community" element={<Posts />} />
-											<Route path="/xo" element={<TicTacToe />} />
-											<Route path="/about" element={<About />} />
-											<Route
-												path={"/multiplayer-offline"}
-												element={<OfflineXo />}
-											/>
-											<Route path={"/vs-ai"} element={<AiXo />} />
-										</Route>
-										<Route path="/dashboard" element={<DashLayout />}>
-											<Route path="/dashboard" element={<Dashboard />} />
-										</Route>
-									</Routes>
-								</ThemeProvider>
-							</FreeGamesProvider>
-						</ProductProvider>
-					</AdminProvider>
-				</AuthProvider>
-			</GoogleOAuthProvider>
-		</>
-	);
+
+  return (
+    <>
+      <GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">
+        <AuthProvider>
+          <AdminProvider>
+            <ProductProvider>
+              <FreeGamesProvider>
+                <ThemeProvider>
+                  <Routes>
+                    <Route path="/" element={<MainOutlet />}>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/profile" element={<Profile />} />
+                      <Route path="/profile/:id" element={<SingleProfile />} />
+                      <Route path="/games" element={<Games />} />
+                      <Route path="/games/:id" element={<SingleGame />} />
+                      <Route path="/affiliate" element={<Affiliate />} />
+                      <Route path="/community" element={<Posts />} />
+                      <Route path="/xo" element={<TicTacToe />} />
+                      <Route path="/about" element={<About />} />
+                      <Route
+                        path={"/multiplayer-offline"}
+                        element={<OfflineXo />}
+                      />
+                      <Route path={"/vs-ai"} element={<AiXo />} />
+                    </Route>
+                    <Route path="/dashboard" element={<DashLayout />}>
+                      <Route path="/dashboard" element={<Dashboard />} />
+                      <Route path="/dashboard/posts" element={<DPosts />} />
+                    </Route>
+                  </Routes>
+                </ThemeProvider>
+              </FreeGamesProvider>
+            </ProductProvider>
+          </AdminProvider>
+        </AuthProvider>
+      </GoogleOAuthProvider>
+    </>
+  );
+
 }
 
 export default App;
