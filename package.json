@@ -1,7 +1,4 @@
 {
-  "devDependencies": {
-    "tailwind-scrollbar": "^2.0.1"
-  },
   "dependencies": {
     "react-adsense": "^0.1.0"
   }
