@@ -15,8 +15,10 @@ export default function TopRatingGames() {
   const { freeGames } = useContext(FreeGamesContext)
 
   return (
-    <div className="mx-5 ">
+    
       <>
+          <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 mx-5'>
+
         <Swiper
 
           breakpoints={{
@@ -58,7 +60,8 @@ export default function TopRatingGames() {
           {
 
             freeGames?.map(freeGame => {
-              return (<SwiperSlide  > <a key={freeGame.id} href={freeGame.game_url} target='_blank' class="group relative block bg-black w-72 h-72 mb-10">
+              return (<SwiperSlide  > 
+                <a key={freeGame.id} href={freeGame.game_url} target='_blank' class="group relative block bg-black w-72 h-72 mb-10 shadow-xl ">
                 <img
                   alt="Developer"
                   src={freeGame.thumbnail}
@@ -88,9 +91,10 @@ export default function TopRatingGames() {
 
 
         </Swiper>
+        </div>
       </>
 
-    </div>
+    
   );
 }
 
