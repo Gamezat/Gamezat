@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/admin/reports', [AdminController::class, 'allReports']);
 
 Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts

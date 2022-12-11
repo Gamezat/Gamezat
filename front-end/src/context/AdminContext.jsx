@@ -11,6 +11,7 @@ export function AdminProvider({ children }) {
     const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
     const [prevData, setPrevData] = useState([])
     const [allPosts, setAllPosts] = useState([])
+    const [reports, setReports] = useState([])
     const [allPostsTemp, setAllPostsTemp] = useState([])
     const deletePost = (id) => {
         const data = {
@@ -32,6 +33,16 @@ export function AdminProvider({ children }) {
             if (res.status === 200) {
                 // console.log(res);
                 setPrevData(res.data);
+            } else {
+                console.log(res);
+            }
+        });
+    }, [])
+    useEffect(() => {
+        axios.get("/api/admin/reports").then((res) => {
+            if (res.status === 200) {
+                // console.log(res);
+                setReports(res.data);
             } else {
                 console.log(res);
             }
@@ -63,9 +74,17 @@ export function AdminProvider({ children }) {
         // console.log(outputArray);
     }, [allPostsTemp])
 
+    const delReport = (id) => {
+        swal('add the delReport function in the admin controller')
+    }
+    const delComment = (id) => {
+        swal('add the delComment function in the admin controller')
+    }
+
+
     return (
         <>
-            <AdminContext.Provider value={{ prevData, allPosts, deletePost }} >
+            <AdminContext.Provider value={{ prevData, allPosts, deletePost, reports, delReport, delComment }} >
                 {children}
             </AdminContext.Provider>
         </>

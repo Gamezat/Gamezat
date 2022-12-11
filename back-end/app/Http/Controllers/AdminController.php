@@ -46,4 +46,43 @@ class AdminController extends Controller
             'posts' => $allPosts,
         ]);
     }
+    public function allReports()
+    {
+        // $commentsReports = Report::withWhereHas('comment')->get();
+        $commentsReports = Report::withWhereHas('comment')->get()->map(function ($report) {
+            return [
+                'id' => $report->id,
+                'comment_id' => $report->comment_id,
+                'user_id' => $report->user_id,
+                'feedback' => $report->feedback,
+                'comment' => $report->comment->comment,
+            ];
+        });
+        $postsReports = Report::withWhereHas('post')->get()->map(function ($report) {
+            return [
+                'id' => $report->id,
+                'post_id' => $report->post_id,
+                'user_id' => $report->user_id,
+                'feedback' => $report->feedback,
+                'content' => $report->post->content,
+                'post_image' => $report->post->image,
+            ];
+        });
+        $reviewsReports = Report::withWhereHas('review')->get()->map(function ($report) {
+            return [
+                'id' => $report->id,
+                'review_id' => $report->review_id,
+                'user_id' => $report->user_id,
+                'feedback' => $report->feedback,
+                'review' => $report->review->review,
+                'stars' => $report->review->stars,
+            ];
+        });
+        return response()->json([
+            'status' => 200,
+            'comments' => $commentsReports,
+            'posts' => $postsReports,
+            'reviews' => $reviewsReports,
+        ]);
+    }
 }
