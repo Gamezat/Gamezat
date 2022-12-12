@@ -80,7 +80,10 @@ export default function TopRatingGames() {
 					}}
 					className="mySwiper flex justify-center "
 				>
-					{topRatedGames?.map((game) => {
+					{
+					topRatedGames.length === 0 ? <p className="text-3xl text-center">No Games</p>
+
+					: topRatedGames?.map((game) => {
 						return (
 							<SwiperSlide className="mx-5 drop-shadow-md">
 								<Link
