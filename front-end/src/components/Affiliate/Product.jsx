@@ -8,7 +8,7 @@ export const Product = ({product}) => {
     <>
    
   
-          <a key={product.id} href={product.link} target='_blank' class="group relative block bg-black w-72 h-72 mb-10 shadow-xl">
+          <a key={product.id} href={product.link} target='_blank'  className="hover:shadow-lg transition duration-300 hover:duration-300 ease-in-out hover:drop-shadow-2xl hover:shadow-amber group relative block bg-black w-72 h-72 shadow-2xl">
           <img
             alt="Developer"
             src={product.image}

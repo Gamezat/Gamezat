@@ -145,11 +145,10 @@ export default function Profile() {
 						<div
 							className=" top-0 w-full h-full bg-center bg-cover group relative"
 							style={{
-								backgroundImage: `url("${
-									user?.banner
-										? user?.banner
-										: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-								}")`,
+								backgroundImage: `url("${user?.banner
+									? user?.banner
+									: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+									}")`,
 							}}
 						>
 							<label
@@ -190,9 +189,9 @@ export default function Profile() {
 							</svg>
 						</div>
 					</section>
-					<section className="relative py-16 bg-blueGray-200">
+					<section className="relative  py-16 bg-blueGray-200">
 						<div className="container mx-auto px-4">
-							<div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+							<div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-darkGray dark:shadow-amber/50 dark:shadow-2xl dark:text-cream w-full mb-6 shadow-xl rounded-lg -mt-64">
 								<div className="px-6">
 									<div className="flex flex-wrap justify-center">
 										<div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -240,7 +239,7 @@ export default function Profile() {
 												</button>
 											</div>
 										</div>
-										<div className="w-full lg:w-4/12 px-4 lg:order-1">
+										<div className="w-full lg:w-4/12 dark:text-gray-300 px-4 lg:order-1">
 											<div className="flex justify-center py-4 lg:pt-4 pt-8">
 												<div className="mr-4 p-3 text-center">
 													<span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
@@ -269,7 +268,7 @@ export default function Profile() {
 											</div>
 										</div>
 									</div>
-									<div className="text-center flex flex-col justify-center items-center mt-12">
+									<div className="text-center dark:text-gray-200 flex flex-col justify-center items-center mt-12">
 										<h3 className="text-4xl font-semibold leading-normal  text-blueGray-700 mb-2 capitalize">
 											{user?.name}
 										</h3>
@@ -284,8 +283,8 @@ export default function Profile() {
 									</div>
 									<div className="mt-10 py-10 border-t border-blueGray-200 text-center ">
 										<Tabs value="html">
-											<TabsHeader>
-												<Tab key={"1"} value={"Profile"}>
+											<TabsHeader className="dark:bg-gray-500">
+												<Tab className=" " key={"1"} value={"Profile"}>
 													Profile
 												</Tab>
 												<Tab key={"2"} value={"Activity"}>
@@ -310,6 +309,7 @@ export default function Profile() {
 															size="md"
 															name="name"
 															label="Name"
+															className="dark:text-gray-400 dark:focus:text-cream"
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -317,12 +317,16 @@ export default function Profile() {
 															size="md"
 															label="Age"
 															name="age"
+															className="dark:text-gray-400 dark:focus:text-cream"
+
 														/>
 														<Input
 															defaultValue={user?.email}
 															size="md"
 															label="Email"
 															disabled
+															className="dark:text-gray-400 dark:bg-blue-gray-800"
+
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -330,6 +334,8 @@ export default function Profile() {
 															size="md"
 															label="Country"
 															name="country"
+															className="dark:text-gray-400 dark:focus:text-cream"
+
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -337,6 +343,8 @@ export default function Profile() {
 															size="md"
 															label="About"
 															name="about"
+															className="dark:text-gray-400 dark:focus:text-cream"
+
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -344,6 +352,8 @@ export default function Profile() {
 															size="md"
 															label="Games"
 															name="games"
+															className="dark:text-gray-400 dark:focus:text-cream"
+
 														/>
 													</div>
 													{/* <div><button class="bg-indigo shadow-black hover:bg-blue-700 text-white font-bold py-2 px-16 mt-3 ">

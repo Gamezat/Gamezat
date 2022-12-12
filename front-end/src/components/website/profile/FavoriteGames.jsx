@@ -61,7 +61,7 @@ export default function FavoriteGames({ setFavCount }) {
 					);
 				})
 			) : (
-				<div className="text-center">You didn't add any games yet!</div>
+				<div className="text-center mx-auto dark:text-cream">You didn't add any games yet!</div>
 			)}
 		</>
 	);

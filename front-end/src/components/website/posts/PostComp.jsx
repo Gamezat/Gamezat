@@ -240,18 +240,18 @@ export default function PostComp({ post, setPosts, posts }) {
                             </div>
                         </form>
 
-                        <div className="flex-col flex gap-5 overflow-scroll scrollbar-thin scrollbar-thumb-amber scrollbar-round scrollbar-track-gray-200 scrollbar-hide max-h-[200px] min-h-[155px]  mx-auto bg-cream/20     px-4  mt-4 ">
+                        <div className="flex-col flex gap-5 overflow-scroll scrollbar-thin scrollbar-thumb-amber scrollbar-round scrollbar-track-gray-200 scrollbar-hide max-h-[200px] min-h-[155px]  mx-auto bg-cream/20 dark:bg-gray-900     px-4  mt-4 ">
                             {post?.comments.reverse().map((comment) => {
                                 return (
                                     <>
-                                        <div class="flex shadow-lg rounded hover:shadow-amber/50 transition duration-300 hover:duration-300 ease-in-out  flex-row">
+                                        <div class="flex dark:bg-blue-gray-900 my-1 shadow-lg rounded hover:shadow-amber/50 dark:text-gray-200 transition duration-300 hover:duration-300 ease-in-out  flex-row">
                                             <img class="object-cover w-10 h-10 border-2 border-gray-300 rounded-full" alt="Bozo"
                                                 src={comment?.user.image} />
                                             <div class="flex-col mt-1">
                                                 <div class="flex items-center flex-1 px-4 font-bold leading-tight">{comment?.user.name}
-                                                    <span class="ml-2 text-xs font-normal text-gray-500">{comment.created_at.split('T')[0]}</span>
+                                                    <span class="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400">{comment.created_at.split('T')[0]}</span>
                                                 </div>
-                                                <div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600">
+                                                <div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600 dark:text-cream">
                                                     {comment?.comment}
                                                 </div>
                                             </div>

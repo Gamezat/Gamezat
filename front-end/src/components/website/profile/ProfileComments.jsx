@@ -40,7 +40,7 @@ export default function ProfileComments({ setCommentCount }) {
 					);
 				})
 			) : (
-				<div className="text-center">No activity</div>
+				<div className="text-center dark:text-cream">No activity</div>
 			)}
 		</>
 	);

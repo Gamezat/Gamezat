@@ -35,7 +35,7 @@ export default function UserPosts({ setPostCount }) {
 					return (
 						<div
 							key={post?.id}
-							className="bg-white dark:bg-gray-800 border-gray-200 w-80 dark:border-gray-800 p-4 rounded-xl border max-w-md mb-2"
+							className="bg-white dark:bg-gray-800  border-gray-200 w-80 dark:border-gray-800 p-4 rounded-xl border max-w-md mb-2"
 						>
 							<div className="flex justify-between">
 								<div className="flex items-center">
@@ -95,7 +95,7 @@ export default function UserPosts({ setPostCount }) {
 					);
 				})
 			) : (
-				<div className="text-center">No posts</div>
+				<div className="text-center mx-auto dark:text-cream">No posts</div>
 			)}
 		</>
 	);
