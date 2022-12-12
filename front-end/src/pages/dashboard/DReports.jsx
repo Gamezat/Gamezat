@@ -20,16 +20,14 @@ export default function DReports() {
                     <HiSpeakerphone color='indigo' size={25} /> <p className='text-lg'>You can manage all the reports from here</p>
                 </span>
                 <div className=' w-full   flex gap-5 justify-center '>
-                    <div className='flex flex-col  flex-1 gap-5'>
+                    <div className='grid  flex-1 gap-5'>
 
                         <RComments />
-                        <Rpost />
-                    </div>
-                    <div className='flex flex-col flex-1 gap-5'>
-
                         <Rreview />
-                        <Rgames />
+                        <Rpost />
+                      
                     </div>
+                
                 </div>
 
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -57,7 +58,7 @@ Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-
+Route::resource('/contact', ContactController::class);
 Route::get('/unapprovedposts', [AdminController::class, 'unApprovedPosts']);
 Route::post('/approvepost', [AdminController::class, 'approvePosts']);
 Route::post('/rejectpost', [AdminController::class, 'rejectPosts']);
