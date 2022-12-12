@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { FcComments } from "react-icons/fc";
 import { AuthContext } from "../../../context/AuthContext";
 export default function ProfileComments({ setCommentCount }) {
-	const { token } = useContext(AuthContext);
+	const {  token } = useContext(AuthContext);
 	const [comments, setComments] = useState([]);
 	useEffect(() => {
 		axios

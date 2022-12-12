@@ -5,6 +5,8 @@ import { BiDesktop, BiMobile, BiPhone, BiTab } from "react-icons/bi";
 import Sort from "../../components/website/games/Sort";
 import { Link } from "react-router-dom";
 import { Pagination } from "flowbite-react";
+import { motion } from 'framer-motion'
+
 import { Input } from "@material-tailwind/react";
 // import games from "../../games.json";
 
@@ -100,56 +102,63 @@ export default function Games() {
 
 
 	return (
-		<div className="bg-white flex justify-center">
+		<motion.div
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
 
-			<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
-			<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-				<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+		>
+			<div className="bg-white flex justify-center">
 
-					{
-						items.length === 0 ? <p className="text-3xl text-center">No Games</p>
-							: items?.map((game, i) => {
-								return (
-									<Link
-										to={`/games/${game.guid}`}
-										key={i}
-										className="group"
-									>
-										<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-											<img
-												src={game.thumb}
-												alt=""
-												className="h-full w-full object-cover object-center group-hover:opacity-75"
-											/>
-											<div className="absolute top-2 right-2 shadow-md bg-indigo rounded-lg p-1">
-												{/* <BsFillPhoneFill size={25} className={"text-lemon"} /> */}
-												{game.width <= 480 ? (
-													<BiMobile size={25} className={"text-lemon"} />
-												) : game.width <= 768 ? (
-													<BiTab size={25} className={"text-lemon"} />
-												) : (
-													<BiDesktop size={25} className={"text-lemon"} />
-												)}
+				<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
+				<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+					<div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+
+						{
+							items.length === 0 ? <p className="text-3xl text-center">No Games</p>
+								: items?.map((game, i) => {
+									return (
+										<Link
+											to={`/games/${game.guid}`}
+											key={i}
+											className="group"
+										>
+											<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+												<img
+													src={game.thumb}
+													alt=""
+													className="h-full w-full object-cover object-center group-hover:opacity-75"
+												/>
+												<div className="absolute top-2 right-2 shadow-md bg-indigo rounded-lg p-1">
+													{/* <BsFillPhoneFill size={25} className={"text-lemon"} /> */}
+													{game.width <= 480 ? (
+														<BiMobile size={25} className={"text-lemon"} />
+													) : game.width <= 768 ? (
+														<BiTab size={25} className={"text-lemon"} />
+													) : (
+														<BiDesktop size={25} className={"text-lemon"} />
+													)}
+												</div>
 											</div>
-										</div>
-										<h3 className="mt-4 text-sm text-gray-700">{game.title}</h3>
-										{/* <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p> */}
-									</Link>
-								);
-							})}
-					{
-						checkForFilters() || search !== "" ? null :
-							<>
-								<Pagination
-									className=""
-									currentPage={currentPage}
-									totalPages={nPages}
-									onPageChange={(e) => setCurrentPage(e)}
-								/>
-							</>
-					}
+											<h3 className="mt-4 text-sm text-gray-700">{game.title}</h3>
+											{/* <p className="mt-1 text-lg font-medium text-gray-900">{product.price}</p> */}
+										</Link>
+									);
+								})}
+						{
+							checkForFilters() || search !== "" ? null :
+								<>
+									<Pagination
+										className=""
+										currentPage={currentPage}
+										totalPages={nPages}
+										onPageChange={(e) => setCurrentPage(e)}
+									/>
+								</>
+						}
+					</div>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 }

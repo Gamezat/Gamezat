@@ -5,6 +5,7 @@ import { BsFillPhoneFill } from "react-icons/bs";
 import { FcIphone } from "react-icons/fc";
 import { BiDesktop, BiMobile, BiPhone } from "react-icons/bi";
 import Sort from "../../components/website/games/Sort";
+import { motion } from 'framer-motion'
 
 export default function Games() {
 	const dispatch = useDispatch();
@@ -83,6 +84,12 @@ export default function Games() {
 	}, [items]);
 
 	return (
+		<motion.div
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity: 0}}
+
+    >
 		<div className="bg-white flex">
 			<Sort games={games} setSearchInput={setSearchInput} />
 			<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -114,6 +121,7 @@ export default function Games() {
 				</div>
 			</div>
 		</div>
+		</motion.div>
 	);
 }
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
+import { motion } from 'framer-motion'
 import { fetchGames, fetchReviews } from "../../reducers/gameSlice";
 import ReviewCard from "../../components/website/singlegame/ReviewCard";
 import AddReview from "../../components/website/singlegame/AddReview";
@@ -97,64 +97,71 @@ export default function SingleGame() {
 
 	return (
 		<>
-			<div className="fixed right-6 bottom-6">
-				<button
-					type="button"
-					className={`flex ring-1 ring-amber justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-white dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400 `}
-					onClick={addToFav}
-				>
-					<HiHeart size={30} color={isFav ? "#D72323" : ""} />
-					<span className="sr-only">Share</span>
-				</button>
-			</div>
-			<ReportModal show={show} closeModal={closeModal} game={game} />
-			<div className="flex flex-col items-center p-5">
-				<div className="overflow-hidden">
-					<iframe
-						height={game?.height}
-						src={game?.link}
-						className={" w-[95vw] h-[85vh]"}
-					></iframe>
+			<motion.div
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+
+			>
+				<div className="fixed right-6 bottom-6">
+					<button
+						type="button"
+						className={`flex ring-1 ring-amber justify-center items-center w-[52px] h-[52px] text-gray-500 hover:text-gray-900 bg-white rounded-full border border-gray-200 dark:border-gray-600 shadow-sm dark:hover:text-white dark:text-gray-400 hover:bg-gray-50 dark:bg-gray-700 dark:hover:bg-gray-600 focus:ring-4 focus:ring-gray-300 focus:outline-none dark:focus:ring-gray-400 `}
+						onClick={addToFav}
+					>
+						<HiHeart size={30} color={isFav ? "#D72323" : ""} />
+						<span className="sr-only">Share</span>
+					</button>
 				</div>
-				<div className="w-full lg:w-9/12 m-9 p-10 space-y-5 rounded-3xl border-t-4 shadow-lg border-amber  dark:bg-slate-800">
-					<div className="flex justify-between">
-						<Rating>
-							<Rating.Star />
-							<p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
-								{reviews?.averageRating?.toFixed(2)}
-							</p>
-							<span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
-							<p className="text-sm font-medium text-gray-900 underline dark:text-white">
-								{reviews?.count} reviews
-							</p>
-						</Rating>
-						{token ? (
-							<div
-								onClick={() => setShow(true)}
-								className="flex text-sm hover:cursor-pointer hover:underline"
-							>
-								Report game{" "}
-								<TbMessageReport size={20} className="text-amber " />
-							</div>
-						) : (
-							""
-						)}
+				<ReportModal show={show} closeModal={closeModal} game={game} />
+				<div className="flex flex-col items-center p-5">
+					<div className="overflow-hidden">
+						<iframe
+							height={game?.height}
+							src={game?.link}
+							className={" w-[95vw] h-[85vh]"}
+						></iframe>
 					</div>
-					{reviews?.count === 0 ? (
-						""
-					) : (
-						<div
-							className="shadow-lg rounded-lg p-5 ring-1 ring-lightGray grid grid-cols-1 xl:grid-cols-2 gap-5 h-72 overflow-auto scrollbar-hide
-"
-						>
-							{reviews.reviews?.map((review, i) => {
-								return <ReviewCard key={i} review={review} />;
-							})}
+					<div className="w-full lg:w-9/12 m-9 p-10 space-y-5 rounded-3xl border-t-4 shadow-lg border-amber  dark:bg-slate-800">
+						<div className="flex justify-between">
+							<Rating>
+								<Rating.Star />
+								<p className="ml-2 text-sm font-bold text-gray-900 dark:text-white">
+									{reviews?.averageRating?.toFixed(2)}
+								</p>
+								<span className="mx-1.5 h-1 w-1 rounded-full bg-gray-500 dark:bg-gray-400" />
+								<p className="text-sm font-medium text-gray-900 underline dark:text-white">
+									{reviews?.count} reviews
+								</p>
+							</Rating>
+							{token ? (
+								<div
+									onClick={() => setShow(true)}
+									className="flex text-sm hover:cursor-pointer hover:underline"
+								>
+									Report game{" "}
+									<TbMessageReport size={20} className="text-amber " />
+								</div>
+							) : (
+								""
+							)}
 						</div>
-					)}
-					<AddReview id={id} />
+						{reviews?.count === 0 ? (
+							""
+						) : (
+							<div
+								className="shadow-lg rounded-lg p-5 ring-1 ring-lightGray grid grid-cols-1 xl:grid-cols-2 gap-5 h-72 overflow-auto scrollbar-hide
+"
+							>
+								{reviews.reviews?.map((review, i) => {
+									return <ReviewCard key={i} review={review} />;
+								})}
+							</div>
+						)}
+						<AddReview id={id} />
+					</div>
 				</div>
-			</div>
+			</motion.div>
 		</>
 	);
 }

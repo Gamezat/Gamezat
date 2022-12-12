@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from "react-router-dom";
+import { motion } from 'framer-motion'
 export default function TicTacToe() {
     return (
         <>
+        <motion.div
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity: 0}}
+
+    >
             <div className="h-screen relative flex gap-10 md:gap-0 flex-col">
 
 
@@ -28,6 +35,7 @@ export default function TicTacToe() {
                     </Link>
                 </div>
             </div>
+            </motion.div>
 
 
 
