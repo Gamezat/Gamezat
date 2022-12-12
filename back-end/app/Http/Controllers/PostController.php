@@ -28,19 +28,18 @@ class PostController extends Controller
             $filename = uniqid() . "_" . $file->getClientOriginalName();
             $file->move(public_path('public/images'), $filename);
             $url = URL::to('/') . '/public/images/' . $filename;
-            
+
             $addPost = Post::create([
                 'user_id' => Auth::user()->id,
                 'content' => $request->content,
                 'image' => $url,
-    
+
             ]);
-        }else{
+        } else {
             $addPost = Post::create([
                 'user_id' => Auth::user()->id,
                 'content' => $request->content,
             ]);
-            
         }
 
         $posts = Post::with(['like', 'comments.user', 'user'])->get();
@@ -69,5 +68,4 @@ class PostController extends Controller
             ]);
         }
     }
-
 }

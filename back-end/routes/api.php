@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/admin/reports', [AdminController::class, 'allReports']);
 
 Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts
@@ -81,4 +82,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
     //Endpoint to delete user post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
+
+    Route::post('/delete/post', [AdminController::class, 'delPost']);
+
 });
