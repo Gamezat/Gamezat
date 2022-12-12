@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Post;
 use App\Models\Product;
 use App\Models\Report;
+use App\Models\Review;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -86,6 +87,30 @@ class AdminController extends Controller
         ]);
     }
 
+    public function delReport(Request $request)
+    {
+        Report::find($request->id)->delete();
+        return  $this->allReports();
+    }
+    public function delComment(Request $request)
+    {
+        Report::find($request->report_id)->delete();
+        Comment::find($request->comment_id)->delete();
+        return  $this->allReports();
+    }
+    public function delReview(Request $request)
+    {
+        Report::find($request->report_id)->delete();
+        Review::find($request->review_id)->delete();
+        return  $this->allReports();
+    }
+    public function delrPost(Request $request)
+    {
+        Report::find($request->report_id)->delete();
+        Review::find($request->post_id)->delete();
+        return  $this->allReports();
+
+
 
     public function unApprovedPosts()
     {
@@ -132,6 +157,7 @@ class AdminController extends Controller
             'posts' => $posts,
             'unApprovedPosts' => $unApprovedPosts
         ]);
+
 
     }
 }

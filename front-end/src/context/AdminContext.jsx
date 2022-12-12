@@ -12,6 +12,9 @@ export function AdminProvider({ children }) {
     const [prevData, setPrevData] = useState([])
     const [allPosts, setAllPosts] = useState([])
     const [reports, setReports] = useState([])
+    const [RC, setRC] = useState([])
+    const [RR, setRR] = useState([])
+    const [RP, setRP] = useState([])
     const [allPostsTemp, setAllPostsTemp] = useState([])
     const deletePost = (id) => {
         const data = {
@@ -41,8 +44,11 @@ export function AdminProvider({ children }) {
     useEffect(() => {
         axios.get("/api/admin/reports").then((res) => {
             if (res.status === 200) {
-                // console.log(res);
+                console.log(res);
                 setReports(res.data);
+                setRC(res.data.comments)
+                setRR(res.data.reviews)
+                setRP(res.data.posts)
             } else {
                 console.log(res);
             }
@@ -75,16 +81,100 @@ export function AdminProvider({ children }) {
     }, [allPostsTemp])
 
     const delReport = (id) => {
-        swal('add the delReport function in the admin controller')
+        swal({
+            title: "Are you sure?",
+            text: "You will delete this Report!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(res => {
+            if (res) {
+
+                const data = {
+                    id: id
+                }
+                axios.post('/api/del/reports', data).then((res) => {
+                    console.log(res);
+                    setReports(res.data.data)
+                })
+            }
+        })
+
+
     }
-    const delComment = (id) => {
-        swal('add the delComment function in the admin controller')
+    const delComment = (report_id, comment_id) => {
+        swal({
+            title: "Are you sure?",
+            text: "You will delete this reported comment!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(res => {
+            if (res) {
+
+                const data = {
+                    report_id: report_id,
+                    comment_id: comment_id
+                }
+                axios.post('/api/del/rcomment', data).then((res) => {
+                    console.log(res);
+                    setReports(res.data.data)
+                    setRC(res.data.data.comments)
+                })
+            }
+        })
+    }
+
+    const delReview = (report_id, review_id) => {
+        swal({
+            title: "Are you sure?",
+            text: "You will delete this reported review!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(res => {
+            if (res) {
+
+                const data = {
+                    report_id: report_id,
+                    review_id: review_id
+                }
+                axios.post('/api/del/rreview', data).then((res) => {
+                    console.log("after del");
+                    console.log(res);
+                    setReports(res.data.data)
+                    setRR(res.data.reviews)
+                })
+            }
+        })
+    }
+    const delPost = (report_id, post_id) => {
+        swal({
+            title: "Are you sure?",
+            text: "You will delete this reported review!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(res => {
+            if (res) {
+                const data = {
+                    report_id: report_id,
+                    post_id: post_id
+                }
+                axios.post('/api/del/rpost', data).then((res) => {
+                    console.log("after del");
+                    console.log(res);
+                    setReports(res.data.data)
+                    setRP(res.data.posts)
+                })
+            }
+        })
     }
 
 
     return (
         <>
-            <AdminContext.Provider value={{ prevData, allPosts, deletePost, reports, delReport, delComment }} >
+            <AdminContext.Provider value={{ prevData, allPosts, deletePost, reports, delReport, delComment, delReview, delPost, RC, RR, RP }} >
                 {children}
             </AdminContext.Provider>
         </>
