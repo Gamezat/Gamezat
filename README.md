@@ -23,3 +23,5 @@ Gamezat is an entertainment website that provides a collection of a variety free
 
 [Trello](https://trello.com/b/vLjrY8xZ/gamezat)
 [Wireframe and Mockup](https://www.figma.com/file/CLMGPAYKMMA5Jtkv6h3lyT/Untitled?t=AIUMH2api7oGlLvm-0)
+
+> > > > > > > 967adecc4b76ffa514d55180c805006a06d75d29

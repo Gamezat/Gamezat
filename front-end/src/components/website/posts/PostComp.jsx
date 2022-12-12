@@ -186,10 +186,7 @@ export default function PostComp({ post, setPosts, posts }) {
                     </div> */}
 					<div className="flex flex-row items-center mr-6">
 						<button className="flex flex-row">
-							<BiCommentDetail
-								onClick={() => handleOpen(1)}
-								className="text-xl mt-[0.2rem]"
-							/>
+							<BiCommentDetail onClick={() => handleOpen(1)} className='text-xl mt-[0.2rem]' />
 							<span className="ml-2">{post?.comments.length}</span>
 						</button>
 					</div>
@@ -205,11 +202,10 @@ export default function PostComp({ post, setPosts, posts }) {
 										<img
 											class=" mr-2 h-11 w-11 rounded-full"
 											referrerPolicy="no-referrer"
-											src={`${
-												user?.image
-													? user?.image
-													: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
-											}`}
+											src={`${user?.image
+												? user?.image
+												: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
+												}`}
 										/>
 										<Textarea
 											ref={commentInput}
@@ -257,20 +253,14 @@ export default function PostComp({ post, setPosts, posts }) {
 							{post?.comments.map((comment) => {
 								return (
 									<>
-										<div class="flex shadow-lg rounded hover:shadow-amber/50 transition duration-300 hover:duration-300 ease-in-out  flex-row">
-											<img
-												class="object-cover w-10 h-10 border-2 border-gray-300 rounded-full"
-												alt="Bozo"
-												src={comment?.user.image}
-											/>
+										<div class="flex dark:bg-blue-gray-900 my-1 shadow-lg rounded hover:shadow-amber/50 dark:text-gray-200 transition duration-300 hover:duration-300 ease-in-out  flex-row">
+											<img class="object-cover w-10 h-10 border-2 border-gray-300 rounded-full" alt="Bozo"
+												src={comment?.user.image} />
 											<div class="flex-col mt-1">
-												<div class="flex items-center flex-1 px-4 font-bold leading-tight">
-													{comment?.user.name}
-													<span class="ml-2 text-xs font-normal text-gray-500">
-														{comment.created_at.split("T")[0]}
-													</span>
+												<div class="flex items-center flex-1 px-4 font-bold leading-tight">{comment?.user.name}
+													<span class="ml-2 text-xs font-normal text-gray-500 dark:text-gray-400">{comment.created_at.split('T')[0]}</span>
 												</div>
-												<div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600">
+												<div class="flex-1 px-2 ml-2 text-sm font-medium leading-loose text-gray-600 dark:text-cream">
 													{comment?.comment}
 												</div>
 											</div>
@@ -286,3 +276,4 @@ export default function PostComp({ post, setPosts, posts }) {
 		</>
 	);
 }
+

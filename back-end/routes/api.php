@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -35,11 +36,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/admin/deluser', [AdminController::class, 'delUser']);
+Route::post('/admin/edituser', [AdminController::class, 'editUser']);
+Route::get('/admin/userall', [AdminController::class, 'getAllUsers']);
 Route::get('/admin/reports', [AdminController::class, 'allReports']);
 Route::post('/del/reports', [AdminController::class, 'delReport']);
 Route::post('/del/rcomment', [AdminController::class, 'delComment']);
 Route::post('/del/rreview', [AdminController::class, 'delReview']);
-Route::post('/del/rpost', [AdminController::class, 'delPost']);
+Route::post('/del/rpost', [AdminController::class, 'delrPost']);
 Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts
 Route::get('/userposts/{id}', [SingleProfileController::class, 'getUserPosts']);
@@ -57,7 +61,7 @@ Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
-
+Route::resource('/contact', ContactController::class);
 Route::get('/unapprovedposts', [AdminController::class, 'unApprovedPosts']);
 Route::post('/approvepost', [AdminController::class, 'approvePosts']);
 Route::post('/rejectpost', [AdminController::class, 'rejectPosts']);

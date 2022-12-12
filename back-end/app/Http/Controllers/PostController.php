@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::with(['comments.user', 'user'])->oldest()->get();
+        $posts = Post::with(['comments.user', 'user'])->where('is_approved', 1)->oldest()->get();
 
         return response()->json([
             'status' => 200,

@@ -5,15 +5,16 @@ import { AdminContext } from '../../../context/AdminContext';
 import { FcComments } from 'react-icons/fc';
 import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
+import { AiFillDelete } from 'react-icons/ai';
 export default function Rpost() {
-    const { reports, delReport, delPost, RP } = useContext(AdminContext);
+    const { delReport, delPost, RP } = useContext(AdminContext);
     return (
         <>
             <div className="max-w-full">
                 <Card>
                     <div className="mb-4 flex items-center justify-between">
                         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                            Comments
+                            Posts
                         </h5>
                         <p
 
@@ -31,7 +32,7 @@ export default function Rpost() {
                                     return <li key={rc?.id + 2} className="py-3 sm:py-4  ">
                                         <div className="flex items-center justify-between space-x-4">
                                             <div className="shrink-0">
-                                                <FcComments size={20} />
+                                                <FaCommentAlt className='' size={20} />
                                             </div>
                                             <div className="min-w-0 flex-1">
                                                 <p className="inline-flex items-center text-base font-semibold text-gray-900dark:text-white">
@@ -44,7 +45,8 @@ export default function Rpost() {
                                             <span className='flex gap-3 items-center'>
 
                                                 <HiSpeakerphone onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
-                                                <FaCommentAlt onClick={() => delPost(rc?.id, rc?.post_id)} size={18} className='hover:text-amber cursor-pointer' />
+                                                <AiFillDelete onClick={() => delPost(rc?.id, rc?.post_id)} size={25} className='hover:text-red-700 text-red-500 cursor-pointer' />
+
                                             </span>
                                         </div>
                                     </li>

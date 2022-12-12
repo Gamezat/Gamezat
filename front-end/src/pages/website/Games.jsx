@@ -100,7 +100,7 @@ export default function Games() {
 
 
 	return (
-		<div className="bg-white flex justify-center">
+		<div className="   flex justify-center">
 
 			<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
 			<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -115,7 +115,7 @@ export default function Games() {
 										key={i}
 										className="group"
 									>
-										<div className="relative  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+										<div className="relative dark:text-cream  aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
 											<img
 												src={game.thumb}
 												alt=""
