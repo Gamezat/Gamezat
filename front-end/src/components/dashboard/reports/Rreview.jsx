@@ -5,6 +5,7 @@ import { AdminContext } from '../../../context/AdminContext';
 import { MdOutlineReviews } from 'react-icons/md';
 import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
+import { AiFillDelete } from 'react-icons/ai';
 export default function Rreview() {
     const { reports, delReport, delReview, RR } = useContext(AdminContext);
     return (
@@ -44,7 +45,7 @@ export default function Rreview() {
                                             <span className='flex gap-3 items-center'>
 
                                                 <HiSpeakerphone onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
-                                                <FaCommentAlt onClick={() => delReview(rc?.id, rc?.review_id)} size={18} className='hover:text-amber cursor-pointer' />
+                                                <AiFillDelete onClick={() => delReview(rc?.id, rc?.review_id)} size={25} className='hover:text-red-700 text-red-500 cursor-pointer' />
                                             </span>
                                         </div>
                                     </li>
