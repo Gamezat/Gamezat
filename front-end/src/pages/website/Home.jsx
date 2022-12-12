@@ -15,7 +15,7 @@ export default function Home() {
     return (
         <>
        
-            <div className="mt-10">
+            <div className="">
                 <Banner />
             </div>
 
