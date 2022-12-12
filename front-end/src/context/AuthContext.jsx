@@ -5,6 +5,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useRef } from "react";
+import swal from "sweetalert";
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
@@ -14,8 +15,7 @@ export function AuthProvider({ children }) {
 
 	useEffect(() => {
 		if (showPortal) {
-			document.getElementById("portal").className =
-				"relative z-50";
+			document.getElementById("portal").className = "relative z-50";
 		} else {
 			document.getElementById("portal").className = " hidden";
 		}
@@ -34,8 +34,14 @@ export function AuthProvider({ children }) {
 		name: "",
 		password: [""],
 	});
+	const [loginErrors, setLoginErrors] = useState({
+		email: "",
+		user: "",
+		password: [""],
+	});
 	// login stuff---------------------
-	const { emailInput, passwordInput } = useRef();
+	const emailInput = useRef();
+	const passwordInput = useRef();
 	// login email input ref
 	// const emailInput = useRef()
 	// login password input ref
@@ -45,10 +51,10 @@ export function AuthProvider({ children }) {
 	// signUp stuff---------------------
 
 	// const { nameInputR, emailInputR, passwordInputR, rPasswordInputR } = useRef();
-	const nameInputR = useRef()
-	const emailInputR = useRef()
-	const passwordInputR = useRef()
-	const rPasswordInputR = useRef()
+	const nameInputR = useRef();
+	const emailInputR = useRef();
+	const passwordInputR = useRef();
+	const rPasswordInputR = useRef();
 	// signUp stuff-------------------
 
 	// social media login functions-------------------
@@ -119,10 +125,11 @@ export function AuthProvider({ children }) {
 			axios.get("/sanctum/csrf-cookie").then((response) => {
 				axios.post("/api/login", data).then((res) => {
 					if (res.data.status === 401) {
-						setErrors(res.data.errors);
+						setLoginErrors(res.data.errors);
 					} else if (res.data.status === 402) {
-						setErrors({ user: res.data.errors });
+						setLoginErrors({ user: res.data.errors });
 					} else if (res.data.status === 200) {
+						setLoginErrors({ email: "", user: "", password: [""] });
 						const token = res.data.token;
 						setToken(token);
 						setCookie("Token", token, { path: "/" });
@@ -133,6 +140,8 @@ export function AuthProvider({ children }) {
 					}
 				});
 			});
+		} else {
+			swal("Please fill all fields", "All fields are required!", "error");
 		}
 	};
 	// register fun to the database
@@ -148,7 +157,6 @@ export function AuthProvider({ children }) {
 			password_confirmation: rPassword,
 		};
 
-
 		if (
 			name &&
 			email &&
@@ -160,8 +168,14 @@ export function AuthProvider({ children }) {
 			axios.get("/sanctum/csrf-cookie").then((response) => {
 				axios.post("/api/register", data).then((res) => {
 					if (res.data.status === 401) {
+						console.log(res.data.errors);
 						setErrors(res.data.errors);
 					} else if (res.data.status === 200) {
+						setErrors({
+							email: "",
+							name: "",
+							password: [""],
+						});
 						const token = res.data.token;
 						setCookie("Token", token, { path: "/" });
 						setToken(token);
@@ -172,6 +186,8 @@ export function AuthProvider({ children }) {
 					}
 				});
 			});
+		} else {
+			swal("Please fill all fields", "All fields are required!", "error");
 		}
 	};
 	// logout fun to the database
@@ -252,6 +268,8 @@ export function AuthProvider({ children }) {
 					logout,
 					cookies,
 					getUserInfo,
+					errors,
+					loginErrors,
 				}}
 			>
 				{children}

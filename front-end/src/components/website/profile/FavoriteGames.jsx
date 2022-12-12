@@ -14,8 +14,6 @@ export default function FavoriteGames({ setFavCount }) {
 	const games = useSelector((state) => state.games.games);
 	const [favorites, setFavorites] = useState([]);
 
-	console.log("hi");
-	console.log(games);
 	useEffect(() => {
 		dispatch(fetchGames());
 	}, [dispatch]);

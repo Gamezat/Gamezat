@@ -45,6 +45,7 @@ Route::get('/usercomments/{id}', [SingleProfileController::class, 'getUserCommen
 Route::get('/user/{id}', [SingleProfileController::class, 'user']);
 
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
+Route::get('/toprated', [ReviewController::class, 'topRatedGames']);
 Route::resource('/products', ProductController::class);
 Route::resource('/posts', PostController::class);
 Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
@@ -80,5 +81,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
     //Endpoint to delete user post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-
 });
