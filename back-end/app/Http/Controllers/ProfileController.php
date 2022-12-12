@@ -81,7 +81,7 @@ class ProfileController extends Controller
     public function getUserComments()
     {
         $user = Auth::user();
-        $comments = Comment::whereBelongsTo($user)->with('post.user')->get();
+        $comments = Comment::whereBelongsTo($user)->with('post.user')->latest()->get();
 
         return response()->json([
             'status' => 200,

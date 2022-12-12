@@ -86,6 +86,7 @@ class AdminController extends Controller
             'reviews' => $reviewsReports,
         ]);
     }
+
     public function delReport(Request $request)
     {
         Report::find($request->id)->delete();
@@ -108,5 +109,55 @@ class AdminController extends Controller
         Report::find($request->report_id)->delete();
         Review::find($request->post_id)->delete();
         return  $this->allReports();
+
+
+
+    public function unApprovedPosts()
+    {
+        // get all posts where is_approved = 0
+        $posts = Post::where('is_approved', 0)->get();
+
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts,
+        ]);
+    }
+    public function approvePosts(Request $request)
+    {
+        // is_approved => 1
+        $post = Post::find($request->post_id);
+
+        $post->is_approved = 1;
+        $post->save();
+
+        $posts = Post::where('is_approved', 1)->get();
+        $unApprovedPosts = Post::where('is_approved', 0)->get();
+
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts,
+            'unApprovedPosts' => $unApprovedPosts
+        ]);
+
+        
+    }
+
+    public function rejectPosts(Request $request)
+    {
+        // delete
+        $post = Post::find($request->post_id);
+
+        $post->delete();
+
+        $posts = Post::where('is_approved', 1)->get();
+        $unApprovedPosts = Post::where('is_approved', 0)->get();
+
+        return response()->json([
+            'status' => 200,
+            'posts' => $posts,
+            'unApprovedPosts' => $unApprovedPosts
+        ]);
+
+
     }
 }

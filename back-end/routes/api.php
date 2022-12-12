@@ -40,7 +40,6 @@ Route::post('/del/reports', [AdminController::class, 'delReport']);
 Route::post('/del/rcomment', [AdminController::class, 'delComment']);
 Route::post('/del/rreview', [AdminController::class, 'delReview']);
 Route::post('/del/rpost', [AdminController::class, 'delPost']);
-
 Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts
 Route::get('/userposts/{id}', [SingleProfileController::class, 'getUserPosts']);
@@ -52,11 +51,16 @@ Route::get('/user/{id}', [SingleProfileController::class, 'user']);
 Route::get('/reviews/{guid}', [ReviewController::class, 'getReviews']);
 Route::get('/toprated', [ReviewController::class, 'topRatedGames']);
 Route::resource('/products', ProductController::class);
+
 Route::resource('/posts', PostController::class);
 Route::post('/googleLogin', [AuthController::class, 'googleLogin']);
 Route::post('/facebookLogin', [AuthController::class, 'facebookLogin']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/unapprovedposts', [AdminController::class, 'unApprovedPosts']);
+Route::post('/approvepost', [AdminController::class, 'approvePosts']);
+Route::post('/rejectpost', [AdminController::class, 'rejectPosts']);
 
 // Protected routes---------------------------------------
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -86,6 +90,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
     //Endpoint to delete user post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-
+    
     Route::post('/delete/post', [AdminController::class, 'delPost']);
+
 });

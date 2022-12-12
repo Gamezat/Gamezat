@@ -1,6 +1,7 @@
 import { Dropdown, TextInput, Pagination } from 'flowbite-react';
 import React, { useEffect, useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai';
+import Postrequest from './Postrequest';
 export default function PostsTable({ allPosts, deletePost }) {
     useEffect(() => {
         console.log(allPosts);
@@ -95,7 +96,8 @@ export default function PostsTable({ allPosts, deletePost }) {
     return (
         <>
             <div className='flex flex-col w-full'>
-
+                
+                
 
                 <TextInput
                     id="email1"
