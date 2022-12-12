@@ -10,18 +10,27 @@ import {
 import { BiMap } from "react-icons/bi";
 import axios from "axios";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 
 import SingleUserReviews from "../../components/singleprofile/SingleUserReviews";
 import SingleFavoriteGames from "../../components/singleprofile/SingleFavoriteGames";
 import SingleUserPosts from "../../components/singleprofile/SingleUserPosts";
+import { AuthContext } from "../../context/AuthContext";
 export default function SingleProfile() {
+	const { user } = useContext(AuthContext);
 	const { id } = useParams();
+	const navigate = useNavigate();
 	const [singleUser, setSingleUser] = useState();
 	const [favCount, setFavCount] = useState();
 	const [postCount, setPostCount] = useState();
 	const [commentCount, setCommentCount] = useState();
+
+	useEffect(() => {
+		if (user?.id && user?.id === singleUser?.id) {
+			navigate("/profile");
+		}
+	}, [user]);
 
 	// Get singleUser Info
 	useEffect(() => {
@@ -99,7 +108,7 @@ export default function SingleProfile() {
 														src={
 															singleUser?.image
 																? singleUser?.image
-																: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
+																: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 														}
 														alt=""
 													/>

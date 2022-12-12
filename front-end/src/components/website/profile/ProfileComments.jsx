@@ -4,9 +4,10 @@ import { useContext } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import { FcComments } from "react-icons/fc";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 export default function ProfileComments({ setCommentCount }) {
-	const { token } = useContext(AuthContext);
+	const { token, user } = useContext(AuthContext);
 	const [comments, setComments] = useState([]);
 	useEffect(() => {
 		axios
@@ -32,8 +33,19 @@ export default function ProfileComments({ setCommentCount }) {
 								<FcComments />{" "}
 								<span>
 									{" "}
-									You commented on {comment.post.user.name} Post{" "}
-									{comment.comment} at {comment.created_at.split("T")[0]}
+									You commented on{" "}
+									{comment.post.user.id === user.id ? (
+										"your"
+									) : (
+										<Link
+											to={`/profile/${comment.post.user.id}`}
+											className="text-amber/80 hover:underline"
+										>
+											{comment.post.user.name}
+											{"'s"}
+										</Link>
+									)}{" "}
+									Post {comment.comment} at {comment.created_at.split("T")[0]}
 								</span>
 							</p>
 						</div>
