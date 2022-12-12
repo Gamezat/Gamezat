@@ -82,10 +82,12 @@ export default function UserPosts({ setPostCount }) {
 									{post?.content}
 								</ReactReadMoreReadLess>
 							</div>
-							<img
-								className="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700"
-								src={post?.image}
-							/>
+							{post?.image && (
+								<img
+									className="mt-2 rounded-2xl border border-gray-100 dark:border-gray-700"
+									src={post?.image}
+								/>
+							)}
 							<p className="text-gray-500 dark:text-gray-400 text-base py-1 my-0.5">
 								{post?.created_at.split("T")[0]}{" "}
 								{post?.created_at.split("T")[1].split(".")[0]}
