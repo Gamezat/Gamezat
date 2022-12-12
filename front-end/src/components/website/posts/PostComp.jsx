@@ -129,7 +129,7 @@ export default function PostComp({ post, setPosts, posts }) {
 
     return (
         <>
-            <div key={post?.id} className="bg-white hover:shadow-2xl transition duration-300 hover:duration-300 ease-in-out hover:shadow-indigo/50 shadow-lg dark:bg-gray-800 border-gray-200 dark:border-gray-800 p-4 rounded-xl border max-w-lg mb-2">
+            <div key={post?.id} className="bg-white hover:shadow-2xl transition duration-300 hover:duration-300 ease-in-out hover:shadow-indigo/50 shadow-lg dark:bg-gray-800 border-gray-200 dark:border-gray-800 p-4 rounded-xl border lg:max-w-lg max-w-screen lg:w-full w-[400px] mb-2">
                 <div className="flex justify-between">
                     <div className="flex items-center">
                         <img className="h-11 w-11 rounded-full" src={post?.user.image} referrerPolicy="no-referrer" />
