@@ -3,9 +3,14 @@
 @tailwind utilities;
 
 .scrollbar-hide::-webkit-scrollbar {
-  display: none;
+	display: none;
 }
 .dark {
-  color: white;
-  background-color: slate;
+	color: white;
+	background-color: slate;
+}
+.active {
+	/* text-decoration: underline; */
+	font-weight: bold;
+	border-bottom: 2px solid #ebbd1c;
 }
