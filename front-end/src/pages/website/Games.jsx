@@ -100,7 +100,7 @@ export default function Games() {
 
 
 	return (
-		<div className=" dark:bg-darker dark:text-cream flex justify-center">
+		<div className="   flex justify-center">
 
 			<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
 			<div className="max-w-2xl w-full px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
