@@ -43,7 +43,7 @@ Route::get('/admin/reports', [AdminController::class, 'allReports']);
 Route::post('/del/reports', [AdminController::class, 'delReport']);
 Route::post('/del/rcomment', [AdminController::class, 'delComment']);
 Route::post('/del/rreview', [AdminController::class, 'delReview']);
-Route::post('/del/rpost', [AdminController::class, 'delPost']);
+Route::post('/del/rpost', [AdminController::class, 'delrPost']);
 Route::get('/admin/info', [AdminController::class, 'mainData']);
 // Endpoint to get user posts
 Route::get('/userposts/{id}', [SingleProfileController::class, 'getUserPosts']);

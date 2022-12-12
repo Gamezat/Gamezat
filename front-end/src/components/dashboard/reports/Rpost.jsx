@@ -14,7 +14,7 @@ export default function Rpost() {
                 <Card>
                     <div className="mb-4 flex items-center justify-between">
                         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                            Comments
+                            Posts
                         </h5>
                         <p
 
@@ -44,7 +44,7 @@ export default function Rpost() {
                                             </div>
                                             <span className='flex gap-3 items-center'>
 
-                                                <HiSpeakerphone  onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
+                                                <HiSpeakerphone onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
                                                 <AiFillDelete onClick={() => delPost(rc?.id, rc?.post_id)} size={25} className='hover:text-red-700 text-red-500 cursor-pointer' />
 
                                             </span>
