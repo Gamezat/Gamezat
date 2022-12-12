@@ -63,7 +63,7 @@ export default function UserPosts({ setPostCount }) {
 									</Dropdown.Item>
 								</Dropdown> */}
 							</div>
-							<div className="text-black dark:text-white block text-xl leading-snug mt-3">
+							<div className="text-start text-black dark:text-white block text-xl leading-snug mt-3">
 								<ReactReadMoreReadLess
 									charLimit={200}
 									readMoreText={
@@ -88,7 +88,7 @@ export default function UserPosts({ setPostCount }) {
 									src={post?.image}
 								/>
 							)}
-							<p className="text-gray-500 dark:text-gray-400 text-base py-1 my-0.5">
+							<p className="text-start text-gray-500 dark:text-gray-400 text-base py-1 my-0.5">
 								{post?.created_at.split("T")[0]}{" "}
 								{post?.created_at.split("T")[1].split(".")[0]}
 							</p>
