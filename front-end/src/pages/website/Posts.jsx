@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Chat from '../../components/website/posts/Chat'
 import CreatePost from '../../components/website/posts/CreatePost'
 import Post from '../../components/website/posts/Post'
-import { motion } from 'framer-motion'
+
 
 
 function AdUnit({ adCode }) {
@@ -25,12 +25,7 @@ export default function Posts() {
   }, []);
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
 
-      >
 
         <div className="mt-0 grid lg:max-w-screen lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-1">
 
@@ -47,7 +42,7 @@ export default function Posts() {
 
 
         </div>
-      </motion.div>
+    
 
     </>
 

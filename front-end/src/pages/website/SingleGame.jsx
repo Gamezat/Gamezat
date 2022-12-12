@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { motion } from 'framer-motion'
+
 import { fetchGames, fetchReviews } from "../../reducers/gameSlice";
 import ReviewCard from "../../components/website/singlegame/ReviewCard";
 import AddReview from "../../components/website/singlegame/AddReview";
@@ -97,12 +97,7 @@ export default function SingleGame() {
 
 	return (
 		<>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-
-			>
+	
 				<div className="fixed right-6 bottom-6">
 					<button
 						type="button"
@@ -161,7 +156,7 @@ export default function SingleGame() {
 						<AddReview id={id} />
 					</div>
 				</div>
-			</motion.div>
+			
 		</>
 	);
 }

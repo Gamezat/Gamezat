@@ -13,7 +13,6 @@ import swal from "sweetalert";
 import FavoriteGames from "../../components/website/profile/FavoriteGames";
 import UserReviews from "../../components/website/profile/UserReviews";
 import UserPosts from "../../components/website/profile/UserPosts";
-import { motion } from 'framer-motion'
 export default function Profile() {
 	const navigate = useNavigate();
 
@@ -132,12 +131,7 @@ export default function Profile() {
 
 	return (
 		<>
-			<motion.div
-				initial={{ opacity: 0 }}
-				animate={{ opacity: 1 }}
-				exit={{ opacity: 0 }}
-
-			>
+		
 				<div>
 					<div className="profile-page ">
 						<section className="block h-[500px]">
@@ -378,7 +372,7 @@ export default function Profile() {
 						</section>
 					</div>
 				</div>
-			</motion.div>
+			
 		</>
 	);
 }

@@ -7,7 +7,7 @@ import { GiAbstract050, GiStaryu, IconName } from "react-icons/gi";
 import CommunityBanner from "../../components/Banner/CommunityBanner";
 import Community from "../../components/CommunityBanner/Community";
 import { Link } from "react-router-dom";
-import { motion } from 'framer-motion'
+
 
 
 export default function Home() {
@@ -16,12 +16,7 @@ export default function Home() {
 
     return (
         <>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-
-            >
+     
 
             <div className="">
                 <Banner />
@@ -56,7 +51,7 @@ export default function Home() {
                 <h1 className="p-6 text-3xl text-center flex "><GiAbstract050 className="mr-2  text-blue-600 " /> Play A Random Game </h1>
                 < RandomGame />
             </div>
-            </motion.div>
+            
 
         </>
     );

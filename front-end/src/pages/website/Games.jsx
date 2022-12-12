@@ -5,7 +5,7 @@ import { BiDesktop, BiMobile, BiPhone, BiTab } from "react-icons/bi";
 import Sort from "../../components/website/games/Sort";
 import { Link } from "react-router-dom";
 import { Pagination } from "flowbite-react";
-import { motion } from 'framer-motion'
+
 
 import { Input } from "@material-tailwind/react";
 // import games from "../../games.json";
@@ -102,12 +102,7 @@ export default function Games() {
 
 
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-
-		>
+	
 			<div className="bg-white flex justify-center">
 
 				<Sort setSearch={setSearch} setFilter={setFilterCateg} filter={filterCateg} games={games} />
@@ -159,6 +154,6 @@ export default function Games() {
 					</div>
 				</div>
 			</div>
-		</motion.div>
+		
 	);
 }
