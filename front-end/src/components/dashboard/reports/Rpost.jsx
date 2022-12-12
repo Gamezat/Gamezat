@@ -43,7 +43,7 @@ export default function Rpost() {
                                             </div>
                                             <span className='flex gap-3 items-center'>
 
-                                                <HiSpeakerphone onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
+                                                <HiSpeakerphone  onClick={() => delReport(rc?.id)} size={25} className='hover:text-amber cursor-pointer' />
                                                 <FaCommentAlt onClick={() => delPost(rc?.id, rc?.post_id)} size={18} className='hover:text-amber cursor-pointer' />
                                             </span>
                                         </div>

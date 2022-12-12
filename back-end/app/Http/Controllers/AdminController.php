@@ -108,8 +108,8 @@ class AdminController extends Controller
     {
         Report::find($request->report_id)->delete();
         Review::find($request->post_id)->delete();
-        return  $this->allReports();
-
+        return $this->allReports();
+    }
 
 
     public function unApprovedPosts()
