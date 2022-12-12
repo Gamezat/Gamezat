@@ -13,7 +13,7 @@ class PostController extends Controller
     public function index()
     {
 
-        $posts = Post::with(['comments.user', 'user'])->get();
+        $posts = Post::with(['comments.user', 'user'])->oldest()->get();
 
         return response()->json([
             'status' => 200,
@@ -42,7 +42,7 @@ class PostController extends Controller
             ]);
         }
 
-        $posts = Post::with(['like', 'comments.user', 'user'])->get();
+        $posts = Post::with(['comments.user', 'user'])->oldest()->get();
 
         return response()->json([
             'status' => 200,
@@ -56,9 +56,11 @@ class PostController extends Controller
         // $post = Post::findOrFail($id);
         if (Auth::user()->id === $post->user_id) {
             $post->delete();
+            $posts = Post::with(['comments.user', 'user'])->oldest()->get();
             return response()->json([
                 'status' => 200,
                 'message' => 'Post deleted successfully.',
+                'data' => $posts
             ]);
         } else {
             // Handle unauthorized delete attempt
