@@ -25,10 +25,10 @@ import { FreeGamesProvider } from "./context/FreeGamesContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import { AdminProvider } from "./context/AdminContext";
 import About from "./pages/website/About";
-
 import SingleProfile from "./pages/website/SingleProfile";
 import DPosts from "./pages/dashboard/DPosts";
 import DReports from "./pages/dashboard/DReports";
+import Contact from "./pages/website/Contact";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
@@ -46,7 +46,7 @@ function App() {
                 <ThemeProvider>
                   <Routes>
                     <Route path="/" element={<MainOutlet />}>
-                      <Route path="/" element={<Home />} />
+                      <Route path="/" element={<Home />} /> 
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/profile/:id" element={<SingleProfile />} />
                       <Route path="/games" element={<Games />} />
@@ -54,7 +54,11 @@ function App() {
                       <Route path="/affiliate" element={<Affiliate />} />
                       <Route path="/community" element={<Posts />} />
                       <Route path="/xo" element={<TicTacToe />} />
+                      <Route path="/contact" element={<Contact />} />
                       <Route path="/about" element={<About />} />
+
+
+
                       <Route
                         path={"/multiplayer-offline"}
                         element={<OfflineXo />}
