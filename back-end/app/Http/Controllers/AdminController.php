@@ -196,7 +196,7 @@ class AdminController extends Controller
             'status' => 200,
             'users' =>  User::all(),
         ]);
-}
+    }
 
     public function allProducts()
     {
@@ -267,6 +267,5 @@ class AdminController extends Controller
         $product->delete();
 
         return $this->allProducts();
-
     }
 }
