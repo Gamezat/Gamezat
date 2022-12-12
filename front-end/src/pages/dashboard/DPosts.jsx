@@ -14,12 +14,14 @@ export default function DPosts() {
 
     return (
         <>
-          <div className=' flex flex-wrap gap-5 m-9 p-10 rounded-3xl border-t-4 shadow-lg border-grass  dark:bg-slate-800'>
+            <div className=' flex flex-wrap gap-5 m-9 p-10 rounded-3xl border-t-4 shadow-lg border-grass  dark:bg-slate-800'>
                 <span className='flex items-center gap-5'>
 
                     <BsTable color='green' size={25} /> <p className='text-lg'>You can manage all the posts from here</p>
                 </span>
-<Postrequest/>
+
+                <Postrequest />
+
             </div>
 
             <div className=' flex flex-wrap gap-5 m-9 p-10 rounded-3xl border-t-4 shadow-lg border-grass  dark:bg-slate-800'>

@@ -28,6 +28,7 @@ import About from "./pages/website/About";
 import SingleProfile from "./pages/website/SingleProfile";
 import DPosts from "./pages/dashboard/DPosts";
 import DReports from "./pages/dashboard/DReports";
+import DUsers from "./pages/dashboard/DUsers";
 
 import Contact from "./pages/website/Contact";
 
@@ -37,7 +38,6 @@ axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axios.defaults.headers.post["Accept"] = "application/vnd.api+json";
 axios.defaults.withCredentials = true;
 function App() {
-
 
   return (
     <>
@@ -72,12 +72,16 @@ function App() {
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/dashboard/posts" element={<DPosts />} />
                       <Route path="/dashboard/reports" element={<DReports />} />
-<Route
+
+                      <Route path="/dashboard/users" element={<DUsers />} />
+
+                      <Route
 												path="/dashboard/products"
 												element={<DProducts />}
 											/>
 
                       
+
                     </Route>
                   </Routes>
                 </ThemeProvider>
@@ -88,7 +92,6 @@ function App() {
       </GoogleOAuthProvider>
     </>
   );
-
 
 }
 

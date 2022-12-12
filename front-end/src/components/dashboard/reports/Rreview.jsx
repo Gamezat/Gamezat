@@ -7,7 +7,7 @@ import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 export default function Rreview() {
-    const { reports, delReport, delReview, RR } = useContext(AdminContext);
+    const { delReport, delReview, RR } = useContext(AdminContext);
     return (
         <>
             <div className="max-w-full">

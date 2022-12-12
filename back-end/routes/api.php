@@ -36,6 +36,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
+Route::post('/admin/deluser', [AdminController::class, 'delUser']);
+Route::post('/admin/edituser', [AdminController::class, 'editUser']);
+Route::get('/admin/userall', [AdminController::class, 'getAllUsers']);
 Route::get('/admin/reports', [AdminController::class, 'allReports']);
 Route::post('/del/reports', [AdminController::class, 'delReport']);
 Route::post('/del/rcomment', [AdminController::class, 'delComment']);

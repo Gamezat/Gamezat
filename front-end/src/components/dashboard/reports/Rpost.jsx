@@ -7,7 +7,7 @@ import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
 import { AiFillDelete } from 'react-icons/ai';
 export default function Rpost() {
-    const { reports, delReport, delPost, RP } = useContext(AdminContext);
+    const { delReport, delPost, RP } = useContext(AdminContext);
     return (
         <>
             <div className="max-w-full">
