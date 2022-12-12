@@ -31,14 +31,13 @@ import DReports from "./pages/dashboard/DReports";
 import DUsers from "./pages/dashboard/DUsers";
 
 import Contact from "./pages/website/Contact";
-
+import DProducts from "./pages/dashboard/DProducts";
 
 axios.defaults.baseURL = "http://localhost:8000/";
 axios.defaults.headers.post["Content-Type"] = "application/vnd.api+json";
 axios.defaults.headers.post["Accept"] = "application/vnd.api+json";
 axios.defaults.withCredentials = true;
 function App() {
-
   return (
     <>
       <GoogleOAuthProvider clientId="766290884424-if3sip56qtto151e6623p5s1vi6ui6n7.apps.googleusercontent.com">
@@ -49,7 +48,7 @@ function App() {
                 <ThemeProvider>
                   <Routes>
                     <Route path="/" element={<MainOutlet />}>
-                      <Route path="/" element={<Home />} /> 
+                      <Route path="/" element={<Home />} />
                       <Route path="/profile" element={<Profile />} />
                       <Route path="/profile/:id" element={<SingleProfile />} />
                       <Route path="/games" element={<Games />} />
@@ -59,8 +58,6 @@ function App() {
                       <Route path="/xo" element={<TicTacToe />} />
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/about" element={<About />} />
-
-
 
                       <Route
                         path={"/multiplayer-offline"}
@@ -76,12 +73,9 @@ function App() {
                       <Route path="/dashboard/users" element={<DUsers />} />
 
                       <Route
-												path="/dashboard/products"
-												element={<DProducts />}
-											/>
-
-                      
-
+                        path="/dashboard/products"
+                        element={<DProducts />}
+                      />
                     </Route>
                   </Routes>
                 </ThemeProvider>
@@ -92,7 +86,6 @@ function App() {
       </GoogleOAuthProvider>
     </>
   );
-
 }
 
 export default App;
