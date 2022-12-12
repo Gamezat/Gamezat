@@ -4,6 +4,8 @@ import Chat from '../../components/website/posts/Chat'
 import CreatePost from '../../components/website/posts/CreatePost'
 import Post from '../../components/website/posts/Post'
 
+
+
 function AdUnit({ adCode }) {
   return (
     <div dangerouslySetInnerHTML={{ __html: adCode }} />
@@ -23,18 +25,25 @@ export default function Posts() {
   }, []);
   return (
     <>
-      <div className="mt-3 grid lg:grid-cols-4 max-w sm:grid-cols-1 md:grid-cols-1">
 
-        <div className='lg:col-start-2 lg:col-span-2 sm:col-start-1 sm:col-span-1 md:col-start-1 md:col-span-1 md:mx-auto sm:mx-auto'>
-          <CreatePost setPosts={setPosts} />
-          <Post posts={posts.reverse()} setPosts={setPosts} />
-        </div>
-        <div className='lg:fixed lg:col-start-2 lg:col-span-2 '>
 
-          <Chat />
-          {/* <AdUnit adCode={adsenseCode} /> */}
+        <div className="mt-0 grid lg:max-w-screen lg:grid-cols-7 sm:grid-cols-1 md:grid-cols-1">
+
+          <div className='mt-[6rem] lg:col-start-3 lg:col-span-3 sm:col-start-1 sm:col-span-1 md:col-start-1 md:col-span-1 md:mx-auto sm:mx-auto'>
+            <CreatePost setPosts={setPosts} />
+            <Post posts={posts.reverse()} setPosts={setPosts} />
+            <vr />
+          </div>
+          <div className='lg:col-start-6 lg:mt-[6rem] lg:col-span-2 '>
+
+            {/* <Chat /> */}
+            {/* <AdUnit adCode={adsenseCode} /> */}
+          </div>
+
+
         </div>
-      </div>
+    
+
     </>
 
   )

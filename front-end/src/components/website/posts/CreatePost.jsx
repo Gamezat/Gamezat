@@ -6,7 +6,7 @@ import { AuthContext } from '../../../context/AuthContext'
 import swal from 'sweetalert';
 import { useRef } from 'react';
 export default function CreatePost({ setPosts }) {
-    const { user, token } = useContext(AuthContext)
+    const { user, token, setShowPortal } = useContext(AuthContext)
 
     //handling user input 
     const inputPost = useRef()
@@ -18,36 +18,42 @@ export default function CreatePost({ setPosts }) {
     //handling post submition 
     function handleSubmit(e) {
         e.preventDefault();
-        let formData = new FormData();
-        if(imageInput.current.value){
-            formData.append("image", image);
-        }
-        formData.append('content', content)
-        if (content === "") {
-            swal("Please write something first")
-            return
-        }
-        axios
-            .post("/api/posts", formData, {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-type": "multipart/form-data",
-                },
-            })
-            .then((res) => {
-                if (res.data.status === 200){
-                    setPosts(res.data.data);
-                    inputPost.current.value = ""
-                    imageInput.current.value = null
-                    swal('successful', 'Your post is in review', 'success')
+        if (token) {
+            let formData = new FormData();
+            if (imageInput.current.value) {
+                formData.append("image", image);
+            }
+            formData.append('content', content)
+            if (content === "") {
+                swal("Please write something first")
+                return
+            }
 
-                }
-                else {
-                    swal('error', 'Image size is too large', 'error')
-                    console.log(res)
-                }
+            axios
+                .post("/api/posts", formData, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-type": "multipart/form-data",
+                    },
+                })
+                .then((res) => {
+                    if (res.data.status === 200) {
+                        setPosts(res.data.data);
+                        inputPost.current.value = ""
+                        imageInput.current.value = null
+                        swal('successful', 'Your post is in review', 'success')
 
-            })
+                    }
+                    else {
+                        console.log(res)
+                    }
+
+                })
+
+        } else {
+            setShowPortal(true);
+        }
+
 
     }
 
@@ -78,10 +84,17 @@ export default function CreatePost({ setPosts }) {
                                 Add Image
                             </span>
                         </label>
+                        {user ?
+                            <button type='submit' class="bg-black  hover:shadow-xl float-right transition duration-300 hover:duration-300 ease-in-out hover:bg-amber text-white hover:text-white font-bold py-2 px-8 rounded-full">
+                                Post
+                            </button>
+                            :
+                            <button type='button' onClick={setShowPortal(true)} class="bg-black  hover:shadow-xl float-right transition duration-300 hover:duration-300 ease-in-out hover:bg-amber text-white hover:text-white font-bold py-2 px-8 rounded-full">
+                                Post
+                            </button>
+                        }
 
-                        <button type='submit' class="bg-black  hover:shadow-xl float-right transition duration-300 hover:duration-300 ease-in-out hover:bg-amber text-white hover:text-white font-bold py-2 px-8 rounded-full">
-                            Post
-                        </button>
+
                     </div>
                 </div>
             </form>
