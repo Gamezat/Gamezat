@@ -24,14 +24,14 @@ export default function MainNav() {
     }, []);
 
     const navList = (
-        <ul className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center text-black lg:gap-6">
+        <ul className="  flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
             <Typography
                 as="li"
                 variant="small"
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <Link to={'/'} className="flex text-black items-center">
+                <Link to={'/'} className="flex items-center">
                     Home
                 </Link>
             </Typography>
@@ -39,9 +39,9 @@ export default function MainNav() {
                 as="li"
                 variant="small"
                 color="blue-gray"
-                className="p-1 font-normal"
+                className="p-1  font-normal"
             >
-                <Link to={'/games'} className="flex items-center">
+                <Link to={'/games'} className="flex  items-center">
                     Games
                 </Link>
             </Typography>
@@ -81,76 +81,74 @@ export default function MainNav() {
 
     return (
         <>
+            <div className='max-w-screen text-white  '>
+                <Navbar className="absolute z-10 position-sticky top-0  lg:max-h-[70px] lg:inset-0 transition duration-300 hover:duration-300 ease-in-out bg-white/40 border-none hover:shadow-lg mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4 text-white">
+                    <div className="container mx-auto flex items-center justify-between text-blue-gray-900 ">
+                        <Typography
+                            as="a"
+                            href="#"
+                            variant="small"
+                            className="mr-4 cursor-pointer py-1.5 font-normal"
+                        >
+                            <Link to={'/'} >Gamezat</Link>
+                        </Typography>
+                        <div className="hidden  lg:block ">{navList}</div>
+                        {
 
-            <Navbar className="mx-auto  max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4 text-black ">
-                <div className="container mx-auto flex items-center justify-between text-blue-gray-900 ">
-                    <Typography
-                        as="a"
-                        href="#"
-                        variant="small"
-                        className="mr-4 cursor-pointer py-1.5 font-normal"
-                    >
-                        <Link to={'/'} >Gamezat</Link>
-                    </Typography>
-                    <div className="hidden  lg:block ">{navList}</div>
-                    {
+                            token && user ?
+                                <NavUserDropIcon />
+                                : <Button onClick={() => {
+                                    setShowPortal(!showPortal);
+                                    console.log("hi")
+                                }} variant="gradient" size="sm" className="hidden bg-indigo lg:inline-block">
+                                    <span>Register</span>
+                                </Button>
 
-                        token && user ?
-                            <NavUserDropIcon />
-                            : <Button onClick={() => {
-                                setShowPortal(!showPortal);
-                                console.log("hi")
-                            }} variant="gradient" size="sm" className="hidden bg-indigo lg:inline-block">
-                                <span>Register</span>
-                            </Button>
+                        }
 
-                    }
-
-                    <IconButton
-                        variant="text"
-                        className="ml-auto h-6 w-6 text-inherit hover:bg-transparent   lg:hidden"
-                        ripple={false}
-                        onClick={() => setOpenNav(!openNav)}
-                    >
-                        {openNav ? (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                className="h-6 w-6"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M6 18L18 6M6 6l12 12"
-                                />
-                            </svg>
-                        ) : (
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth={2}
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="M4 6h16M4 12h16M4 18h16"
-                                />
-                            </svg>
-                        )}
-                    </IconButton>
-                </div>
-                <MobileNav open={openNav}>
-                    {navList}
-                    <Button variant="gradient" size="sm" fullWidth className="mb-2">
-                        <span>Buy Now</span>
-                    </Button>
-                </MobileNav>
-            </Navbar>
+                        <IconButton
+                            variant="text"
+                            className="ml-auto h-6 w-6 text-inherit hover:bg-transparent lg:hidden"
+                            ripple={false}
+                            onClick={() => setOpenNav(!openNav)}
+                        >
+                            {openNav ? (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    className="h-6 w-6"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    />
+                                </svg>
+                            ) : (
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    className="h-6 w-6"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    strokeWidth={2}
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M4 6h16M4 12h16M4 18h16"
+                                    />
+                                </svg>
+                            )}
+                        </IconButton>
+                    </div>
+                    <MobileNav open={openNav}>
+                        {navList}
+                    </MobileNav>
+                </Navbar>
+            </div>
             <RegistrationPortal />
         </>
     );
