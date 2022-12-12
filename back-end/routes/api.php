@@ -63,6 +63,13 @@ Route::get('/unapprovedposts', [AdminController::class, 'unApprovedPosts']);
 Route::post('/approvepost', [AdminController::class, 'approvePosts']);
 Route::post('/rejectpost', [AdminController::class, 'rejectPosts']);
 
+Route::get('/allProducts', [AdminController::class, 'allProducts']);
+Route::post('/addProduct', [AdminController::class, 'addProduct']);
+Route::put('/editProduct/{id}', [AdminController::class, 'editProduct']);
+Route::post('/delProduct/{id}', [AdminController::class, 'delProduct']);
+
+
+
 // Protected routes---------------------------------------
 Route::group(['middleware' => ['auth:sanctum']], function () {
     // Endpoint for logout api
@@ -91,7 +98,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/usercomments', [ProfileController::class, 'getUserComments']);
     //Endpoint to delete user post
     Route::delete('/posts/{post}', [PostController::class, 'destroy']);
-    
-    Route::post('/delete/post', [AdminController::class, 'delPost']);
 
+    Route::post('/delete/post', [AdminController::class, 'delPost']);
 });
