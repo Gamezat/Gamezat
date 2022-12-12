@@ -15,6 +15,8 @@ export function AdminProvider({ children }) {
     const [RC, setRC] = useState([])
     const [RR, setRR] = useState([])
     const [RP, setRP] = useState([])
+    const [uap, setUap] = useState([])
+    const [allUsers, setAllUsers] = useState([])
     const [allPostsTemp, setAllPostsTemp] = useState([])
     const deletePost = (id) => {
         const data = {
@@ -170,11 +172,96 @@ export function AdminProvider({ children }) {
             }
         })
     }
+    useEffect(() => {
+        axios.get('/api/unapprovedposts').then((res) => {
+            console.log("un approved");
+            console.log(res.data.posts);
+            setUap(res.data.posts)
+
+        })
+
+    }, [])
+    const acceptPost = (id) => {
+        const data = {
+            id: id
+        }
+        axios.post('/api/approvepost', data).then((res) => {
+            console.log("Now approved");
+            console.log(res.data);
+            setUap(res.data.unApprovedPosts)
+            setAllPostsTemp(res.data.posts)
+
+        })
+
+    }
+    const rejectPost = (id) => {
+        const data = {
+            id: id
+        }
+        axios.post('/api/rejectpost', data).then((res) => {
+            console.log("rejected");
+            console.log(res.data);
+            setUap(res.data.posts)
 
 
+        })
+    }
+    useEffect(() => {
+        axios.get('/api/admin/userall')
+            .then((res) => {
+                if (res.data.status === 200) {
+                    setAllUsers(res.data.users)
+                }
+            })
+
+    }, [])
+    const changeUserData = (column, data, id, old) => {
+        if (old == data || data === "" || !data) {
+            return
+        }
+        const reqData = {
+            column: column,
+            data: data,
+            id: id
+        }
+        axios.post('/api/admin/edituser', reqData)
+            .then((res) => {
+                if (res.data.status === 200) {
+                    swal("Good job!", "Data updated successfully", "success");
+                }
+                console.log("data");
+                console.log(res);
+                // setAllUsers(res.data.users)
+            })
+    }
+    const delUser = (id) => {
+        const data = {
+            id: id
+        }
+        swal({
+            title: "Are you sure?",
+            text: "You will delete this reported review!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        }).then(res => {
+            if (res) {
+                axios.post('/api/admin/deluser', data)
+                    .then((res) => {
+                        if (res.data.status === 200) {
+                            swal("Good job!", "Data updated successfully", "success");
+                        }
+                        console.log("data");
+                        console.log(res);
+                        // setAllUsers(res.data.users)
+                    })
+            }
+        })
+
+    }
     return (
         <>
-            <AdminContext.Provider value={{ prevData, allPosts, deletePost, reports, delReport, delComment, delReview, delPost, RC, RR, RP }} >
+            <AdminContext.Provider value={{ prevData, allPosts, deletePost, reports, delReport, delComment, delReview, delPost, RC, RR, RP, uap, acceptPost, rejectPost, allUsers, setAllUsers, changeUserData, delUser }} >
                 {children}
             </AdminContext.Provider>
         </>

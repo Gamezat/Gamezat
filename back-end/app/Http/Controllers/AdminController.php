@@ -109,13 +109,13 @@ class AdminController extends Controller
         Report::find($request->report_id)->delete();
         Review::find($request->post_id)->delete();
         return  $this->allReports();
-
-
+    }
 
     public function unApprovedPosts()
     {
         // get all posts where is_approved = 0
-        $posts = Post::where('is_approved', 0)->get();
+        $posts = Post::with(['comments.user', 'user'])->where('is_approved', 0)->oldest()->get();
+        // $posts = Post::where('is_approved', 0)->get();
 
         return response()->json([
             'status' => 200,
@@ -125,39 +125,72 @@ class AdminController extends Controller
     public function approvePosts(Request $request)
     {
         // is_approved => 1
-        $post = Post::find($request->post_id);
+        $post = Post::find($request->id);
 
         $post->is_approved = 1;
         $post->save();
 
-        $posts = Post::where('is_approved', 1)->get();
-        $unApprovedPosts = Post::where('is_approved', 0)->get();
+
+        $unApprovedPosts = Post::with(['comments.user', 'user'])->where('is_approved', 0)->oldest()->get();
+        $posts = Post::with(['comments.user', 'user'])->where('is_approved', 1)->oldest()->get();
 
         return response()->json([
             'status' => 200,
             'posts' => $posts,
             'unApprovedPosts' => $unApprovedPosts
         ]);
-
-        
     }
 
     public function rejectPosts(Request $request)
     {
         // delete
-        $post = Post::find($request->post_id);
+        $post = Post::find($request->id);
 
         $post->delete();
 
-        $posts = Post::where('is_approved', 1)->get();
-        $unApprovedPosts = Post::where('is_approved', 0)->get();
+        $posts = Post::with(['comments.user', 'user'])->where('is_approved', 0)->get();
+
 
         return response()->json([
             'status' => 200,
             'posts' => $posts,
-            'unApprovedPosts' => $unApprovedPosts
+
         ]);
+    }
+    public function getAllUsers()
+    {
+        $users = User::all();
+
+        return response()->json([
+            'status' => 200,
+            'users' => $users,
+        ]);
+    }
+    public function editUser(Request $request)
+    {
+        // this doesn't work
+        // User::find($request->id)->update([$request->column => $request->data]);
+
+        // this works but gotta do the col name before
+        $col = $request->column;
+        $user = User::find($request->id);
+        $user->$col = $request->data;
+        $user->save();
+        return response()->json([
+            'status' => 200,
+
+        ]);
+    }
+    public function delUser(Request $request)
+    {
 
 
+        $user = User::find($request->id);
+        $user->delete();
+
+        return response()->json([
+            'status' => 200,
+            'users' =>  User::all(),
+        ]);
     }
 }

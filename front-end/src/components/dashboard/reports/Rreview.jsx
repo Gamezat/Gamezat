@@ -6,7 +6,7 @@ import { MdOutlineReviews } from 'react-icons/md';
 import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
 export default function Rreview() {
-    const { reports, delReport, delReview, RR } = useContext(AdminContext);
+    const { delReport, delReview, RR } = useContext(AdminContext);
     return (
         <>
             <div className="max-w-full">

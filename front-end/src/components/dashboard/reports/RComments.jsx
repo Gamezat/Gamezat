@@ -6,7 +6,7 @@ import { FcComments } from 'react-icons/fc';
 import { HiSpeakerphone } from 'react-icons/hi';
 import { FaCommentAlt } from 'react-icons/fa';
 export default function RComments() {
-    const { reports, delReport, delComment, RC } = useContext(AdminContext);
+    const { delReport, delComment, RC } = useContext(AdminContext);
     return (
         <>
             <div className="max-w-full">
