@@ -26,7 +26,7 @@ export default function Profile() {
 	const [postCount, setPostCount] = useState(0);
 	const [commentCount, setCommentCount] = useState(0);
 
-	const { user, token, setUser, setShowPortal } = useContext(AuthContext);
+	const { user, token, setUser, logout } = useContext(AuthContext);
 	const [cookies, setCookie, removeCookie] = useCookies(["Token"]);
 	useEffect(() => {
 		if (!cookies.Token) {
@@ -91,16 +91,16 @@ export default function Profile() {
 				if (res.data.status === 200) {
 					setUser(res.data.user);
 					console.log(res);
-				} else if (res.data.status === 413) {
-					swal("Oops!", res.data.statusText, "error");
 				} else {
 					swal("Oops!", res.data.image[0], "error");
+					formData.delete("image");
 					console.log(res);
 				}
 			})
 			.catch((res) => {
 				if (res.response.status === 413) {
 					swal("Oops!", res.response.statusText, "error");
+					formData.delete("image");
 				}
 			});
 	};
@@ -124,13 +124,15 @@ export default function Profile() {
 					console.log(res);
 				} else {
 					swal("Oops!", res.data.banner[0], "error");
-					e.target.files = null
+					e.target.files = null;
+					formData.delete("image");
 					console.log(res);
 				}
 			})
 			.catch((res) => {
 				if (res.response.status === 413) {
 					swal("Oops!", res.response.statusText, "error");
+					formData.delete("image");
 				}
 			});
 	};
@@ -143,10 +145,11 @@ export default function Profile() {
 						<div
 							className=" top-0 w-full h-full bg-center bg-cover group relative"
 							style={{
-								backgroundImage: `url("${user?.banner
-									? user?.banner
-									: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-									}")`,
+								backgroundImage: `url("${
+									user?.banner
+										? user?.banner
+										: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+								}")`,
 							}}
 						>
 							<label
@@ -203,7 +206,7 @@ export default function Profile() {
 														src={
 															user?.image
 																? user?.image
-																: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
+																: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 														}
 														alt=""
 													/>
@@ -228,12 +231,13 @@ export default function Profile() {
 										</div>
 										<div className="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
 											<div className="py-6 px-3 mt-32 sm:mt-0">
-												{/* <button
-													className="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
+												<button
+													className="bg-amber active:bg-amber/80 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1 ease-linear transition-all duration-150"
 													type="button"
+													onClick={logout}
 												>
-													Connect
-												</button> */}
+													Logout
+												</button>
 											</div>
 										</div>
 										<div className="w-full lg:w-4/12 px-4 lg:order-1">

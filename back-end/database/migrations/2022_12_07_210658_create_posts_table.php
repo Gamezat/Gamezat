@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->mediumText('content');
             $table->string('image')->nullable();
+            $table->boolean('is_approved')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

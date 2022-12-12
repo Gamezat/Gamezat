@@ -18,10 +18,8 @@ module.exports = withMT({
 			},
 		},
 	},
-	plugins: [require("flowbite/plugin"),
-],
-variants: {
-	scrollbar: ['rounded']
-}
-	
+	plugins: [require("flowbite/plugin")],
+	variants: {
+		scrollbar: ["rounded"],
+	},
 });

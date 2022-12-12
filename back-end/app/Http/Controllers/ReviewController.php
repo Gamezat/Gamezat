@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Review;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
@@ -45,6 +46,19 @@ class ReviewController extends Controller
             'status' => 200,
             'reviews' => $allReviews,
             'count' =>  $reviewCount,
+
+        ]);
+    }
+    // Get top rated games
+    public function topRatedGames()
+    {
+        $topRated = DB::table('reviews')->groupBy('game_id')->selectRaw('avg(stars) as avg_rating, game_id')->orderBy('avg_rating', 'desc')->limit(4)->get();
+
+
+
+        return response()->json([
+            'status' => 200,
+            'top_rated' => $topRated
 
         ]);
     }

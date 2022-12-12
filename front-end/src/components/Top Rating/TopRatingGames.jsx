@@ -1,4 +1,4 @@
-import React, { useRef, useState, useContext } from "react";
+import React, { useRef, useState, useContext, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -6,95 +6,112 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-
 import { Pagination, Navigation, Keyboard, Autoplay } from "swiper";
-import { FreeGamesContext } from '../../context/FreeGamesContext'
+import { FreeGamesContext } from "../../context/FreeGamesContext";
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchGames } from "../../reducers/gameSlice";
+import { Link } from "react-router-dom";
+import { AiTwotoneStar } from "react-icons/ai";
 // import required modules
 
 export default function TopRatingGames() {
-  const { freeGames } = useContext(FreeGamesContext)
+	const dispatch = useDispatch();
+	const [topRatings, setTopRatings] = useState([]);
+	const [topRatedGames, setTopRatedGames] = useState([]);
+	const games = useSelector((state) => state.games.games);
 
-  return (
-    
-      <>
-          <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 mx-5'>
+	useEffect(() => {
+		dispatch(fetchGames());
+	}, [dispatch]);
 
-        <Swiper
+	useEffect(() => {
+		axios.get("/api/toprated").then((res) => {
+			if (res.data.status === 200) {
+				console.log("----------------");
+				console.log(res);
+				console.log("----------------");
+				setTopRatings(res.data.top_rated);
+			}
+		});
+	}, []);
 
-          breakpoints={{
-            "@0.00": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@0.75": {
-              slidesPerView: 2,
-              spaceBetween: 20,
-            },
-            "@1.00": {
-              slidesPerView: 3,
-              spaceBetween: 20,
-            },
-            "@1.50": {
-              slidesPerView: 5,
-              spaceBetween: 20,
-            },
-          }}
+	useEffect(() => {
+		const topGames = topRatings?.map((top) => {
+			return games?.find((game) => game.guid == top.game_id);
+		});
+		setTopRatedGames(topGames);
+	}, [topRatings]);
 
+	return (
+		<>
+			<div className="flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 ">
+				<Swiper
+					breakpoints={{
+						"@0.00": {
+							slidesPerView: 2,
+							spaceBetween: 20,
+						},
+						"@0.75": {
+							slidesPerView: 2,
+							spaceBetween: 20,
+						},
+						"@1.00": {
+							slidesPerView: 3,
+							spaceBetween: 20,
+						},
+						"@1.50": {
+							slidesPerView: 4,
+							spaceBetween: 20,
+						},
+					}}
+					slidesPerGroup={1}
+					loop={true}
+					loopFillGroupWithBlank={true}
+					navigation={true}
+					centeredSlides={true}
+					autoplay={{
+						delay: 2500,
+						disableOnInteraction: false,
+					}}
+					modules={[Pagination, Navigation, Keyboard, Autoplay]}
+					keyboard={{
+						enabled: true,
+					}}
+					className="mySwiper flex justify-center "
+				>
+					{topRatedGames?.map((game) => {
+						return (
+							<SwiperSlide className="mx-5 drop-shadow-md">
+								<Link
+									key={game.id}
+									to={`/games/${game?.guid}`}
+									class="group relative block bg-black w-72 h-72 mb-10 shadow-xl "
+								>
+									<img
+										alt="Developer"
+										src={game.thumb}
+										class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+									/>
 
-          slidesPerGroup={3}
-          loop={true}
-          loopFillGroupWithBlank={true}
-          navigation={true}
-          centeredSlides={true}
+									<div class="relative p-4 flex  justify-between">
+										<p class="text-xl font-bold text-white">{game.title}</p>
 
-          autoplay={{
-            delay: 2500,
-            disableOnInteraction: false,
-          }}
-          modules={[Pagination, Navigation, Keyboard, Autoplay]}
-          keyboard={{
-            enabled: true,
-          }}
-          className="mySwiper flex justify-center "
-        >
-          {
-
-            freeGames?.map(freeGame => {
-              return (<SwiperSlide  > 
-                <a key={freeGame.id} href={freeGame.game_url} target='_blank' class="group relative block bg-black w-72 h-72 mb-10 shadow-xl ">
-                <img
-                  alt="Developer"
-                  src={freeGame.thumbnail}
-                  class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
-                />
-
-                <div class="relative p-4">
-                  <p class="text-xl font-bold text-white">{freeGame.title}</p>
-
-
-
-                  <div class="mt-32">
-                    <div
-                      class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
-                    >
-                      <p class="text-sm text-white">
-                        {freeGame.short_description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </a>
-              </SwiperSlide>)
-            })
-
-          }
-
-
-        </Swiper>
-        </div>
-      </>
-
-    
-  );
+										<p class="text-md text-white flex items-center">
+											<AiTwotoneStar size={35} className="text-lemon" />{" "}
+											{topRatings?.map((rating) => {
+												if (rating.game_id === game?.guid) {
+													return Number(rating.avg_rating).toFixed(1);
+												}
+											})}{" "}
+										</p>
+									</div>
+								</Link>
+							</SwiperSlide>
+						);
+					})}
+				</Swiper>
+			</div>
+		</>
+	);
 }
-

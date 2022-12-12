@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 export default function NavUserDropIcon() {
 	const { logout, user } = useContext(AuthContext);
 
-
 	return (
 		<>
 			<Dropdown
 				className=""
 				label={
 					<Avatar
-						img={`${user?.image
-							? user?.image
-							: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
-							}`}
+						img={`${
+							user?.image
+								? user?.image
+								: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+						}`}
 						rounded={true}
 					/>
 				}
