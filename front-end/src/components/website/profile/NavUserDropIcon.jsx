@@ -11,11 +11,10 @@ export default function NavUserDropIcon() {
 				className=""
 				label={
 					<Avatar
-						img={`${
-							user?.image
-								? user?.image
-								: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-						}`}
+						img={`${user?.image
+							? user?.image
+							: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+							}`}
 						rounded={true}
 					/>
 				}
@@ -32,9 +31,13 @@ export default function NavUserDropIcon() {
 				<Dropdown.Item>
 					<Link to={"/profile"}>Profile</Link>
 				</Dropdown.Item>
-				<Dropdown.Item>
-					<Link to={"/asd"}>Fav Games</Link>
-				</Dropdown.Item>
+				{
+					user && user?.role == 'admin' ? <Dropdown.Item>
+						<Link to={"/dashboard"}>DashBoard</Link>
+					</Dropdown.Item>
+						: null
+				}
+
 				<Dropdown.Divider />
 				<Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
 			</Dropdown>

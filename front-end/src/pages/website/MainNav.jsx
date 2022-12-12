@@ -54,6 +54,8 @@ export default function MainNav() {
                 </Link>
             </Typography>
 
+      
+
             <Typography
                 as="li"
                 variant="medium"
@@ -72,7 +74,28 @@ export default function MainNav() {
                     TiTacToe
                 </Link>
             </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+                <Link to={'/contact'} className="flex items-center">
+                Contact
+                </Link>
+            </Typography>
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+                <Link to={'/about'} className="flex items-center">
+                About
+                </Link>
+            </Typography>
         </ul>
+        
     );
 
     return (
