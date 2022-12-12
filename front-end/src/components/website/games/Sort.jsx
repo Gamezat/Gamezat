@@ -21,7 +21,7 @@ export default function Sort({ games, setSearchInput, filter, setFilter, setSear
 	];
 	// console.log(categories);
 	return (
-		<div className="bg-white  w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2 mt-24  rounded-3xl rounded-tl-none border-t-4 shadow-lg border-amber dark:bg-slate-800">
+		<div className=" dark:bg-blue-gray-900 dark:text-cream  w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2 mt-24  rounded-3xl rounded-tl-none border-t-4 shadow-lg border-amber dark:bg-slate-800">
 
 
 			<div class="relative">
@@ -32,8 +32,10 @@ export default function Sort({ games, setSearchInput, filter, setFilter, setSear
 			{categories?.map((category, i) => {
 
 				return (
+					<div className="dark:text-cream">
 					<Switch onChange={(e) => setFilter({ ...filter, [e.target.name]: e.target.checked })
-					} name={category} color={colors[i]} key={i} id={category} label={category} />
+					} name={category} color={colors[i]} key={i} id={category} label={category} className='dark:text-cream' />
+				</div>
 				);
 			})}
 		</div>

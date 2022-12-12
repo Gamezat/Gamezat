@@ -186,10 +186,7 @@ export default function PostComp({ post, setPosts, posts }) {
                     </div> */}
 					<div className="flex flex-row items-center mr-6">
 						<button className="flex flex-row">
-							<BiCommentDetail
-								onClick={() => handleOpen(1)}
-								className="text-xl mt-[0.2rem]"
-							/>
+							<BiCommentDetail onClick={() => handleOpen(1)} className='text-xl mt-[0.2rem]' />
 							<span className="ml-2">{post?.comments.length}</span>
 						</button>
 					</div>
@@ -205,11 +202,10 @@ export default function PostComp({ post, setPosts, posts }) {
 										<img
 											class=" mr-2 h-11 w-11 rounded-full"
 											referrerPolicy="no-referrer"
-											src={`${
-												user?.image
-													? user?.image
-													: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
-											}`}
+											src={`${user?.image
+												? user?.image
+												: "https://cdn0.iconfinder.com/data/icons/communication-456/24/account_profile_user_contact_person_avatar_placeholder-512.png"
+												}`}
 										/>
 										<Textarea
 											ref={commentInput}
@@ -286,3 +282,4 @@ export default function PostComp({ post, setPosts, posts }) {
 		</>
 	);
 }
+

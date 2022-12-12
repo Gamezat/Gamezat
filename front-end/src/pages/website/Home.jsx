@@ -19,8 +19,8 @@ export default function Home() {
                 <Banner />
             </div>
 
-            <div className="mt-10 ">
-                <h1 className="p-6 text-3xl text-center flex  "> <IoGiftSharp className="mr-2 text-red-600"/> Free Games </h1>
+            <div className="mt-10 dark:bg-darkGray ">
+                <h1 className="p-6 text-3xl text-center flex  "> <IoGiftSharp className="mr-2 text-red-600"/>Free Games</h1>
                 <SwiperGiftGame />
             </div>
 

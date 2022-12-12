@@ -15,7 +15,7 @@ export default function SwiperGiftGame() {
   const { freeGames } = useContext(FreeGamesContext)
 
   return (
-    <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 mx-5'>
+    <div className='flex justify-around dark:bg-blue-gray-900 flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 mx-5'>
       <>
         <Swiper
 

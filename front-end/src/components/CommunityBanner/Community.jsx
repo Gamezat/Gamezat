@@ -26,7 +26,7 @@ export default function Community() {
 
     return (
         <>
-            <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800'>
+            <div className='flex dark:bg-blue-900 justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800'>
 
                 {
 
@@ -34,7 +34,7 @@ export default function Community() {
 
                         : blogs?.map((blog) => {
                             return (
-                                <div key={blog?.id} className="bg-white dark:bg-gray-800 border-gray-200 w-80 dark:border-gray-800 p-4  border shadow-lg max-w-md mb-2">
+                                <div key={blog?.id} className="bg-white dark:bg-gray-800 rounded border-gray-200 w-80 dark:border-gray-800 p-4  border shadow-lg max-w-md mb-2">
                                     <div className="flex justify-between">
                                         <div className="flex items-center">
                                             <img className="h-11 w-11 rounded-full " src={blog?.user.image} />

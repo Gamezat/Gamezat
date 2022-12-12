@@ -42,7 +42,7 @@ export default function UserReviews() {
 			{reviews?.length > 0 ? (
 				reviews?.map((review) => {
 					return (
-						<article className="rounded-xl border-2 border-gray-100 bg-white shadow-md max-h-40 relative">
+						<article className="rounded-xl border-2 border-gray-100 bg-white dark:bg-gray-800 dark:border-gray-600 shadow-md max-h-40 relative">
 							<div className="flex items-start p-6">
 								<div className="flex flex-col gap-2 shrink-0 items-center">
 									<img
@@ -56,7 +56,7 @@ export default function UserReviews() {
 								<div className="ml-4 space-y-2 text-start">
 									<Link
 										to={`/games/${review?.game_id}`}
-										className="block text-xs text-gray-500 font-medium  hover:text-gray-700 capitalize"
+										className="block text-xs text-gray-500 dark:text-gray-400 font-medium  hover:text-gray-700 capitalize"
 									>
 										Game: {review?.game_id.replace(/-/g, " ")}
 									</Link>
@@ -68,10 +68,10 @@ export default function UserReviews() {
 										</div>
 									</h3>
 
-									<p className="text-sm text-gray-700 pl-2">{review?.review}</p>
+									<p className="text-sm text-gray-700 dark:text-cream pl-2">{review?.review}</p>
 
 									<div className="mt-2 flex items-center sm:gap-2">
-										<div className="flex items-center text-gray-500">
+										<div className="flex items-center text-gray-500 dark:text-gray-400">
 											<BiTime />
 											<p className="ml-1 text-xs">
 												{review?.created_at.split("T")[0]}
@@ -82,9 +82,9 @@ export default function UserReviews() {
 											&middot;
 										</span>
 
-										<p className="block text-xs text-gray-500">
+										<p className="block text-xs text-gray-500 dark:text-gray-400">
 											Reviewed by{" "}
-											<span className="font-medium  hover:text-gray-700">
+											<span className="font-medium  hover:text-gray-700 dark:hover:text-gray-300">
 												{user.name}
 											</span>
 										</p>
@@ -94,9 +94,9 @@ export default function UserReviews() {
 						</article>
 					);
 				})
-			) : (
-				<div className="text-center">No reviews</div>
-			)}
+			) : 
+				<div className="text-center mx-auto dark:text-cream">No reviews</div>
+			}
 		</>
 	);
 }

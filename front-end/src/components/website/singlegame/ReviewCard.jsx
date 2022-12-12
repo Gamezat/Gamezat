@@ -44,7 +44,7 @@ export default function ReviewCard({ review }) {
 			/>
 
 			<ReportModal review={review} show={show} closeModal={closeModal} />
-			<article className="rounded-xl border-2 border-gray-100 bg-white shadow-md max-h-40 relative">
+			<article className="rounded-xl border-2 dark:bg-gray-800 dark:border-gray-600 border-gray-100 bg-white shadow-md max-h-40 relative">
 				<div className="flex items-start p-6">
 					<div className="flex flex-col gap-2 shrink-0 items-center">
 						<img
@@ -72,12 +72,12 @@ export default function ReviewCard({ review }) {
 							</div>
 						</h3>
 
-						<p className="text-sm text-gray-700 pl-2">{review?.review}</p>
+						<p className="text-sm dark:text-cream text-gray-700 pl-2">{review?.review}</p>
 
 						<div className="mt-2 flex items-center sm:gap-2">
-							<div className="flex items-center text-gray-500">
+							<div className="flex items-center text-gray-500 dark:text-gray-400">
 								<BiTime />
-								<p className="ml-1 text-xs">
+								<p className="ml-1 text-xs ">
 									{review?.created_at.split("T")[0]}
 								</p>
 							</div>
@@ -86,9 +86,9 @@ export default function ReviewCard({ review }) {
 								&middot;
 							</span>
 
-							<p className="block text-xs text-gray-500">
+							<p className="block text-xs text-gray-500 dark:text-gray-400">
 								Reviewed by{" "}
-								<span className="font-medium  hover:text-gray-700">
+								<span className="font-medium  hover:text-gray-700 dark:hover:text-gray-400">
 									{review?.user.name}
 								</span>
 							</p>
@@ -98,7 +98,7 @@ export default function ReviewCard({ review }) {
 							user.id === review.user.id ? (
 								<TbEditCircle
 									onClick={() => setShowEdit(true)}
-									className="absolute right-2 bottom-2 text-darkGray hover:cursor-pointer"
+									className="absolute right-2 bottom-2 text-darkGray dark:text-gray-400 hover:cursor-pointer"
 									size={20}
 								/>
 							) : (

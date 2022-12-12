@@ -109,7 +109,7 @@ export default function SingleGame() {
 			</div>
 			<ReportModal show={show} closeModal={closeModal} game={game} />
 			<div className="flex flex-col items-center p-5">
-				<div className="overflow-hidden">
+				<div className="overflow-hidden mt-16">
 					<iframe
 						height={game?.height}
 						src={game?.link}
