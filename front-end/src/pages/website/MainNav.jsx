@@ -54,7 +54,7 @@ export default function MainNav() {
                 </Link>
             </Typography>
 
-      
+
 
             <Typography
                 as="li"
@@ -81,7 +81,7 @@ export default function MainNav() {
                 className="p-1 font-normal"
             >
                 <Link to={'/contact'} className="flex items-center">
-                Contact
+                    Contact
                 </Link>
             </Typography>
             <Typography
@@ -91,11 +91,11 @@ export default function MainNav() {
                 className="p-1 font-normal"
             >
                 <Link to={'/about'} className="flex items-center">
-                About
+                    About
                 </Link>
             </Typography>
         </ul>
-        
+
     );
 
     return (
@@ -105,8 +105,8 @@ export default function MainNav() {
                     <div className="container mx-auto flex items-center justify-between text-blue-gray-900 dark:text-gray-100 ">
                         <div className='flex row'>
                             <Typography
-                                as="a"
-                                href="#"
+
+
                                 variant="small"
                                 className="mr-4 mt-1 cursor-pointer py-1.5 font-normal"
                             >
