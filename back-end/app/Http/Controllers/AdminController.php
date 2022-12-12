@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Post;
-use App\Models\Product;
+use App\Models\User;
 use App\Models\Report;
 use App\Models\Review;
-use App\Models\User;
+use App\Models\Comment;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -108,8 +109,10 @@ class AdminController extends Controller
     {
         Report::find($request->report_id)->delete();
         Review::find($request->post_id)->delete();
+
         return  $this->allReports();
     }
+
 
     public function unApprovedPosts()
     {
@@ -181,6 +184,7 @@ class AdminController extends Controller
 
         ]);
     }
+
     public function delUser(Request $request)
     {
 
@@ -192,5 +196,77 @@ class AdminController extends Controller
             'status' => 200,
             'users' =>  User::all(),
         ]);
+}
+
+    public function allProducts()
+    {
+        $products = Product::all();
+
+        return response()->json([
+            'status' => 200,
+            'products' => $products
+        ]);
+    }
+
+    public function addProduct(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required|numeric',
+            'link' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 401, 'errors' => $validator->messages()]);
+        }
+
+        $product = Product::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $request->image,
+            'link' => $request->link,
+            'price' => $request->price,
+        ]);
+
+        return $this->allProducts();
+    }
+
+    public function editProduct(Request $request, $id)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'price' => 'required',
+            'link' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['status' => 401, 'errors' => $validator->messages()]);
+        }
+
+        $product = Product::find($id);
+
+        $product->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image' => $request->image,
+            'link' => $request->link,
+            'price' => $request->price,
+        ]);
+
+        return $this->allProducts();
+    }
+
+    public function delProduct($id)
+    {
+        $product = Product::find($id);
+
+        $product->delete();
+
+        return $this->allProducts();
+
     }
 }
