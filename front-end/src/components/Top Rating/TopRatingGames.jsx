@@ -80,36 +80,39 @@ export default function TopRatingGames() {
 					}}
 					className="mySwiper flex justify-center "
 				>
-					{topRatedGames?.map((game) => {
-						return (
-							<SwiperSlide className="mx-5 drop-shadow-md">
-								<Link
-									key={game.id}
-									to={`/games/${game?.guid}`}
-									class="group relative block bg-black w-72 h-72 mb-10 shadow-xl "
-								>
-									<img
-										alt="Developer"
-										src={game.thumb}
-										class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
-									/>
+					{
+						topRatedGames.length === 0 ? <p className="text-3xl text-center">No Games</p>
 
-									<div class="relative p-4 flex  justify-between">
-										<p class="text-xl font-bold text-white">{game.title}</p>
+							: topRatedGames?.map((game) => {
+								return (
+									<SwiperSlide className="mx-5 drop-shadow-md">
+										<Link
+											key={game.id}
+											to={`/games/${game?.guid}`}
+											class="group relative block bg-black w-72 h-72 mb-10 shadow-xl "
+										>
+											<img
+												alt="Developer"
+												src={game.thumb}
+												class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+											/>
 
-										<p class="text-md text-white flex items-center">
-											<AiTwotoneStar size={35} className="text-lemon" />{" "}
-											{topRatings?.map((rating) => {
-												if (rating.game_id === game?.guid) {
-													return Number(rating.avg_rating).toFixed(1);
-												}
-											})}{" "}
-										</p>
-									</div>
-								</Link>
-							</SwiperSlide>
-						);
-					})}
+											<div class="relative p-4 flex  justify-between">
+												<p class="text-xl font-bold text-white">{game.title}</p>
+
+												<p class="text-md text-white flex items-center">
+													<AiTwotoneStar size={35} className="text-lemon" />{" "}
+													{topRatings?.map((rating) => {
+														if (rating.game_id === game?.guid) {
+															return Number(rating.avg_rating).toFixed(1);
+														}
+													})}{" "}
+												</p>
+											</div>
+										</Link>
+									</SwiperSlide>
+								);
+							})}
 				</Swiper>
 			</div>
 		</>
