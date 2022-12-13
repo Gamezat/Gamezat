@@ -1,10 +1,22 @@
 import React from 'react'
-import { Outlet } from "react-router-dom";
+import { useEffect } from 'react';
+import { useContext } from 'react';
+import { Outlet, useNavigate } from "react-router-dom";
 import SideBarDash from '../components/dashboard/SideBarDash';
+import { AuthContext } from '../context/AuthContext';
 
 
 
 export default function UserEnd() {
+    const { cookies, user } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        if (!cookies.Token && user?.role !== 'admin') {
+            // setShowPortal(true)
+            navigate("/");
+        }
+    }, [cookies.Token]);
     return (
         <>
             <div className='flex'>

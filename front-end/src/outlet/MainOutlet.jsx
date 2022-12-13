@@ -2,8 +2,8 @@ import React from 'react'
 import { Link, Outlet } from "react-router-dom";
 import RegistrationPortal from '../components/website/registration/RegistrationPortal';
 import MainNav from '../pages/website/MainNav';
-import img from '../../src/components/img/3.png.png'
-
+import img from '../../src/components/img/GamezatLogo2.png'
+// import img from '../../../src/components/img/GamezatLogo2.png'
 export default function UserEnd() {
     return (
         <>
