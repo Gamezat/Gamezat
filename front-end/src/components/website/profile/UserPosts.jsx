@@ -46,6 +46,7 @@ export default function UserPosts({ setPostCount }) {
 												? post?.user.image
 												: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 										}
+										referrerPolicy="no-referrer"
 									/>
 									<div className="ml-1.5 text-sm leading-tight">
 										<span className="text-black dark:text-white font-bold block ">
