@@ -1,5 +1,5 @@
 import React from 'react';
-import img from '../img/3.png.png'
+import img from '../../../src/components/img/GamezatLogo2.png'
 
 export default function Banner() {
     return (
