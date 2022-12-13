@@ -34,18 +34,19 @@ export default function ProfileComments({ setCommentCount }) {
 								<span>
 									{" "}
 									You commented on{" "}
-									{comment.post.user.id === user.id ? (
+									{comment?.post?.user?.id === user?.id ? (
 										"your"
 									) : (
 										<Link
-											to={`/profile/${comment.post.user.id}`}
+											to={`/profile/${comment?.post?.user?.id}`}
 											className="text-amber/80 dark:text-blue-400 hover:underline"
 										>
-											{comment.post.user.name}
+											{comment?.post?.user?.name}
 											{"'s"}
 										</Link>
 									)}{" "}
-									Post {comment.comment} at {comment.created_at.split("T")[0]}
+									Post {comment?.comment} at{" "}
+									{comment?.created_at?.split("T")[0]}
 								</span>
 							</p>
 						</div>
