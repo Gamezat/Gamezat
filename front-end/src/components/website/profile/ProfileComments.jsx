@@ -39,7 +39,7 @@ export default function ProfileComments({ setCommentCount }) {
 									) : (
 										<Link
 											to={`/profile/${comment.post.user.id}`}
-											className="text-amber/80 hover:underline"
+											className="text-amber/80 dark:text-blue-400 hover:underline"
 										>
 											{comment.post.user.name}
 											{"'s"}

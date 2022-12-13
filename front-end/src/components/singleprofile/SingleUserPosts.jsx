@@ -35,6 +35,7 @@ export default function SingleUserPosts({ setPostCount, id }) {
 									<img
 										className="h-11 w-11 rounded-full"
 										src={post?.user.image}
+										referrerPolicy="no-referrer"
 									/>
 									<div className="ml-1.5 text-sm leading-tight">
 										<span className="text-black dark:text-white font-bold block ">
@@ -89,7 +90,7 @@ export default function SingleUserPosts({ setPostCount, id }) {
 					);
 				})
 			) : (
-				<div className="text-center">No posts</div>
+				<div className="text-center dark:text-cream">No posts</div>
 			)}
 		</>
 	);

@@ -94,7 +94,7 @@ export default function SingleProfile() {
 					</section>
 					<section className="relative py-16 bg-blueGray-200">
 						<div className="container mx-auto px-4">
-							<div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+							<div className="relative flex flex-col min-w-0 break-words bg-white dark:bg-darkGray dark:shadow-amber/50 dark:shadow-2xl dark:text-cream w-full mb-6 shadow-xl rounded-lg -mt-64">
 								<div className="px-6">
 									<div className="flex flex-wrap justify-center">
 										<div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
@@ -111,6 +111,7 @@ export default function SingleProfile() {
 																: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 														}
 														alt=""
+														referrerPolicy="no-referrer"
 													/>
 												</form>
 											</div>
@@ -126,12 +127,12 @@ export default function SingleProfile() {
 											</div>
 										</div>
 										<div className="w-full lg:w-4/12 px-4 lg:order-1">
-											<div className="flex justify-center py-4 lg:pt-4 pt-8">
+											<div className="flex justify-center py-4 lg:pt-4 pt-8 dark:text-cream">
 												<div className="mr-4 p-3 text-center">
 													<span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
 														{favCount}
 													</span>
-													<span className="text-sm text-blueGray-400">
+													<span className="text-sm text-blueGray-400 dark:text-cream">
 														Favorites
 													</span>
 												</div>
@@ -139,7 +140,7 @@ export default function SingleProfile() {
 													<span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
 														{postCount}
 													</span>
-													<span className="text-sm text-blueGray-400">
+													<span className="text-sm text-blueGray-400 dark:text-cream">
 														Posts
 													</span>
 												</div>
@@ -147,7 +148,7 @@ export default function SingleProfile() {
 													<span className="text-xl font-bold block uppercase tracking-wide text-blueGray-600">
 														{commentCount}
 													</span>
-													<span className="text-sm text-blueGray-400">
+													<span className="text-sm text-blueGray-400 dark:text-cream">
 														Comments
 													</span>
 												</div>
@@ -169,7 +170,7 @@ export default function SingleProfile() {
 											{singleUser?.about}
 										</div>
 									</div>
-									<div className="mt-10 py-10 border-t border-blueGray-200 text-center ">
+									<div className="mt-10 py-10 border-t border-blueGray-200 text-center dark:text-cream">
 										<Tabs value="html">
 											<TabsHeader>
 												<Tab key={"1"} value={"Favorites"}>

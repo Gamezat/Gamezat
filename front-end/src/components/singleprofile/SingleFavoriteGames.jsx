@@ -57,7 +57,9 @@ export default function SingleFavoriteGames({ setFavCount, user }) {
 					);
 				})
 			) : (
-				<div className="text-center">User didn't add any games yet!</div>
+				<div className="text-center dark:text-cream">
+					User didn't add any games yet!
+				</div>
 			)}
 		</>
 	);

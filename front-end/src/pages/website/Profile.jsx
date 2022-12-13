@@ -145,10 +145,11 @@ export default function Profile() {
 						<div
 							className=" top-0 w-full h-full bg-center bg-cover group relative"
 							style={{
-								backgroundImage: `url("${user?.banner
-									? user?.banner
-									: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-									}")`,
+								backgroundImage: `url("${
+									user?.banner
+										? user?.banner
+										: "https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+								}")`,
 							}}
 						>
 							<label
@@ -208,6 +209,7 @@ export default function Profile() {
 																: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
 														}
 														alt=""
+														referrerPolicy="no-referrer"
 													/>
 													<label
 														htmlFor="profileImage"
@@ -318,7 +320,6 @@ export default function Profile() {
 															label="Age"
 															name="age"
 															className="dark:text-gray-400 dark:focus:text-cream"
-
 														/>
 														<Input
 															defaultValue={user?.email}
@@ -326,7 +327,6 @@ export default function Profile() {
 															label="Email"
 															disabled
 															className="dark:text-gray-400 dark:bg-blue-gray-800"
-
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -335,7 +335,6 @@ export default function Profile() {
 															label="Country"
 															name="country"
 															className="dark:text-gray-400 dark:focus:text-cream"
-
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -344,7 +343,6 @@ export default function Profile() {
 															label="About"
 															name="about"
 															className="dark:text-gray-400 dark:focus:text-cream"
-
 														/>
 														<Input
 															onBlur={updateProfileData}
@@ -353,7 +351,6 @@ export default function Profile() {
 															label="Games"
 															name="games"
 															className="dark:text-gray-400 dark:focus:text-cream"
-
 														/>
 													</div>
 													{/* <div><button class="bg-indigo shadow-black hover:bg-blue-700 text-white font-bold py-2 px-16 mt-3 ">
