@@ -49,7 +49,7 @@ export default function UserPosts({ setPostCount }) {
 										referrerPolicy="no-referrer"
 									/>
 									<div className="ml-1.5 text-sm leading-tight">
-										<span className="text-black dark:text-white font-bold block ">
+										<span className="text-black text-start dark:text-white font-bold block ">
 											{post?.user.name}
 										</span>
 										<span className="text-gray-500 dark:text-gray-400 font-normal block">
@@ -98,7 +98,7 @@ export default function UserPosts({ setPostCount }) {
 					);
 				})
 			) : (
-				<div className="text-center mx-auto dark:text-cream">No posts</div>
+				<div className="text-start  dark:text-cream">No posts</div>
 			)}
 		</>
 	);

@@ -94,8 +94,8 @@ export default function UserReviews() {
 						</article>
 					);
 				})
-			) : 
-				<div className="text-center mx-auto dark:text-cream">No reviews</div>
+			) :
+				<div className="text-start dark:text-cream">No reviews</div>
 			}
 		</>
 	);

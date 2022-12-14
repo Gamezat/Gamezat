@@ -7,6 +7,7 @@ import { AiTwotoneStar } from "react-icons/ai";
 import { BiTime } from "react-icons/bi";
 import { TbEditCircle, TbMessageReport } from "react-icons/tb";
 import ReactStars from "react-rating-stars-component";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthContext";
 import EditReviewModal from "./EditReviewModal";
 import ReportModal from "./ReportModal";
@@ -86,11 +87,11 @@ export default function ReviewCard({ review }) {
 								&middot;
 							</span>
 
-							<p className="block text-xs text-gray-500 dark:text-gray-400">
+							<p className="block text-xs text-gray-500">
 								Reviewed by{" "}
-								<span className="font-medium  hover:text-gray-700 dark:hover:text-gray-400">
+								<Link to={`/profile/${review?.user.id}`} className="font-medium text-blue-500 cursor-pointer  hover:text-blue-300 ">
 									{review?.user.name}
-								</span>
+								</Link>
 							</p>
 						</div>
 

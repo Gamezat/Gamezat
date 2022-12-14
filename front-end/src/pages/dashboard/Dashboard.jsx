@@ -17,7 +17,7 @@ export default function Dashboard() {
         <>
             <div className=' flex flex-wrap gap-5 m-9 p-10 rounded-3xl border-t-4 shadow-lg border-grass  dark:bg-slate-800'>
 
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-green-600 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-green-600 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     <  CgSmileMouthOpen className={`ml-5 text-green-600`} size={50} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">
@@ -25,7 +25,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-indigo ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-indigo ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     < CgGames className={`ml-5 text-indigo`} size={50} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">
@@ -33,7 +33,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-amber ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-amber ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     < GoReport className={`ml-5 text-amber`} size={40} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">
@@ -42,7 +42,7 @@ export default function Dashboard() {
                     </div>
                 </div>
 
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-yellow-300 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-yellow-300 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     < SiApostrophe className={`ml-5 text-yellow-300`} size={40} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">
@@ -50,7 +50,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-blue-600 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-blue-600 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     < FaRegCommentDots className={`ml-5 text-blue-600`} size={40} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">
@@ -58,7 +58,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                 </div>
-                <div className={`max-w-sm mx-auto bg-white shadow-md shadow-orange-500 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
+                <div className={`max-w-sm mx-auto bg-white shadow-md dark:bg-blue-gray-400 shadow-orange-500 ring-1 ring-black/5 rounded-xl flex items-center gap-2`}>
                     < MdPostAdd className={`ml-5 text-orange-500`} size={40} />
                     <div className="min-w-0 py-5 pl-3 pr-5">
                         <div className="text-slate-900 font-medium text-sm sm:text-base truncate">

@@ -78,7 +78,7 @@ export default function RegistrationPortal() {
 
 								<FacebookLogin
 									className="bg-[#4267b2] hover:bg-[#4267b2]/95 p-2 rounded flex  text-white   items-center  gap-x-1"
-									appId="848214096296806"
+									appId="448147154061589"
 									onSuccess={(response) => {
 										// console.log('Login Success!', response);
 									}}

@@ -9,20 +9,11 @@ export default function UserEnd() {
 	const { cookies, user } = useContext(AuthContext);
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		if (!cookies.Token) {
-			navigate("/");
-		}
-		if (cookies.Token && user?.role !== "admin") {
-			// setShowPortal(true)
-			navigate("/");
-		}
-	}, [cookies.Token]);
 	return (
 		<>
-			<div className="flex">
+			<div className="flex h-full">
 				<SideBarDash />
-				<div className="flex-1 justify-center">
+				<div className="flex-1  justify-center">
 					{/* An <Outlet> renders whatever child route is currently active in App.js */}
 					<Outlet />
 				</div>

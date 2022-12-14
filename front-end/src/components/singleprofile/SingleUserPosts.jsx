@@ -37,7 +37,7 @@ export default function SingleUserPosts({ setPostCount, id }) {
 										src={post?.user.image}
 										referrerPolicy="no-referrer"
 									/>
-									<div className="ml-1.5 text-sm leading-tight">
+									<div className="ml-1.5 text-start text-sm leading-tight">
 										<span className="text-black dark:text-white font-bold block ">
 											{post?.user.name}
 										</span>

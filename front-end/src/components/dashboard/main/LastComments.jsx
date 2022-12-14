@@ -9,12 +9,7 @@ export default function LastComments({ comments }) {
                     <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
                         Latest Comments
                     </h5>
-                    <Link
-                        to={'/blah'}
-                        className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                        View all
-                    </Link>
+
                 </div>
                 <div className="flow-root">
                     <ul className="divide-y  divide-gray-200 dark:divide-gray-700 max-h-[300px] scrollbar-hide overflow-scroll">

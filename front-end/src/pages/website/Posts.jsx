@@ -27,22 +27,22 @@ export default function Posts() {
     <>
 
 
-        <div className="mt-0 grid lg:max-w-screen  lg:grid-cols-5 sm:grid-cols-1 md:grid-cols-1 bg-fixed" style={{backgroundImage: "url('https://mg.co.za/wp-content/uploads/2022/01/2dfd1c78-pexels-lucie-liz-3165335.jpg)", objectFit:'cover'}}>
+      <div className="mt-0 grid lg:max-w-screen  lg:grid-cols-5 sm:grid-cols-1 md:grid-cols-1 bg-fixed" style={{ backgroundImage: "url('https://mg.co.za/wp-content/uploads/2022/01/2dfd1c78-pexels-lucie-liz-3165335.jpg)", objectFit: 'cover' }}>
 
-          <div className='pt-[6rem] bg-black bg-opacity-70 px-40 lg:col-start-2 lg:col-span-3 sm:col-start-1 sm:col-span-1 md:col-start-1 md:col-span-1 md:mx-auto sm:mx-auto'>
-            <CreatePost setPosts={setPosts} />
-            <Post posts={posts.reverse()} setPosts={setPosts} />
-            <vr />
-          </div>
-          <div className='lg:col-start-6 lg:mt-[6rem] lg:col-span-2 '>
-
-            {/* <Chat /> */}
-            {/* <AdUnit adCode={adsenseCode} /> */}
-          </div>
-
-
+        <div className='pt-[6rem] bg-black bg-opacity-70 px-40 lg:col-start-2 lg:col-span-3 sm:col-start-1 sm:col-span-1 md:col-start-1 md:col-span-1 md:mx-auto sm:mx-auto'>
+          <CreatePost setPosts={setPosts} />
+          <Post posts={posts.reverse()} setPosts={setPosts} />
+          <vr />
         </div>
-    
+        <div className='lg:col-start-6 lg:mt-[6rem] lg:col-span-2 '>
+
+          {/* <Chat /> */}
+          {/* <AdUnit adCode={adsenseCode} /> */}
+        </div>
+
+
+      </div>
+
 
     </>
 

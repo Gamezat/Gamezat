@@ -7,6 +7,7 @@ export default function DUsers() {
             <span className='flex items-center gap-5'>
 
                 <FaUsers color='indigo' size={25} /> <p className='text-lg'>You can manage all the users from here</p>
+                <p className='text-sm text-lemon'>You can change the data instantly from the table</p>
             </span>
             <div className='w-full  '>
                 <UsersTable />

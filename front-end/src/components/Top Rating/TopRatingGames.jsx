@@ -42,10 +42,12 @@ export default function TopRatingGames() {
 		});
 		setTopRatedGames(topGames);
 	}, [topRatings]);
-
+	if (topRatings.length < 1) {
+		return null
+	}
 	return (
 		<>
-			<div className="flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800 ">
+			<div className="flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-lemon  dark:bg-lightGray ">
 				<Swiper
 					breakpoints={{
 						"@0.00": {

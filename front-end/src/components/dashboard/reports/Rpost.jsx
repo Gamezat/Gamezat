@@ -29,7 +29,7 @@ export default function Rpost() {
                             {
                                 RP ? RP?.map((rc, i) => {
 
-                                    return <li key={rc?.id + 2} className="py-3 sm:py-4  ">
+                                    return <li key={rc?.id + 2} className="py-3 sm:py-4 bg-blue-gray-600 p-5 rounded-lg  ">
                                         <div className="flex items-center justify-between space-x-4">
                                             <div className="shrink-0">
                                                 <FaCommentAlt className='' size={20} />

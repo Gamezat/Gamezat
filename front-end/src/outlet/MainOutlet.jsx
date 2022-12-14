@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, Outlet } from "react-router-dom";
 import RegistrationPortal from '../components/website/registration/RegistrationPortal';
 import MainNav from '../pages/website/MainNav';
-import img from '../../src/components/img/GamezatLogo2.png'
+import img from '../../src/components/img/logo.png'
 // import img from '../../../src/components/img/GamezatLogo2.png'
 export default function UserEnd() {
     return (
@@ -12,8 +12,8 @@ export default function UserEnd() {
             <Outlet />
 
 
-            <footer class=" bg-gray-100  border-t-1 dark:bg-gray-900 ">
-                <div class="grid grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4 ml-24 mt-10">
+            <footer class="  bg-white  dark:bg-gray-900">
+                <div class="grid border-t grid-cols-2 gap-8 py-8 px-6 md:grid-cols-4 ml-24 mt-10">
                     <div className=''>
                         <h2 class="mb-6 text-sm font-semibold text-gray-500 uppercase dark:text-gray-400">Main</h2>
                         <ul class="text-gray-500 dark:text-gray-400">

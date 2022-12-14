@@ -48,12 +48,13 @@ export default function UsersTable() {
                             <Table.Cell onBlur={(e) => changeUserData("role", e.target.innerText, user?.id, user?.role)} contentEditable>
                                 {user?.role}
                             </Table.Cell>
-                            {
-                                user.role != 'admin' ?
-                                    <Table.Cell>
+                            <Table.Cell>
+                                {
+                                    user.role != 'admin' ?
                                         <RiDeleteBin6Fill onClick={() => delUser(user?.id)} size={20} className='text-red-400 hover:text-red-600 cursor-pointer' />
-                                    </Table.Cell> : null
-                            }
+                                        : ""
+                                }
+                            </Table.Cell>
                         </Table.Row>
                     })
                 }

@@ -7,14 +7,9 @@ export default function LastJoined({ users }) {
             <Card>
                 <div className="mb-4 gap-2 flex items-center justify-between">
                     <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
-                        Latest Customers
+                        Latest User
                     </h5>
-                    <Link
-                        to={'/blah'}
-                        className="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                        View all
-                    </Link>
+
                 </div>
                 <div className="flow-root">
                     <ul className="divide-y divide-gray-200 dark:divide-gray-700 max-h-[300px] scrollbar-hide overflow-scroll">

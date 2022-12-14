@@ -48,13 +48,13 @@ function ComponentContact() {
 							style={{
 								backgroundPosition: "50%",
 								backgroundImage:
-									'url("https://mdbootstrap.com/img/new/textures/full/171.jpg")',
+									'url("https://images.pexels.com/photos/3165335/pexels-photo-3165335.jpeg")',
 								height: 300,
 							}}
 						></div>
 						<div className="container text-gray-800 px-4 md:px-12 ">
 							<div
-								className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6 dark:bg-blue-gray-800"
+								className="block rounded-lg shadow-lg py-10 md:py-12 px-4 md:px-6 dark:bg-gray-800"
 								style={{
 									marginTop: "-100px",
 									background: "hsla(0, 0%, 100%, 0.8)",
@@ -100,7 +100,7 @@ function ComponentContact() {
 												d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"
 											/>
 										</svg>
-										<h6 className="font-medium">+962778084911</h6>
+										<h6 className="font-medium">+962 7-7808-4911</h6>
 									</div>
 									<div className="mb-6 md:mb-0 text-center mx-auto">
 										<svg
@@ -118,7 +118,7 @@ function ComponentContact() {
 												d="M192 208c0-17.67-14.33-32-32-32h-16c-35.35 0-64 28.65-64 64v48c0 35.35 28.65 64 64 64h16c17.67 0 32-14.33 32-32V208zm176 144c35.35 0 64-28.65 64-64v-48c0-35.35-28.65-64-64-64h-16c-17.67 0-32 14.33-32 32v112c0 17.67 14.33 32 32 32h16zM256 0C113.18 0 4.58 118.83 0 256v16c0 8.84 7.16 16 16 16h16c8.84 0 16-7.16 16-16v-16c0-114.69 93.31-208 208-208s208 93.31 208 208h-.12c.08 2.43.12 165.72.12 165.72 0 23.35-18.93 42.28-42.28 42.28H320c0-26.51-21.49-48-48-48h-32c-26.51 0-48 21.49-48 48s21.49 48 48 48h181.72c49.86 0 90.28-40.42 90.28-90.28V256C507.42 118.83 398.82 0 256 0z"
 											></path>
 										</svg>
-										<h6 className="font-medium">support@example.com</h6>
+										<h6 className="font-medium">support@gamezat.com</h6>
 									</div>
 								</div>
 								<div className="max-w-[700px] mx-auto ">
