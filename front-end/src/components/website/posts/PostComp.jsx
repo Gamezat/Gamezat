@@ -249,11 +249,11 @@ export default function PostComp({ post, setPosts, posts }) {
 							</div>
 						</form>
 						{/* {post?.comments.length > 0 && ( */}
-						<div className="py-5 flex-col flex gap-5 overflow-scroll scrollbar-thin scrollbar-thumb-amber scrollbar-round scrollbar-track-gray-200 scrollbar-hide h-[155px] max-h-[200px]  mx-auto bg-cream/20     px-4  mt-4 ">
+						<div className="py-5 flex-col flex gap-5 overflow-scroll scrollbar-thin scrollbar-thumb-amber scrollbar-round scrollbar-track-gray-200 scrollbar-hide h-[155px] max-h-[200px]  mx-auto      px-4  mt-4 ">
 							{post?.comments.map((comment) => {
 								return (
 									<>
-										<div class="flex dark:bg-blue-gray-900 my-1 shadow-lg rounded hover:shadow-amber/50 dark:text-gray-200 transition duration-300 hover:duration-300 ease-in-out  flex-row">
+										<div class="flex dark:bg-blue-gray-900 my-1 shadow-lg rounded hover:shadow-lemon dark:text-gray-200 transition duration-300 hover:duration-300 ease-in-out  flex-row">
 											<img class="object-cover w-10 h-10 border-2 border-gray-300 rounded-full" alt="Bozo"
 												src={comment?.user.image} />
 											<div class="flex-col mt-1">

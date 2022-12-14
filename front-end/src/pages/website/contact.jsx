@@ -4,7 +4,7 @@ import ComponentContact from '../../components/website/contact/ComponentContact'
 export default function contact() {
   return (
     <div>
-      <ComponentContact/>
+      <ComponentContact />
     </div>
   );
 }

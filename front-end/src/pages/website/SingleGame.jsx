@@ -136,15 +136,13 @@ export default function SingleGame() {
 								Report game{" "}
 								<TbMessageReport size={20} className="text-amber " />
 							</div>
-						) : (
-							""
-						)}
+						) : null}
 					</div>
 					{reviews?.count === 0 ? (
-						""
+						null
 					) : (
 						<div
-							className="shadow-lg rounded-lg p-5 ring-1 ring-lightGray grid grid-cols-1 xl:grid-cols-2 gap-5 h-72 overflow-auto scrollbar-hide
+							className="shadow-lg rounded-lg p-5  dark:shadow-lg dark:shadow-white/20 grid grid-cols-1 xl:grid-cols-2 gap-5 h-72 overflow-auto scrollbar-hide
 "
 						>
 							{reviews.reviews?.map((review, i) => {

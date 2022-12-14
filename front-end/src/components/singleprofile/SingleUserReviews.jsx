@@ -86,7 +86,7 @@ export default function SingleUserReviews({ user, id }) {
 					);
 				})
 			) : (
-				<div className="text-center dark:text-cream">No reviews</div>
+				<div className=" text-start	 dark:text-cream">No reviews</div>
 			)}
 		</>
 	);

@@ -95,9 +95,9 @@ export default function PostsTable({ allPosts, deletePost }) {
 
     return (
         <>
-            <div className='flex flex-col w-full'>
-                
-                
+            <div className='flex flex-col'>
+
+
 
                 <TextInput
                     id="email1"
@@ -167,7 +167,7 @@ export default function PostsTable({ allPosts, deletePost }) {
                                                 <td
                                                     className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
                                                 >
-                                                    {item.content}
+                                                    {item.content.slice(0, 30)}
                                                 </td>
                                                 <td
                                                     className="whitespace-nowrap px-4 py-2 text-gray-700 dark:text-gray-200"
@@ -234,7 +234,7 @@ export default function PostsTable({ allPosts, deletePost }) {
                                             <label className="text-sm whitespace-nowrap text-white">Rows per page:</label>
                                             <div className="mx-auto  w-full ">
                                                 <div className="my-1 scale-90">
-                                                    <select onChange={(e) => setRecordsPerPage(parseInt(e.target.value))} className=" block  dark:bg-slate-700 rounded-md border border-gray-300 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                                                    <select onChange={(e) => setRecordsPerPage(parseInt(e.target.value))} className=" block  dark:bg-blue-gray-300 rounded-md border border-gray-300 text-base  focus:outline-none focus:ring-indigo sm:text-sm">
                                                         <option defaultValue="10">10</option>
                                                         <option defaultValue="20">20</option>
                                                         <option defaultValue="30">30</option>

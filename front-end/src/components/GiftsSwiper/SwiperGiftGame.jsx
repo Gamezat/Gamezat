@@ -15,7 +15,7 @@ export default function SwiperGiftGame() {
   const { freeGames } = useContext(FreeGamesContext)
 
   return (
-    <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-amber  dark:bg-slate-800'>
+    <div className='flex justify-around flex-wrap  p-10 rounded-3xl border-t-4 shadow-lg w-[95%] mx-auto border-indigo  dark:bg-lightGray '>
       <>
         <Swiper
 
@@ -33,18 +33,15 @@ export default function SwiperGiftGame() {
               spaceBetween: 20,
             },
             "@1.50": {
-              slidesPerView: 5,
-              spaceBetween: 20,
+              slidesPerView: 4,
+              spaceBetween: 50,
             },
           }}
-
-
-          slidesPerGroup={3}
+          slidesPerGroup={1}
           loop={true}
           loopFillGroupWithBlank={true}
           navigation={true}
           centeredSlides={true}
-
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,

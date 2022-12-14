@@ -12,6 +12,7 @@ import { AuthContext } from "../../context/AuthContext";
 import NavUserDropIcon from "../../components/website/profile/NavUserDropIcon";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { DarkThemeToggle } from "flowbite-react";
+import logo from '../../components/img/logo.png'
 export default function MainNav() {
 	const path = useLocation();
 	const { showPortal, setShowPortal, user, token } = useContext(AuthContext);
@@ -98,13 +99,10 @@ export default function MainNav() {
 			<div className="max-w-screen text-white  ">
 				<Navbar className="absolute z-10 position-sticky top-0  lg:max-h-[70px] lg:inset-0 transition duration-300 hover:duration-300 ease-in-out dark:bg-white/40 border-none hover:shadow-lg mx-auto max-w-screen-xl py-2 px-4 lg:px-8 lg:py-4 text-white">
 					<div className="container mx-auto flex items-center justify-between text-blue-gray-900 dark:text-gray-100 ">
-						<div className="flex row">
-							<Typography
-								variant="small"
-								className="mr-4 mt-1 cursor-pointer py-1.5 font-normal"
-							>
-								<Link to={"/"}>Gamezat</Link>
-							</Typography>
+						<div className="flex gap-5">
+
+							<img src={logo} className=' h-11 ' alt="" />
+
 							<DarkThemeToggle />
 						</div>
 						<div className="hidden  lg:block ">{navList}</div>

@@ -1,6 +1,6 @@
 import { Input, Switch } from "@material-tailwind/react";
 import React from "react";
-
+import logo from '../../img/logo.png'
 export default function Sort({
 	games,
 	setSearchInput,
@@ -27,7 +27,8 @@ export default function Sort({
 	];
 	// console.log(categories);
 	return (
-		<div className="  dark:text-cream dark:bg-blue-gray-300/70 w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2 mt-24  rounded-3xl rounded-tl-none border-t-4 shadow-lg border-amber ">
+		<div className="  dark:text-cream dark:bg-blue-gray-300/70 w-52 h-screen sticky top-0 flex flex-col gap-5 capitalize justify-center p-2 mt-24  rounded-3xl rounded-tl-none border-t-4 shadow-lg border-indigo ">
+			<img src={logo} alt="" />
 			<div class="relative">
 				<input
 					onChange={(e) => {

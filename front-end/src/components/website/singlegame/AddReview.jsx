@@ -56,7 +56,7 @@ export default function AddReview({ id }) {
 	};
 
 	return (
-		<div className="shadow-lg rounded-lg p-5 mt-10">
+		<div className="shadow-lg dark:shadow-white/20 rounded-lg p-5 mt-10">
 			<label
 				htmlFor="message"
 				className="block mb-2 text-md font-medium text-darkGray dark:text-white"

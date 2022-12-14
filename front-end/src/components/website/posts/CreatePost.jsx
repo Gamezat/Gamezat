@@ -53,16 +53,15 @@ export default function CreatePost({ setPosts }) {
 	return (
 		<>
 			<form className="" onSubmit={handleSubmit}>
-				<div className="mb-5 shadow-sm hover:shadow-2xl scrollbar-thumb-rounded-full scrollbar-track-rounded-full  hover:border-transparent hover:shadow-indigo/50 hover:shadow-lg transition duration-300 hover:duration-300 ease-in-out shadow-lightGray/20 bg-white dark:bg-gray-800 border-indigo/50 dark:border-amber p-4 rounded-xl border-t-4 max-w-lg">
+				<div className="mb-5 shadow-sm  scrollbar-thumb-rounded-full scrollbar-track-rounded-full  hover:border-transparent hover:shadow-indigo/50 hover:shadow-lg transition duration-300 hover:duration-300 ease-in-out shadow-lightGray/20 bg-white dark:bg-gray-800 border-indigo/50 dark:border-indigo p-4 rounded-xl border-t-4 max-w-lg">
 					<div className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-800 p-4 rounded-xl">
 						<div class="flex">
 							<img
 								class=" mr-2 h-11 w-11 rounded-full"
-								src={`${
-									user?.image
-										? user?.image
-										: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
-								}`}
+								src={`${user?.image
+									? user?.image
+									: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png"
+									}`}
 							/>
 							<Textarea
 								ref={inputPost}
@@ -77,7 +76,7 @@ export default function CreatePost({ setPosts }) {
 					<div class="flex justify-around ">
 						<label
 							htmlFor="image-upload"
-							class="px-2 ring-1 h-9 hover:cursor-cell group flex items-center justify-center border-none text-lightGray dark:text-amber text-base leading-6 font-medium rounded-full hover:text-amber hover:shadow-lg hover:shadow-red transition duration-300 hover:duration-300 ease-in-out"
+							class="px-2 ring-1 h-9 hover:cursor-cell group flex items-center justify-center border-none text-lightGray dark:text-white text-base leading-6 font-medium rounded-full  hover:shadow-lg hover:shadow-red transition duration-300 hover:duration-300 ease-in-out"
 						>
 							<span>
 								<svg
@@ -107,7 +106,7 @@ export default function CreatePost({ setPosts }) {
 						{user ? (
 							<button
 								type="submit"
-								class="bg-black  hover:shadow-xl float-right transition duration-300 hover:duration-300 ease-in-out hover:bg-amber text-white hover:text-white font-bold py-2 px-8 rounded-full"
+								class="bg-black  hover:shadow-xl float-right transition duration-300 hover:duration-300 ease-in-out hover:bg-white text-white hover:text-black font-bold py-2 px-8 rounded-full"
 							>
 								Post
 							</button>

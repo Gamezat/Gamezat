@@ -10,7 +10,7 @@ export default function Rreview() {
     const { delReport, delReview, RR } = useContext(AdminContext);
     return (
         <>
-            <div className="max-w-full">
+            <div className="max-w-full ">
                 <Card>
                     <div className="mb-4 flex items-center justify-between">
                         <h5 className="text-xl font-bold leading-none text-gray-900 dark:text-white">
@@ -29,7 +29,7 @@ export default function Rreview() {
                             {
                                 RR ? RR?.map((rc, i) => {
 
-                                    return <li key={rc?.id + 5} className="py-3 sm:py-4  ">
+                                    return <li key={rc?.id + 5} className="py-3 sm:py-4 bg-blue-gray-600 p-5 rounded-lg ">
                                         <div className="flex items-center justify-between space-x-4">
                                             <div className="shrink-0">
                                                 <MdOutlineReviews size={20} />
